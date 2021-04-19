@@ -1,5 +1,9 @@
 package id.rllyhz.sunglassesshow.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Movie(
     val id: Int,
     val posterUrl: String,
@@ -14,4 +18,4 @@ data class Movie(
     val synopsis: String,
     val tagline: String,
     val director: String
-)
+) : Parcelable
