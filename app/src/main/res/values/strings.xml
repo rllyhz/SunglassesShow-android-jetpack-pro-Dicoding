@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SunGlasses Show</string>
+    <string name="movie_list_dummy_title">Spider-Man: Into the Spider-Verse</string>
+    <string name="movie_list_dummy_genre">Action, Adventure, Animation, Science Fiction, Comedy</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">Tv Show</string>
 </resources>

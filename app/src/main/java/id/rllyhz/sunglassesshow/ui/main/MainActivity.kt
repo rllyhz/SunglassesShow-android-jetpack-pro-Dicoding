@@ -1,8 +1,9 @@
 package id.rllyhz.sunglassesshow.ui.main
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import id.rllyhz.sunglassesshow.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -18,8 +19,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        supportActionBar?.elevation = 0f
+
+        val mainPagerAdapter = MainPagerAdapter(this, supportFragmentManager)
+
         binding.apply {
-            progressbar.visibility = View.VISIBLE
+            with(viewPagerMain) {
+                adapter = mainPagerAdapter
+            }
+
+            tabLayoutMain.setupWithViewPager(viewPagerMain)
         }
     }
 }
