@@ -1,6 +1,6 @@
 package id.rllyhz.sunglassesshow.data
 
-data class Movie(
+data class TVShow(
     val id: Int,
     val posterUrl: String,
     val title: String,
@@ -13,5 +13,5 @@ data class Movie(
     val userScore: String,
     val synopsis: String,
     val tagline: String,
-    val director: String
+    val creator: String
 )
