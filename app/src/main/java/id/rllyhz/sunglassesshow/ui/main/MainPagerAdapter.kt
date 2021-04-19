@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import id.rllyhz.sunglassesshow.R
-import id.rllyhz.sunglassesshow.ui.features.movie.content.MovieContentFragment
 import id.rllyhz.sunglassesshow.ui.features.movie.list.MovieListFragment
+import id.rllyhz.sunglassesshow.ui.features.tvshow.list.TVShowListFragment
 
 class MainPagerAdapter(
     private val context: Context,
@@ -17,7 +17,7 @@ class MainPagerAdapter(
     override fun getItem(position: Int): Fragment =
         when (position) {
             0 -> MovieListFragment()
-            1 -> MovieContentFragment()
+            1 -> TVShowListFragment()
             else -> Fragment()
         }
 
