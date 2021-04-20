@@ -40,7 +40,9 @@ class MovieContentFragment : Fragment() {
     }
 
     private fun setupUI() {
-        similarContentListAdapter.submitList(viewModel.getSimilarMovieOf(currentMovie).toMutableList())
+        similarContentListAdapter.submitList(
+            viewModel.getSimilarMovieOf(currentMovie).toMutableList()
+        )
 
         with(binding) {
             rbDetail.rating = currentMovie.rating
