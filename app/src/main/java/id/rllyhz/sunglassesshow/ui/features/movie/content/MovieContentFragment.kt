@@ -61,6 +61,8 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
 
             tvDurationDetail.text = currentMovie.duration
             tvGenresDetail.text = currentMovie.genres
+            tvSimilarContentLabelDetail.text =
+                resources.getString(R.string.detail_similar_movies_label)
 
             tvRateDetail.text = resources.getString(R.string.rate_format, currentMovie.rate)
 
