@@ -88,6 +88,11 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     companion object {
         const val EXTRA_CONTENT_MOVIE = "EXTRA_CONTENT_MOVIE"
         const val EXTRA_CONTENT_TV_SHOW = "EXTRA_CONTENT_TV_SHOW"
