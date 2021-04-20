@@ -291,7 +291,7 @@ object DataGenerator {
           },
           {
             "id": 1,
-            "poster_name": "poster_arrow",
+            "poster_name": "poster_doom_patrol",
             "title": "Doom Patrol",
             "year": 2019,
             "genres": "Sci-Fi & Fantasy, Comedy, Drama",
