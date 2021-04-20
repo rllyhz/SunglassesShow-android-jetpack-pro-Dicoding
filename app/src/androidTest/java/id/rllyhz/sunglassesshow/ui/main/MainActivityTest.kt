@@ -42,7 +42,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun swipeToTvShowsPreview() {
+    fun swipeToTvShowsTabPreview() {
         onView(withId(R.id.view_pager_main)).check(matches(isDisplayed()))
         onView(withId(R.id.view_pager_main)).perform(swipeLeft())
         onView(withId(R.id.rv_tvshow_list)).check(matches(isDisplayed()))
