@@ -55,7 +55,7 @@
 
         <RatingBar
             android:id="@+id/rb_movie_list"
-            style="@style/Widget.AppCompat.RatingBar.Small"
+            style="@style/ProgressbarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
