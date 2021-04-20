@@ -1,0 +1,67 @@
+package id.rllyhz.sunglassesshow.ui.features.tvshow.list
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.databinding.ItemTvshowListBinding
+
+class TVShowListAdapter :
+    ListAdapter<TVShow, TVShowListAdapter.TVShowListViewHolder>(TVShowComparator()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TVShowListViewHolder {
+        val binding =
+            ItemTvshowListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TVShowListViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: TVShowListViewHolder, position: Int) {
+        getItem(position).apply {
+            holder.bind(this)
+        }
+    }
+
+    inner class TVShowListViewHolder(
+        private val binding: ItemTvshowListBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(tvShow: TVShow) {
+            binding.apply {
+                with(ivItemTvshowList) {
+                    Glide.with(this)
+                        .load(tvShow.posterUrl)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(this)
+                }
+
+                tvTvshowListTitle.text = tvShow.title
+                root.setOnClickListener { movieItemCallback?.onClick(tvShow) }
+            }
+        }
+    }
+
+    // movie comparator
+    class TVShowComparator : DiffUtil.ItemCallback<TVShow>() {
+        override fun areItemsTheSame(oldItem: TVShow, newItem: TVShow): Boolean =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: TVShow, newItem: TVShow): Boolean =
+            oldItem == newItem
+    }
+
+
+    // onClick callback
+    interface TVShowItemCallback {
+        fun onClick(tvShow: TVShow)
+    }
+
+    private var movieItemCallback: TVShowItemCallback? = null
+
+    fun setItemCallback(callback: TVShowItemCallback) {
+        movieItemCallback = callback
+    }
+}
