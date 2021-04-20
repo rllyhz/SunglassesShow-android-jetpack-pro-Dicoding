@@ -33,11 +33,14 @@ class MovieContentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        currentMovie = arguments?.getParcelable(PARAMS_MOVIE)!!
+
         similarContentListAdapter = SimilarContentListAdapter()
         setupUI()
     }
 
     private fun setupUI() {
+        similarContentListAdapter.submitList(viewModel.getSimilarMovieOf(currentMovie).toMutableList())
 
         with(binding) {
             rbDetail.rating = currentMovie.rating
@@ -65,7 +68,8 @@ class MovieContentFragment : Fragment() {
                 .into(ivPosterDetail)
 
             with(rvSimilarContentDetail) {
-                layoutManager = LinearLayoutManager(root.context)
+                layoutManager =
+                    LinearLayoutManager(root.context, LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
                 adapter = similarContentListAdapter
             }

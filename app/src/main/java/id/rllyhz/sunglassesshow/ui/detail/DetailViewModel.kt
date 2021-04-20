@@ -7,9 +7,9 @@ import id.rllyhz.sunglassesshow.utils.DataGenerator
 
 class DetailViewModel : ViewModel() {
 
-    fun getSimilarMovie(): Array<Movie> =
-        DataGenerator.getSimilarMoviesDummyData()
+    fun getSimilarMovieOf(movie: Movie): Array<Movie> =
+        DataGenerator.getSimilarMoviesDummyData(movie)
 
-    fun getSimilarTVShow(): Array<TVShow> =
-        DataGenerator.getSimilarTVShowsDummyData()
+    fun getSimilarTVShowOf(tvShow: TVShow): Array<TVShow> =
+        DataGenerator.getSimilarTVShowsDummyData(tvShow)
 }
