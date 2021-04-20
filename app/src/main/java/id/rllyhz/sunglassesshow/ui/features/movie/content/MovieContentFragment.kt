@@ -81,7 +81,8 @@ class MovieContentFragment : Fragment() {
     }
 
     companion object {
-        const val PARAMS_MOVIE = "PARAMS_MOVIE"
+        val TAG: String = MovieContentFragment::class.java.simpleName
+        private const val PARAMS_MOVIE = "PARAMS_MOVIE"
 
         fun newInstance(movie: Movie): MovieContentFragment =
             MovieContentFragment().apply {
