@@ -23,17 +23,17 @@ class DetailViewModelTest {
     }
 
     @Test
-    fun checkCurrentMovieNotNull() {
+    fun `currentMovie must not be null`() {
         assertNotNull(currentMovie)
     }
 
     @Test
-    fun checkCurrentTVShowNotNull() {
+    fun `currentTVShow must not be null`() {
         assertNotNull(currentTVShow)
     }
 
     @Test
-    fun getSimilarMovieOf() {
+    fun `get all similar movie data, they can not be null and has the correct size`() {
         val similarMovies = viewModel.getSimilarMovieOf(currentMovie)
         val expectedSize = 6
 
@@ -42,7 +42,7 @@ class DetailViewModelTest {
     }
 
     @Test
-    fun getSimilarTVShowOf() {
+    fun `get all similar tv show data, they can not be null and has the correct size`() {
         val similarTVShows = viewModel.getSimilarTVShowOf(currentTVShow)
         val expectedSize = 6
 
