@@ -12,6 +12,12 @@ object DataGenerator {
     fun getAllTVShows(): Array<TVShow> =
         Gson().fromJson(tvShowJsonString, Array<TVShow>::class.java)
 
+    fun getSimilarMoviesDummyData(): Array<Movie> =
+        getAllMovies().take(6).toTypedArray()
+
+    fun getSimilarTVShowsDummyData(): Array<TVShow> =
+        getAllTVShows().take(6).toTypedArray()
+
     private val movieJsonString = """
         [
           {
