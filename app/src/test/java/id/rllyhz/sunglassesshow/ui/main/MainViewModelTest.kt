@@ -14,16 +14,20 @@ class MainViewModelTest {
     }
 
     @Test
-    fun getMovies() {
+    fun `get all movies data, they can not be null and has the correct size`() {
         val movies = viewModel.getMovies()
+        val expectedSize = 17
+
         assertNotNull(movies)
-        assertEquals(17, movies.size)
+        assertEquals(expectedSize, movies.size)
     }
 
     @Test
-    fun getTVShows() {
+    fun `get all tv shows data, they can not be null and has the correct size`() {
         val tvShows = viewModel.getTVShows()
+        val expectedSize = 19
+
         assertNotNull(tvShows)
-        assertEquals(19, tvShows.size)
+        assertEquals(expectedSize, tvShows.size)
     }
 }
