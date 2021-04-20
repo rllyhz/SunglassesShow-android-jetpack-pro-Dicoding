@@ -54,8 +54,6 @@ class MainActivityTest {
         onView(withId(R.id.view_pager_main)).perform(swipeLeft())
         onView(withId(R.id.rv_tvshow_list)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.rv_tvshow_list)).check(matches(isDisplayed()))
-
         onView(withId(R.id.rv_tvshow_list)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
                 tvShowsDummyData.size
@@ -68,5 +66,33 @@ class MainActivityTest {
                 click()
             )
         )
+    }
+
+    @Test
+    fun detailActivitySimulationAndMakeSureEverythingOnItDisplayedAndClickable() {
+        onView(withId(R.id.rv_movie_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_movie_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                positionItemForTesting,
+                click()
+            )
+        )
+
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_poster_bg_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_poster_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_title_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_duration_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.rb_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_genres_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_rate_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_director_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.iv_view_trailer_detail)).perform(click())
+
+        onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.btn_watch_detail)).perform(click())
     }
 }
