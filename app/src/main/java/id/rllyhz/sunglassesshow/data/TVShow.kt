@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class TVShow(
     val id: Int,
-    @SerializedName("poster_url")
-    val posterUrl: String,
+    @SerializedName("poster_name")
+    val posterName: String,
     val title: String,
     val year: Int,
     val genres: String,
