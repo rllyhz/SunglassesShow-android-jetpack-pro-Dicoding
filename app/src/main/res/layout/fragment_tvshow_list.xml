@@ -7,7 +7,7 @@
     tools:context=".ui.main.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_movie_list"
+        android:id="@+id/rv_tvshow_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="30"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/item_movie_list"
+        tools:listitem="@layout/item_tvshow_list"
         tools:orientation="vertical"
         tools:scrollbars="vertical"
         tools:spanCount="2" />

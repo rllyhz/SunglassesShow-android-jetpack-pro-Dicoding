@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv_item_movie_list"
+    android:id="@+id/cv_item_tvshow_list"
     android:layout_width="match_parent"
     android:layout_height="210dp"
     android:orientation="vertical"
@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_item_movie_list"
+            android:id="@+id/iv_item_tvshow_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -28,7 +28,7 @@
             tools:ignore="ContentDescription" />
 
         <View
-            android:id="@+id/view_movie_list_overlay"
+            android:id="@+id/view_tvshow_list_overlay"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/bg_overlay"
@@ -38,11 +38,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_movie_list_title"
+            android:id="@+id/tv_tvshow_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="@string/movie_list_dummy_title"
+            android:text="@string/tvshow_list_dummy_title"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
