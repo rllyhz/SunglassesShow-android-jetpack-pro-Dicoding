@@ -28,7 +28,7 @@ class TVShowListFragment : Fragment() {
 
     private fun setupUI() {
         binding.apply {
-            with(rvMovieList) {
+            with(rvTvshowList) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
             }
