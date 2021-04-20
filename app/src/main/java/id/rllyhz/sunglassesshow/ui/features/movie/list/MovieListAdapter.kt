@@ -43,7 +43,7 @@ class MovieListAdapter :
                         .into(this)
                 }
 
-                rbMovieList.rating = 3.4f
+                rbMovieList.rating = movie.rating
                 tvMovieListTitle.text = movie.title
                 root.setOnClickListener { movieItemCallback?.onClick(movie) }
             }
