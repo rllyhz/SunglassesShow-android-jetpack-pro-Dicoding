@@ -79,6 +79,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_poster_detail" />
 
         <RatingBar
+            android:id="@+id/rb_detail"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
