@@ -1,43 +1,10 @@
 package id.rllyhz.sunglassesshow.utils
 
-import android.content.Context
 import com.google.gson.Gson
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
-import java.io.IOException
 
 object DataGenerator {
-    private const val MOVIES_FILENAME = "movies.json"
-    private const val TV_SHOW_FILENAME = "tv_show.json"
-
-    private fun loadAssetFile(context: Context, filename: String): String? {
-        val jsonString: String
-
-        try {
-            jsonString = context.assets.open(filename).bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return null
-        }
-
-        return jsonString
-    }
-
-    fun getAllMovies(context: Context): Array<Movie>? {
-        loadAssetFile(context, MOVIES_FILENAME)?.run {
-            return Gson().fromJson(this, Array<Movie>::class.java)
-        }
-
-        return null
-    }
-
-    fun getAllTVShows(context: Context): Array<TVShow>? {
-        loadAssetFile(context, TV_SHOW_FILENAME)?.run {
-            return Gson().fromJson(this, Array<TVShow>::class.java)
-        }
-
-        return null
-    }
 
     fun getAllMovies(): Array<Movie> =
         Gson().fromJson(movieJsonString, Array<Movie>::class.java)
@@ -49,7 +16,7 @@ object DataGenerator {
         [
           {
             "id": 0,
-            "poster_url": "poster_a_start_is_born.jpg",
+            "poster_name": "poster_a_start_is_born",
             "title": "A Star Is Born",
             "year": 2018,
             "genres": "Drama, Romance, Music",
@@ -64,7 +31,7 @@ object DataGenerator {
           },
           {
             "id": 1,
-            "poster_url": "poster_alita.jpg",
+            "poster_name": "poster_alita",
             "title": "Alita: Battle Angel",
             "year": 2019,
             "genres": "Action, Science Fiction, Adventure",
@@ -79,7 +46,7 @@ object DataGenerator {
           },
           {
             "id": 2,
-            "poster_url": "poster_aquaman.jpg",
+            "poster_name": "poster_aquaman",
             "title": "Aquaman",
             "year": 2018,
             "genres": "Action, Adventure, Fantasy",
@@ -94,7 +61,7 @@ object DataGenerator {
           },
           {
             "id": 3,
-            "poster_url": "poster_bohemian.jpg",
+            "poster_name": "poster_bohemian",
             "title": "Bohemian Rhapsody",
             "year": 2018,
             "genres": "Music, Drama, History",
@@ -109,7 +76,7 @@ object DataGenerator {
           },
           {
             "id": 4,
-            "poster_url": "poster_cold_pursuit.jpg",
+            "poster_name": "poster_cold_pursuit",
             "title": "Cold Pursuit",
             "year": 2019,
             "genres": "Action, Crime, Thriller",
@@ -124,7 +91,7 @@ object DataGenerator {
           },
           {
             "id": 5,
-            "poster_url": "poster_creed.jpg",
+            "poster_name": "poster_creed",
             "title": "Creed II",
             "year": 2018,
             "genres": "Drama",
@@ -139,7 +106,7 @@ object DataGenerator {
           },
           {
             "id": 6,
-            "poster_url": "poster_crimes.jpg",
+            "poster_name": "poster_crimes",
             "title": "Fantastic Beast: The Crime of Grindelwald",
             "year": 2018,
             "genres": "Adventure, Fantasy, Drama",
@@ -154,7 +121,7 @@ object DataGenerator {
           },
           {
             "id": 7,
-            "poster_url": "poster_glass.jpg",
+            "poster_name": "poster_glass",
             "title": "Glass",
             "year": 2019,
             "genres": "Thriller, Drama, Science Fiction",
@@ -169,7 +136,7 @@ object DataGenerator {
           },
           {
             "id": 8,
-            "poster_url": "poster_how_to_train.jpg",
+            "poster_name": "poster_how_to_train",
             "title": "How to Train Your Dragon",
             "year": 2010,
             "genres": "Fantasy, Adventure, Animation, Family",
@@ -184,7 +151,7 @@ object DataGenerator {
           },
           {
             "id": 9,
-            "poster_url": "poster_infinity_war.jpg",
+            "poster_name": "poster_infinity_war",
             "title": "Avengers: Infinity War",
             "year": 2018,
             "genres": "Adventure, Action, Science Fiction",
@@ -199,7 +166,7 @@ object DataGenerator {
           },
           {
             "id": 10,
-            "poster_url": "poster_master_z.jpg",
+            "poster_name": "poster_master_z",
             "title": "Master Z: Ip Man Legacy",
             "year": 2018,
             "genres": "Action",
@@ -214,7 +181,7 @@ object DataGenerator {
           },
           {
             "id": 11,
-            "poster_url": "poster_mortal_engines.jpg",
+            "poster_name": "poster_mortal_engines",
             "title": "Mortal Engines",
             "year": 2018,
             "genres": "Adventure, Science Fiction",
@@ -229,7 +196,7 @@ object DataGenerator {
           },
           {
             "id": 12,
-            "poster_url": "poster_overlord.jpg",
+            "poster_name": "poster_overlord",
             "title": "Overlord",
             "year": 2018,
             "genres": "Horror, War, Science Fiction",
@@ -244,7 +211,7 @@ object DataGenerator {
           },
           {
             "id": 13,
-            "poster_url": "poster_ralph.jpg",
+            "poster_name": "poster_ralph",
             "title": "Ralph Breaks the Internet",
             "year": 2018,
             "genres": "Family, Animation, Comedy, Adventure",
@@ -259,7 +226,7 @@ object DataGenerator {
           },
           {
             "id": 14,
-            "poster_url": "poster_robin_hood.jpg",
+            "poster_name": "poster_robin_hood",
             "title": "Robin Hood",
             "year": 2018,
             "genres": "Adventure, Action, Thriller",
@@ -274,7 +241,7 @@ object DataGenerator {
           },
           {
             "id": 15,
-            "poster_url": "poster_spiderman.jpg",
+            "poster_name": "poster_spiderman",
             "title": "Spider-Man: Into the Spider-Verse",
             "year": 2018,
             "genres": "Action, Adventure, Animation, Science Fiction, Comedy",
@@ -289,7 +256,7 @@ object DataGenerator {
           },
           {
             "id": 16,
-            "poster_url": "poster_t34.jpg",
+            "poster_name": "poster_t34",
             "title": "T-34",
             "year": 2018,
             "genres": "War, Action, Drama, History",
@@ -309,7 +276,7 @@ object DataGenerator {
         [
           {
             "id": 0,
-            "poster_url": "poster_arrow.jpg",
+            "poster_name": "poster_arrow",
             "title": "Arrow",
             "year": 2012,
             "genres": "Crime, Drama, Mystery, Action & Adventure",
@@ -324,7 +291,7 @@ object DataGenerator {
           },
           {
             "id": 1,
-            "poster_url": "poster_arrow.jpg",
+            "poster_name": "poster_arrow",
             "title": "Doom Patrol",
             "year": 2019,
             "genres": "Sci-Fi & Fantasy, Comedy, Drama",
@@ -339,7 +306,7 @@ object DataGenerator {
           },
           {
             "id": 2,
-            "poster_url": "poster_dragon_ball.jpg",
+            "poster_name": "poster_dragon_ball",
             "title": "Dragon Ball Z",
             "year": 1989,
             "genres": "Animation, Sci-Fi & Fantasy, Action & Adventure",
@@ -354,7 +321,7 @@ object DataGenerator {
           },
           {
             "id": 3,
-            "poster_url": "poster_fairytail.jpg",
+            "poster_name": "poster_fairytail",
             "title": "Fairy Tail: Phoenix Priestess",
             "year": 2012,
             "genres": "Action, Adventure, Comedy, Fantasy, Animation",
@@ -369,7 +336,7 @@ object DataGenerator {
           },
           {
             "id": 4,
-            "poster_url": "poster_family_guy.jpg",
+            "poster_name": "poster_family_guy",
             "title": "Family Guy",
             "year": 1999,
             "genres": "Animation, Comedy",
@@ -384,7 +351,7 @@ object DataGenerator {
           },
           {
             "id": 5,
-            "poster_url": "poster_flash.jpg",
+            "poster_name": "poster_flash",
             "title": "The Flash",
             "year": 2014,
             "genres": "Drama, Sci-Fi & Fantasy",
@@ -399,7 +366,7 @@ object DataGenerator {
           },
           {
             "id": 6,
-            "poster_url": "poster_gotham.jpg",
+            "poster_name": "poster_gotham",
             "title": "Gotham",
             "year": 2014,
             "genres": "Drama, Crime, Sci-Fi & Fantasy",
@@ -414,7 +381,7 @@ object DataGenerator {
           },
           {
             "id": 7,
-            "poster_url": "poster_grey_anatomy.jpg",
+            "poster_name": "poster_grey_anatomy",
             "title": "Grey's Anatomy",
             "year": 2005,
             "genres": "Drama",
@@ -429,7 +396,7 @@ object DataGenerator {
           },
           {
             "id": 8,
-            "poster_url": "poster_hanna.jpg",
+            "poster_name": "poster_hanna",
             "title": "Hanna",
             "year": 2019,
             "genres": "Action & Adventure, Drama",
@@ -444,7 +411,7 @@ object DataGenerator {
           },
           {
             "id": 9,
-            "poster_url": "poster_iron_fist.jpg",
+            "poster_name": "poster_iron_fist",
             "title": "Marvel's Iron Fist",
             "year": 2017,
             "genres": "Action & Adventure, Drama, Sci-Fi & Fantasy",
@@ -459,7 +426,7 @@ object DataGenerator {
           },
           {
             "id": 10,
-            "poster_url": "poster_naruto_shipudden.jpg",
+            "poster_name": "poster_naruto_shipudden",
             "title": "Naruto Shippūden",
             "year": 2007,
             "genres": "Animation, Action & Adventure, Sci-Fi & Fantasy",
@@ -474,7 +441,7 @@ object DataGenerator {
           },
           {
             "id": 11,
-            "poster_url": "poster_ncis.jpg",
+            "poster_name": "poster_ncis",
             "title": "NCIS",
             "year": 2003,
             "genres": "Crime, Action & Adventure, Drama",
@@ -489,7 +456,7 @@ object DataGenerator {
           },
           {
             "id": 12,
-            "poster_url": "poster_ncis.jpg",
+            "poster_name": "poster_ncis",
             "title": "Riverdale",
             "year": 2017,
             "genres": "Mystery, Drama, Crime",
@@ -504,7 +471,7 @@ object DataGenerator {
           },
           {
             "id": 13,
-            "poster_url": "poster_shameless.jpg",
+            "poster_name": "poster_shameless",
             "title": "Shameless",
             "year": 2011,
             "genres": "Drama, Comedy",
@@ -519,7 +486,7 @@ object DataGenerator {
           },
           {
             "id": 14,
-            "poster_url": "poster_supergirl.jpg",
+            "poster_name": "poster_supergirl",
             "title": "Supergirl",
             "year": 2015,
             "genres": "Drama, Sci-Fi & Fantasy, Action & Adventure",
@@ -534,7 +501,7 @@ object DataGenerator {
           },
           {
             "id": 15,
-            "poster_url": "poster_supernatural.jpg",
+            "poster_name": "poster_supernatural",
             "title": "Supernatural",
             "year": 2005,
             "genres": "Drama, Mystery, Sci-Fi & Fantasy",
@@ -549,7 +516,7 @@ object DataGenerator {
           },
           {
             "id": 16,
-            "poster_url": "poster_the_simpson.jpg",
+            "poster_name": "poster_the_simpson",
             "title": "The Simpsons",
             "year": 1989,
             "genres": "Family, Animation, Comedy",
@@ -564,7 +531,7 @@ object DataGenerator {
           },
           {
             "id": 17,
-            "poster_url": "poster_the_umbrella.jpg",
+            "poster_name": "poster_the_umbrella",
             "title": "The Umbrella Academy",
             "year": 2019,
             "genres": "Action & Adventure, Sci-Fi & Fantasy, Drama",
@@ -579,7 +546,7 @@ object DataGenerator {
           },
           {
             "id": 18,
-            "poster_url": "poster_the_walking_dead.jpg",
+            "poster_name": "poster_the_walking_dead",
             "title": "The Walking Dead",
             "year": 2010,
             "genres": "Action & Adventure, Drama, Sci-Fi & Fantasy",
