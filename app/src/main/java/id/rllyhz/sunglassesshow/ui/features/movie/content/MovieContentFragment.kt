@@ -48,6 +48,8 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         )
 
         with(binding) {
+            progressbar.visibility = View.GONE
+
             rbDetail.rating = currentMovie.rating
             tvTitleDetail.text = currentMovie.title
             tvSynopsisDetail.text = currentMovie.synopsis
