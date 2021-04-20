@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ItemTvshowListBinding
 
@@ -44,7 +45,12 @@ class TVShowListAdapter :
                 }
 
                 rbTvshowList.rating = tvShow.rating
-                tvTvshowListTitle.text = tvShow.title
+                tvTvshowListTitle.text = itemView.resources.getString(
+                    R.string.title_format,
+                    tvShow.title,
+                    tvShow.toString()
+                )
+
                 root.setOnClickListener { movieItemCallback?.onClick(tvShow) }
             }
         }

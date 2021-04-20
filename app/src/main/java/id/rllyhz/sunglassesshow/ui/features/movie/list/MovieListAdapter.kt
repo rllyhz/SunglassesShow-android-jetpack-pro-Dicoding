@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.ItemMovieListBinding
 
@@ -44,7 +45,12 @@ class MovieListAdapter :
                 }
 
                 rbMovieList.rating = movie.rating
-                tvMovieListTitle.text = movie.title
+                tvMovieListTitle.text = itemView.context.resources.getString(
+                    R.string.title_format,
+                    movie.title,
+                    movie.year.toString()
+                )
+
                 itemView.setOnClickListener { movieItemCallback?.onClick(movie) }
             }
         }
