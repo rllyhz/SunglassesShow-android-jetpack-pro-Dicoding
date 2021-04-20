@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="240dp"
     android:layout_height="@dimen/item_list_card_height"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical"
     app:cardCornerRadius="4dp"
     app:cardElevation="4dp"
