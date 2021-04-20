@@ -1,5 +1,6 @@
 package id.rllyhz.sunglassesshow.ui.features.movie.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.FragmentMovieListBinding
+import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.main.MainViewModel
 
 class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
@@ -31,6 +33,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
         super.onViewCreated(view, savedInstanceState)
 
         movieListAdapter = MovieListAdapter()
+        movieListAdapter.setItemCallback(this)
         setupUI()
     }
 
@@ -49,7 +52,12 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
     }
 
     override fun onClick(movie: Movie) {
-        //
+        with(Intent(requireActivity(), DetailActivity::class.java)) {
+            putExtra(DetailActivity.EXTRA_CONTENT_MOVIE, movie)
+            putExtra(DetailActivity.GOTO_MOVIE_DETAIL, true)
+
+            requireActivity().startActivity(this)
+        }
     }
 
     override fun onDestroyView() {
