@@ -23,7 +23,7 @@ class MainPagerAdapter(
 
     override fun getCount(): Int = 2
 
-    override fun getPageTitle(position: Int): CharSequence? =
+    override fun getPageTitle(position: Int): CharSequence =
         context.resources.getString(MAIN_TAB_TITLES[position])
 
     companion object {

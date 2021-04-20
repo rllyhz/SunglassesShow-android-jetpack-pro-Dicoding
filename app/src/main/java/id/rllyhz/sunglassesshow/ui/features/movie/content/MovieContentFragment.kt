@@ -1,5 +1,6 @@
 package id.rllyhz.sunglassesshow.ui.features.movie.content
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.FragmentMovieContentBinding
+import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
 
-class MovieContentFragment : Fragment() {
+class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
     private var _binding: FragmentMovieContentBinding? = null
     private val binding get() = _binding!!
 
@@ -36,6 +38,7 @@ class MovieContentFragment : Fragment() {
         currentMovie = arguments?.getParcelable(PARAMS_MOVIE)!!
 
         similarContentListAdapter = SimilarContentListAdapter()
+        similarContentListAdapter.setItemCallback(this)
         setupUI()
     }
 
@@ -78,6 +81,15 @@ class MovieContentFragment : Fragment() {
 
             ivViewTrailerDetail.setOnClickListener { }
             btnWatchDetail.setOnClickListener { }
+        }
+    }
+
+    override fun onClick(movie: Movie) {
+        with(Intent(requireActivity(), DetailActivity::class.java)) {
+            putExtra(DetailActivity.EXTRA_CONTENT_MOVIE, movie)
+            putExtra(DetailActivity.GOTO_MOVIE_DETAIL, true)
+
+            requireActivity().startActivity(this)
         }
     }
 
