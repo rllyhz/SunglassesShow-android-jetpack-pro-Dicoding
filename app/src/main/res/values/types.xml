@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ProgressbarStyle" parent="Widget.AppCompat.RatingBar.Small">>
+        <item name="android:progressTint">@color/deep_purple_700</item>
+        <item name="android:progressBackgroundTint">@color/deep_purple_500</item>
+    </style>
+</resources>
