@@ -66,7 +66,6 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
     }
 
     companion object {
-        val TAG: String = MovieListFragment::class.java.simpleName
         fun newInstance(): MovieListFragment = MovieListFragment()
     }
 }
