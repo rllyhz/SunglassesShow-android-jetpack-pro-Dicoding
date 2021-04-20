@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "poster_url": "poster_arrow.jpg",
     "title": "Arrow",
     "year": 2012,
@@ -14,6 +15,7 @@
     "creator": "Greg Berlanti"
   },
   {
+    "id": 1,
     "poster_url": "poster_arrow.jpg",
     "title": "Doom Patrol",
     "year": 2019,
@@ -28,6 +30,7 @@
     "creator": "Jeremy Carver"
   },
   {
+    "id": 2,
     "poster_url": "poster_dragon_ball.jpg",
     "title": "Dragon Ball Z",
     "year": 1989,
@@ -42,6 +45,7 @@
     "creator": "Akira Toriyama"
   },
   {
+    "id": 3,
     "poster_url": "poster_fairytail.jpg",
     "title": "Fairy Tail: Phoenix Priestess",
     "year": 2012,
@@ -56,6 +60,7 @@
     "creator": "Masaya Fujimori"
   },
   {
+    "id": 4,
     "poster_url": "poster_family_guy.jpg",
     "title": "Family Guy",
     "year": 1999,
@@ -70,6 +75,7 @@
     "creator": "Seth MacFarlane"
   },
   {
+    "id": 5,
     "poster_url": "poster_flash.jpg",
     "title": "The Flash",
     "year": 2014,
@@ -84,6 +90,7 @@
     "creator": "Greg Berlanti"
   },
   {
+    "id": 6,
     "poster_url": "poster_gotham.jpg",
     "title": "Gotham",
     "year": 2014,
@@ -98,6 +105,7 @@
     "creator": "Bruno Heller"
   },
   {
+    "id": 7,
     "poster_url": "poster_grey_anatomy.jpg",
     "title": "Grey's Anatomy",
     "year": 2005,
@@ -112,6 +120,7 @@
     "creator": "Shonda Rhimes"
   },
   {
+    "id": 8,
     "poster_url": "poster_hanna.jpg",
     "title": "Hanna",
     "year": 2019,
@@ -126,6 +135,7 @@
     "creator": "David Farr"
   },
   {
+    "id": 9,
     "poster_url": "poster_iron_fist.jpg",
     "title": "Marvel's Iron Fist",
     "year": 2017,
@@ -140,6 +150,7 @@
     "creator": "Scott Buck"
   },
   {
+    "id": 10,
     "poster_url": "poster_naruto_shipudden.jpg",
     "title": "Naruto Shippūden",
     "year": 2007,
@@ -154,6 +165,7 @@
     "creator": "Masashi Kishimoto"
   },
   {
+    "id": 11,
     "poster_url": "poster_ncis.jpg",
     "title": "NCIS",
     "year": 2003,
@@ -168,6 +180,7 @@
     "creator": "Donald P. Bellisario"
   },
   {
+    "id": 12,
     "poster_url": "poster_ncis.jpg",
     "title": "Riverdale",
     "year": 2017,
@@ -182,6 +195,7 @@
     "creator": "Roberto Aguirre-Sacasa"
   },
   {
+    "id": 13,
     "poster_url": "poster_shameless.jpg",
     "title": "Shameless",
     "year": 2011,
@@ -196,6 +210,7 @@
     "creator": "John Wells"
   },
   {
+    "id": 14,
     "poster_url": "poster_supergirl.jpg",
     "title": "Supergirl",
     "year": 2015,
@@ -210,6 +225,7 @@
     "creator": "Greg Berlanti"
   },
   {
+    "id": 15,
     "poster_url": "poster_supernatural.jpg",
     "title": "Supernatural",
     "year": 2005,
@@ -224,6 +240,7 @@
     "creator": "Eric Kripke"
   },
   {
+    "id": 16,
     "poster_url": "poster_the_simpson.jpg",
     "title": "The Simpsons",
     "year": 1989,
@@ -238,6 +255,7 @@
     "creator": "Matt Groening"
   },
   {
+    "id": 17,
     "poster_url": "poster_the_umbrella.jpg",
     "title": "The Umbrella Academy",
     "year": 2019,
@@ -252,6 +270,7 @@
     "creator": "Steve Blackman"
   },
   {
+    "id": 18,
     "poster_url": "poster_the_walking_dead.jpg",
     "title": "The Walking Dead",
     "year": 2010,
