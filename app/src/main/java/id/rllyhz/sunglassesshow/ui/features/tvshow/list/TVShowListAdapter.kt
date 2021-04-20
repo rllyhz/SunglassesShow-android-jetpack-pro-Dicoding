@@ -33,7 +33,12 @@ class TVShowListAdapter :
             binding.apply {
                 with(ivItemTvshowList) {
                     Glide.with(this)
-                        .load(tvShow.posterUrl)
+                        .load(
+                            context.resources.getIdentifier(
+                                tvShow.posterName, "drawable",
+                                context.packageName
+                            )
+                        )
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }

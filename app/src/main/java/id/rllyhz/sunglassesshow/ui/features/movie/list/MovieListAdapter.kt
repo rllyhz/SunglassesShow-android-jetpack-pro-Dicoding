@@ -33,7 +33,12 @@ class MovieListAdapter :
             binding.apply {
                 with(ivItemMovieList) {
                     Glide.with(this)
-                        .load(movie.posterUrl)
+                        .load(
+                            context.resources.getIdentifier(
+                                movie.posterName, "drawable",
+                                context.packageName
+                            )
+                        )
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }
