@@ -65,7 +65,7 @@
             android:layout_marginStart="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal"
-            app:shapeAppearanceOverlay="@style/CircleImageView"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
             app:srcCompat="?attr/colorSecondary" />
 
         <TextView
