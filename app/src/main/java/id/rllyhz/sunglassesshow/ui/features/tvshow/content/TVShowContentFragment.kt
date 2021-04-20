@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
-import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.FragmentMovieContentBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
@@ -120,10 +119,10 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
         val TAG: String = TVShowContentFragment::class.java.simpleName
         private const val PARAMS_MOVIE = "PARAMS_MOVIE"
 
-        fun newInstance(movie: Movie): TVShowContentFragment =
+        fun newInstance(tvShow: TVShow): TVShowContentFragment =
             TVShowContentFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable(PARAMS_MOVIE, movie)
+                    putParcelable(PARAMS_MOVIE, tvShow)
                 }
             }
     }
