@@ -14,8 +14,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/purple_200"
-        app:tabTextColor="@color/purple_200" />
+        app:tabIndicatorColor="@color/white"
+        app:tabRippleColor="@color/deep_purple_200"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/pink_200" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_main"
