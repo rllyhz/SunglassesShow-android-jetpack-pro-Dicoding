@@ -12,12 +12,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.Movie
-import id.rllyhz.sunglassesshow.databinding.FragmentMovieContentBinding
+import id.rllyhz.sunglassesshow.databinding.FragmentContentBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
 
 class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
-    private var _binding: FragmentMovieContentBinding? = null
+    private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: DetailViewModel by viewModels()
@@ -29,7 +29,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMovieContentBinding.inflate(inflater, container, false)
+        _binding = FragmentContentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
