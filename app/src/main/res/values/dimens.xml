@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_list_card_height">240dp</dimen>
+    <dimen name="item_list_card_height">280dp</dimen>
 </resources>
