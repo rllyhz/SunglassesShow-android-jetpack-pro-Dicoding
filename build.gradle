@@ -18,6 +18,8 @@ buildscript {
         hiltAndroidXVersion = "1.0.0-alpha03"
         hiltVersion = "2.31-alpha"
 
+        gsonVersion = "2.8.6"
+
         glideVersion = '4.12.0'
         navigationVersion = '2.3.5'
         materialVersion = '1.3.0'

@@ -53,6 +53,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
 
+    // GSON
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
