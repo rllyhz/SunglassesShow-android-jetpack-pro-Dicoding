@@ -9,6 +9,7 @@ import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ActivityDetailBinding
 import id.rllyhz.sunglassesshow.ui.features.movie.content.MovieContentFragment
+import id.rllyhz.sunglassesshow.ui.features.tvshow.content.TVShowContentFragment
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -59,9 +60,15 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
             else -> {
-                currentTvShow?.let {
-                    val tvShowFragment = Fragment()
-                    setupFragment(tvShowFragment, "")
+                currentTvShow?.let { tvShow ->
+                    var tvShowFragment =
+                        supportFragmentManager.findFragmentByTag(TVShowContentFragment.TAG)
+
+                    if (tvShowFragment == null) {
+                        tvShowFragment = TVShowContentFragment.newInstance(tvShow)
+                    }
+
+                    setupFragment(tvShowFragment, TVShowContentFragment.TAG)
                 }
             }
         }
