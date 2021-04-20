@@ -14,4 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/window_background</item>
     </style>
+
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:statusBarColor">@color/pink_700</item>
+    </style>
 </resources>
