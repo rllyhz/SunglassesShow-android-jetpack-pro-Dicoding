@@ -48,7 +48,7 @@ class TVShowListAdapter :
                 tvTvshowListTitle.text = itemView.resources.getString(
                     R.string.title_format,
                     tvShow.title,
-                    tvShow.toString()
+                    tvShow.year.toString()
                 )
 
                 root.setOnClickListener { movieItemCallback?.onClick(tvShow) }
