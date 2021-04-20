@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.FragmentMovieContentBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
@@ -51,7 +52,21 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
             progressbar.visibility = View.GONE
 
             rbDetail.rating = currentMovie.rating
-            tvTitleDetail.text = currentMovie.title
+            tvTitleDetail.text =
+                resources.getString(
+                    R.string.title_format,
+                    currentMovie.title,
+                    currentMovie.year.toString()
+                )
+
+            tvDurationDetail.text = currentMovie.duration
+            tvGenresDetail.text = currentMovie.genres
+
+            tvRateDetail.text = resources.getString(R.string.rate_format, currentMovie.rate)
+
+            tvDirectorDetail.text =
+                resources.getString(R.string.director_format, currentMovie.director)
+
             tvSynopsisDetail.text = currentMovie.synopsis
 
             Glide.with(root)
