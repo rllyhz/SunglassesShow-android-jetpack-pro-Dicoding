@@ -23,6 +23,16 @@ class DetailViewModelTest {
     }
 
     @Test
+    fun checkCurrentMovieNotNull() {
+        assertNotNull(currentMovie)
+    }
+
+    @Test
+    fun checkCurrentTVShowNotNull() {
+        assertNotNull(currentTVShow)
+    }
+
+    @Test
     fun getSimilarMovieOf() {
         val similarMovies = viewModel.getSimilarMovieOf(currentMovie)
         val expectedSize = 6
