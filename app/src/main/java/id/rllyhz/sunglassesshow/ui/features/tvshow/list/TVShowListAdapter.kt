@@ -43,6 +43,7 @@ class TVShowListAdapter :
                         .into(this)
                 }
 
+                rbTvshowList.rating = 4.1f
                 tvTvshowListTitle.text = tvShow.title
                 root.setOnClickListener { movieItemCallback?.onClick(tvShow) }
             }
