@@ -98,7 +98,7 @@ class MainActivityTest {
 
     @Test
     fun detailActivitySimulationAndMakeSureEveryTextViewComponentsShowTheCorrectText() {
-        // this must be accessed by context.resource.getString(id) because some text has its format.
+        // this must be accessed by context.resource.getString(id) because some text has its own format.
         // but I already tried by using InstrumentationRegistry.getInstrumentation().context
         // somehow, the testing process crashed :(
         // how could I overcome this, kak ?
