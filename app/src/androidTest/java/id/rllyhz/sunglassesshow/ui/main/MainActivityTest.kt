@@ -107,6 +107,7 @@ class MainActivityTest {
         val expectedDirector = "Director: ${itemTesting.director}"
         val expectedGenres = itemTesting.genres
         val expectedSynopsis = itemTesting.synopsis
+        val expectedDuration = itemTesting.duration
 
         onView(withId(R.id.rv_movie_list)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_movie_list)).perform(
@@ -121,5 +122,6 @@ class MainActivityTest {
         onView(withId(R.id.tv_rate_detail)).check(matches(withText(expectedRate)))
         onView(withId(R.id.tv_director_detail)).check(matches(withText(expectedDirector)))
         onView(withId(R.id.tv_synopsis_detail)).check(matches(withText(expectedSynopsis)))
+        onView(withId(R.id.tv_duration_detail)).check(matches(withText(expectedDuration)))
     }
 }
