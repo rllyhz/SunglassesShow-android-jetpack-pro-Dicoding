@@ -6,8 +6,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.swipeLeft
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.utils.DataGenerator
@@ -18,6 +17,7 @@ class MainActivityTest {
     private val moviesDummyData = DataGenerator.getAllMovies()
     private val tvShowsDummyData = DataGenerator.getAllTVShows()
     private val positionItemForTesting = 1
+    private val itemTesting = moviesDummyData[positionItemForTesting]
 
     @get:Rule
     var activityRule = ActivityScenarioRule(MainActivity::class.java)
@@ -94,5 +94,32 @@ class MainActivityTest {
 
         onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.btn_watch_detail)).perform(click())
+    }
+
+    @Test
+    fun detailActivitySimulationAndMakeSureEveryTextViewComponentsShowTheCorrectText() {
+        // this must be accessed by context.resource.getString(id) because some text has its format.
+        // but I already tried by using InstrumentationRegistry.getInstrumentation().context
+        // somehow, the testing process crashed :(
+        // how could I overcome this, kak ?
+        val expectedTitle = "${itemTesting.title} (${itemTesting.year})"
+        val expectedRate = "Rate: ${itemTesting.rate}"
+        val expectedDirector = "Director: ${itemTesting.director}"
+        val expectedGenres = itemTesting.genres
+        val expectedSynopsis = itemTesting.synopsis
+
+        onView(withId(R.id.rv_movie_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_movie_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                positionItemForTesting,
+                click()
+            )
+        )
+
+        onView(withId(R.id.tv_title_detail)).check(matches(withText(expectedTitle)))
+        onView(withId(R.id.tv_genres_detail)).check(matches(withText(expectedGenres)))
+        onView(withId(R.id.tv_rate_detail)).check(matches(withText(expectedRate)))
+        onView(withId(R.id.tv_director_detail)).check(matches(withText(expectedDirector)))
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(withText(expectedSynopsis)))
     }
 }
