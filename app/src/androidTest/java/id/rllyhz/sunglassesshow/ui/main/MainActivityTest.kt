@@ -2,8 +2,7 @@ package id.rllyhz.sunglassesshow.ui.main
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.swipeLeft
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -18,6 +17,7 @@ class MainActivityTest {
     private val tvShowsDummyData = DataGenerator.getAllTVShows()
     private val positionItemForTesting = 1
     private val itemTesting = moviesDummyData[positionItemForTesting]
+    private val similarContents = DataGenerator.getSimilarMoviesDummyData(itemTesting)
 
     @get:Rule
     var activityRule = ActivityScenarioRule(MainActivity::class.java)
@@ -91,9 +91,25 @@ class MainActivityTest {
 
         onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_view_trailer_detail)).perform(click())
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed())).perform(swipeUp())
 
         onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.btn_watch_detail)).perform(click())
+        onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed())).perform(swipeUp())
+
+        onView(withId(R.id.rv_similar_content_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_similar_content_detail)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                similarContents.size
+            )
+        )
+
+        onView(withId(R.id.rv_similar_content_detail)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                positionItemForTesting,
+                click()
+            )
+        )
     }
 
     @Test
