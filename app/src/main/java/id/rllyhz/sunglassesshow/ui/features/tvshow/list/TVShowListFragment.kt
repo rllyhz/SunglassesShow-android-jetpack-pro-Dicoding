@@ -64,9 +64,4 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
         super.onDestroyView()
         _binding = null
     }
-
-    companion object {
-        val TAG: String = TVShowListFragment::class.java.simpleName
-        fun newInstance(): TVShowListFragment = TVShowListFragment()
-    }
 }
