@@ -1,5 +1,6 @@
 package id.rllyhz.sunglassesshow.ui.main
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
@@ -7,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.platform.app.InstrumentationRegistry
 import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.utils.DataGenerator
 import org.junit.Rule
@@ -112,15 +114,41 @@ class MainActivityTest {
         )
     }
 
+    private fun getStringResources(
+        ctx: Context,
+        resId: Int,
+        string1: String? = null,
+        string2: String? = null
+    ): String =
+        when {
+            string1 == null -> ""
+            string2 == null -> ctx.getString(resId, string1)
+            else -> ctx.getString(resId, string1, string2)
+        }
+
     @Test
     fun detailActivitySimulationAndMakeSureEveryTextViewComponentsShowTheCorrectText() {
-        // this must be accessed by context.resource.getString(id) because some text has its own format.
-        // but I already tried by using InstrumentationRegistry.getInstrumentation().context
-        // somehow, the testing process crashed :(
-        // how could I overcome this, kak ?
-        val expectedTitle = "${itemTesting.title} (${itemTesting.year})"
-        val expectedRate = "Rate: ${itemTesting.rate}"
-        val expectedDirector = "Director: ${itemTesting.director}"
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+        val expectedTitle = getStringResources(
+            context,
+            R.string.title_format,
+            itemTesting.title,
+            itemTesting.year.toString()
+        )
+
+        val expectedRate = getStringResources(
+            context,
+            R.string.rate_format,
+            itemTesting.rate
+        )
+
+        val expectedDirector = getStringResources(
+            context,
+            R.string.director_format,
+            itemTesting.director
+        )
+
         val expectedGenres = itemTesting.genres
         val expectedSynopsis = itemTesting.synopsis
         val expectedDuration = itemTesting.duration
