@@ -12,26 +12,26 @@ import retrofit2.http.Query
 interface ApiEndpoint {
 
     @GET("${API_VERSION}/discover/movie")
-    fun discoverMovies(
+    suspend fun discoverMovies(
         @Query("language") language: String = "en-US",
         @Query("api_key") apiKey: String = API_KEY
     ): Response<DiscoverMoviesResponse>
 
     @GET("${API_VERSION}/discover/tv")
-    fun discoverTVShows(
+    suspend fun discoverTVShows(
         @Query("language") language: String = "en-US",
         @Query("api_key") apiKey: String = API_KEY
     ): Response<DiscoverTVShowsResponse>
 
     @GET("${API_VERSION}/movie/{movieId}")
-    fun getMovieDetailOf(
+    suspend fun getMovieDetailOf(
         @Path("movieId") movieId: Int,
         @Query("language") language: String = "en-US",
         @Query("api_key") apiKey: String = API_KEY
     ): Response<MovieDetailResponse>
 
     @GET("${API_VERSION}/tv/{tvShowId}")
-    fun getTvShowDetailOf(
+    suspend fun getTvShowDetailOf(
         @Path("tvShowId") tvShowId: Int,
         @Query("language") language: String = "en-US",
         @Query("api_key") apiKey: String = API_KEY
@@ -41,6 +41,7 @@ interface ApiEndpoint {
     companion object {
         private const val API_VERSION = 3
         const val BASE_URL = "https://api.themoviedb.org/"
+        const val IMAGE_URL = "https://image.tmdb.org/t/p/original/"
         const val API_KEY = BuildConfig.API_KEY
     }
 }
