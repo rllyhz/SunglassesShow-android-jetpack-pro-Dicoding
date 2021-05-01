@@ -74,7 +74,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             Glide.with(root)
                 .load(
                     root.context.resources.getIdentifier(
-                        currentTvShow.posterName, "drawable",
+                        currentTvShow.posterPath, "drawable",
                         root.context.packageName
                     )
                 )
@@ -84,7 +84,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             Glide.with(root)
                 .load(
                     root.context.resources.getIdentifier(
-                        currentTvShow.posterName, "drawable",
+                        currentTvShow.posterPath, "drawable",
                         root.context.packageName
                     )
                 )

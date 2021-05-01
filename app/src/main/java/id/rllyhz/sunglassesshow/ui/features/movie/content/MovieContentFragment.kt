@@ -74,7 +74,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
             Glide.with(root)
                 .load(
                     root.context.resources.getIdentifier(
-                        currentMovie.posterName, "drawable",
+                        currentMovie.posterPath, "drawable",
                         root.context.packageName
                     )
                 )
@@ -84,7 +84,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
             Glide.with(root)
                 .load(
                     root.context.resources.getIdentifier(
-                        currentMovie.posterName, "drawable",
+                        currentMovie.posterPath, "drawable",
                         root.context.packageName
                     )
                 )

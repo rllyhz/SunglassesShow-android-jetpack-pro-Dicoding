@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
+import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ItemTvshowListBinding
 
@@ -34,12 +35,7 @@ class TVShowListAdapter :
             binding.apply {
                 with(ivItemTvshowList) {
                     Glide.with(this)
-                        .load(
-                            context.resources.getIdentifier(
-                                tvShow.posterName, "drawable",
-                                context.packageName
-                            )
-                        )
+                        .load(IMAGE_URL + tvShow.posterPath)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }

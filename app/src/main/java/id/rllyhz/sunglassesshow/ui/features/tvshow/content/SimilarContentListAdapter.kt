@@ -34,7 +34,7 @@ class SimilarContentListAdapter :
                 Glide.with(itemView)
                     .load(
                         itemView.context.resources.getIdentifier(
-                            movie.posterName, "drawable",
+                            movie.posterPath, "drawable",
                             itemView.context.packageName
                         )
                     )

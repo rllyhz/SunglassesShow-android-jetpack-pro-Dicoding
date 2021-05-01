@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
+import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.ItemMovieListBinding
 
@@ -34,12 +35,7 @@ class MovieListAdapter :
             binding.apply {
                 with(ivItemMovieList) {
                     Glide.with(this)
-                        .load(
-                            context.resources.getIdentifier(
-                                movie.posterName, "drawable",
-                                context.packageName
-                            )
-                        )
+                        .load(IMAGE_URL + movie.posterPath)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }
