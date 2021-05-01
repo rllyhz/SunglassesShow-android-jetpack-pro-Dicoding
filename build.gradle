@@ -24,6 +24,7 @@ buildscript {
         glideVersion = '4.12.0'
         navigationVersion = '2.3.5'
         materialVersion = '1.3.0'
+        pagingVersion = '2.1.2'
     }
 
     repositories {
