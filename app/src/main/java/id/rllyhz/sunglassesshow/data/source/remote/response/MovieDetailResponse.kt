@@ -18,7 +18,7 @@ data class MovieDetailResponse(
     val releasedDate: String,
     @SerializedName("runtime")
     val duration: Int,
-    @SerializedName("origin_language")
+    @SerializedName("original_language")
     val language: String,
     @SerializedName("vote_average")
     val rate: Float
