@@ -10,10 +10,11 @@ import java.time.format.DateTimeFormatter
 @Parcelize
 data class TVShow(
     val id: Int,
-    val posterName: String,
+    val posterPath: String,
+    val backdropPath: String,
     val title: String,
     val genres: String?,
-    val duration: String?,
+    val durationInMinutes: Int?,
     val rate: Float,
     val releasedAt: String,
     val language: String,
@@ -43,4 +44,13 @@ data class TVShow(
                 else -> 0f
             }
         }
+
+    val duration: String
+        get() = when (durationInMinutes) {
+            null -> ""
+            else -> getDurationFormat(durationInMinutes)
+        }
+
+    private fun getDurationFormat(durationInMinutes: Int): String =
+        "${durationInMinutes / 60}h ${durationInMinutes % 60}min"
 }
