@@ -4,6 +4,7 @@ import id.rllyhz.sunglassesshow.BuildConfig
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverMoviesResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverTVShowsResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.MovieDetailResponse
+import id.rllyhz.sunglassesshow.data.source.remote.response.TVShowDetailResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -35,7 +36,7 @@ interface ApiEndpoint {
         @Path("tvShowId") tvShowId: Int,
         @Query("language") language: String = "en-US",
         @Query("api_key") apiKey: String = API_KEY
-    )
+    ): Response<TVShowDetailResponse>
 
     @GET("${API_VERSION}/movie/{movieId}/similar")
     suspend fun getSimilarMoviesOf(
