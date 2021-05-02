@@ -6,21 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
+import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.FragmentContentBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
+import id.rllyhz.sunglassesshow.utils.Resource
+import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 
 class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: DetailViewModel by viewModels()
+    private lateinit var viewModel: DetailViewModel
     private lateinit var similarContentListAdapter: SimilarContentListAdapter
     private lateinit var currentMovie: Movie
 
@@ -36,70 +40,109 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelFactory.getInstance()
+        )[DetailViewModel::class.java]
+
         currentMovie = arguments?.getParcelable(PARAMS_MOVIE)!!
 
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
-        setupUI()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.getDetailMovie(currentMovie).observe(viewLifecycleOwner) { resource ->
+                when (resource) {
+                    is Resource.Success -> setupUI(resource.data)
+                    is Resource.Loading -> showProgressbar(true)
+                    is Resource.Error -> showProgressbar(false)
+                    else -> Unit
+                }
+            }
+        }
     }
 
-    private fun setupUI() {
-        similarContentListAdapter.submitList(
-            viewModel.getSimilarMovieOf(currentMovie).toMutableList()
-        )
+    private fun setupUI(movie: Movie?) {
+        showProgressbar(false)
 
         with(binding) {
-            progressbar.visibility = View.GONE
 
-            rbDetail.rating = currentMovie.rating
-            tvTitleDetail.text =
-                resources.getString(
-                    R.string.title_format,
-                    currentMovie.title,
-                    currentMovie.year.toString()
-                )
+            if (movie != null) {
+                rbDetail.rating = movie.rating
 
-            tvDurationDetail.text = currentMovie.duration
-            tvGenresDetail.text = currentMovie.genres
-            tvSimilarContentLabelDetail.text =
-                resources.getString(R.string.detail_similar_movies_label)
-
-            tvRateDetail.text = resources.getString(R.string.rate_format, currentMovie.rate)
-
-            tvDirectorDetail.text =
-                resources.getString(R.string.director_format, currentMovie.director)
-
-            tvSynopsisDetail.text = currentMovie.synopsis
-
-            Glide.with(root)
-                .load(
-                    root.context.resources.getIdentifier(
-                        currentMovie.posterPath, "drawable",
-                        root.context.packageName
+                tvTitleDetail.text =
+                    resources.getString(
+                        R.string.title_format,
+                        movie.title,
+                        movie.year.toString()
                     )
-                )
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(ivPosterBgDetail)
 
-            Glide.with(root)
-                .load(
-                    root.context.resources.getIdentifier(
-                        currentMovie.posterPath, "drawable",
-                        root.context.packageName
-                    )
-                )
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(ivPosterDetail)
+                tvDurationDetail.text = movie.duration
+                tvGenresDetail.text = movie.genres
+                tvSimilarContentLabelDetail.text =
+                    resources.getString(R.string.detail_similar_movies_label)
+                tvRateDetail.text =
+                    resources.getString(R.string.rate_format, movie.rate.toString())
+                tvDirectorDetail.text =
+                    resources.getString(R.string.status_format, movie.status ?: "")
+                tvSynopsisDetail.text = movie.synopsis
 
+                Glide.with(root)
+                    .load(IMAGE_URL + movie.backdropPath)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.bg_poster_placeholder)
+                    .into(ivPosterBgDetail)
+
+                Glide.with(root)
+                    .load(IMAGE_URL + movie.posterPath)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.bg_poster_placeholder)
+                    .into(ivPosterDetail)
+            }
+
+            setupSimilarContentUI()
+
+            ivViewTrailerDetail.setOnClickListener { }
+            btnWatchDetail.setOnClickListener { }
+        }
+    }
+
+    private fun setupSimilarContentUI() {
+        with(binding) {
             with(rvSimilarContentDetail) {
                 layoutManager =
                     LinearLayoutManager(root.context, LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
                 adapter = similarContentListAdapter
             }
+        }
 
-            ivViewTrailerDetail.setOnClickListener { }
-            btnWatchDetail.setOnClickListener { }
+        lifecycleScope.launchWhenStarted {
+            viewModel.getSimilarMovieOf(currentMovie).observe(viewLifecycleOwner) { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        if (resource.data?.isEmpty() == true) {
+                            binding.tvNoSimilarText.visibility = View.VISIBLE
+                            binding.rvSimilarContentDetail.visibility = View.GONE
+                        } else {
+                            binding.tvNoSimilarText.visibility = View.GONE
+                            binding.rvSimilarContentDetail.visibility = View.VISIBLE
+                            similarContentListAdapter.submitList(resource.data)
+                        }
+                    }
+                    is Resource.Error -> binding.tvNoSimilarText.visibility = View.VISIBLE
+                    else -> Unit
+                }
+            }
+        }
+    }
+
+    private fun showProgressbar(state: Boolean) {
+        with(binding) {
+            if (state)
+                progressbar.visibility = View.VISIBLE
+            else
+                progressbar.visibility = View.GONE
         }
     }
 
