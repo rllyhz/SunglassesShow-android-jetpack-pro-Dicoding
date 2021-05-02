@@ -37,6 +37,20 @@ interface ApiEndpoint {
         @Query("api_key") apiKey: String = API_KEY
     )
 
+    @GET("${API_VERSION}/movie/{movieId}/similar")
+    suspend fun getSimilarMoviesOf(
+        @Path("movieId") movieId: Int,
+        @Query("language") language: String = "en-US",
+        @Query("api_key") apiKey: String = API_KEY
+    ): Response<DiscoverMoviesResponse>
+
+    @GET("${API_VERSION}/tv/{tvShowId}/similar")
+    suspend fun getSimilarTVShowsOf(
+        @Path("tvShowId") tvShowId: Int,
+        @Query("language") language: String = "en-US",
+        @Query("api_key") apiKey: String = API_KEY
+    ): Response<DiscoverTVShowsResponse>
+
 
     companion object {
         private const val API_VERSION = 3
