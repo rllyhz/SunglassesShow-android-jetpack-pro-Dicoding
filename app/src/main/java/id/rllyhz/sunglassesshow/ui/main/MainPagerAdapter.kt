@@ -17,7 +17,7 @@ class MainPagerAdapter(
     override fun getItem(position: Int): Fragment =
         when (position) {
             0 -> MovieListFragment.newInstance()
-            1 -> TVShowListFragment()
+            1 -> TVShowListFragment.newInstance()
             else -> Fragment()
         }
 

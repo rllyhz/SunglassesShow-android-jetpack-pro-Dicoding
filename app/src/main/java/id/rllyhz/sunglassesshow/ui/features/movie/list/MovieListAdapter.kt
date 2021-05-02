@@ -37,7 +37,7 @@ class MovieListAdapter :
                     Glide.with(this)
                         .load(IMAGE_URL + movie.posterPath)
                         .placeholder(R.drawable.bg_poster_placeholder)
-                        .error(R.drawable.bg_poster_placeholder)
+                        .error(R.drawable.bg_poster_error)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }

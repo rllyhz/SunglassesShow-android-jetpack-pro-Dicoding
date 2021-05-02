@@ -102,4 +102,8 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        fun newInstance(): TVShowListFragment = TVShowListFragment()
+    }
 }
