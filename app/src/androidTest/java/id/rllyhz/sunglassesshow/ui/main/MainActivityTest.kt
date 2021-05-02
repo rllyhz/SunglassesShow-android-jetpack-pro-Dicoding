@@ -88,7 +88,7 @@ class MainActivityTest {
         onView(withId(R.id.rb_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_genres_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rate_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_director_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_status_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed()))
 
         onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed()))
@@ -164,7 +164,7 @@ class MainActivityTest {
         onView(withId(R.id.tv_title_detail)).check(matches(withText(expectedTitle)))
         onView(withId(R.id.tv_genres_detail)).check(matches(withText(expectedGenres)))
         onView(withId(R.id.tv_rate_detail)).check(matches(withText(expectedRate)))
-        onView(withId(R.id.tv_director_detail)).check(matches(withText(expectedDirector)))
+        onView(withId(R.id.tv_status_detail)).check(matches(withText(expectedDirector)))
         onView(withId(R.id.tv_synopsis_detail)).check(matches(withText(expectedSynopsis)))
         onView(withId(R.id.tv_duration_detail)).check(matches(withText(expectedDuration)))
     }
