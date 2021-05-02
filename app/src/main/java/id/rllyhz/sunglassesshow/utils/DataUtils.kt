@@ -2,6 +2,7 @@ package id.rllyhz.sunglassesshow.utils
 
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.data.source.remote.response.GenreResonse
 import id.rllyhz.sunglassesshow.data.source.remote.response.MovieDetailResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.MovieResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.TVShowResponse
@@ -16,8 +17,8 @@ fun List<MovieResponse>.asModels(): List<Movie> {
             allMovies.add(
                 Movie(
                     id,
-                    posterPath,
-                    backdropPath,
+                    posterPath ?: "",
+                    backdropPath ?: "",
                     title,
                     null,
                     null,
@@ -44,8 +45,8 @@ fun List<TVShowResponse>.asModels(): List<TVShow> {
             allTvShows.add(
                 TVShow(
                     id,
-                    posterPath,
-                    backdropPath,
+                    posterPath ?: "",
+                    backdropPath ?: "",
                     title,
                     null,
                     null,
@@ -66,15 +67,30 @@ fun List<TVShowResponse>.asModels(): List<TVShow> {
 fun MovieDetailResponse.asModels(): Movie =
     Movie(
         this.id,
-        this.posterPath,
-        this.backdropPath,
+        this.posterPath ?: "",
+        this.backdropPath ?: "",
         this.title,
-        genres.toString(),
+        getGenresStringFormat(genres),
         duration,
         rate,
         releasedDate,
         language,
         tagline,
         synopsis,
-        null
+        status
     )
+
+private fun getGenresStringFormat(genres: List<GenreResonse>): String = run {
+    var result = ""
+
+    if (genres.isNotEmpty()) {
+        for (genre in genres) {
+            if (genres.last() != genre)
+                result += "${genre.name}, "
+            else
+                result += genre.name
+        }
+    }
+
+    result
+}

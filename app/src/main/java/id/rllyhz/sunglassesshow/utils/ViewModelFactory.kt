@@ -26,8 +26,8 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
             }
-            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                DetailViewModel() as T
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(repository) as T
             }
             else -> throw Throwable("ViewModel not found: " + modelClass.name)
         }

@@ -20,7 +20,7 @@ data class Movie(
     val language: String?,
     val tagline: String?,
     val synopsis: String?,
-    val director: String?
+    val status: String?
 ) : Parcelable {
 
     val year: Int
