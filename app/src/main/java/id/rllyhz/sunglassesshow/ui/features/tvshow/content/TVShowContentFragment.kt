@@ -64,10 +64,13 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             tvSimilarContentLabelDetail.text =
                 resources.getString(R.string.detail_similar_tv_show_label)
 
-            tvRateDetail.text = resources.getString(R.string.rate_format, currentTvShow.rate)
+            tvRateDetail.text =
+                resources.getString(R.string.rate_format, currentTvShow.rate.toString())
 
-            tvDirectorDetail.text =
-                resources.getString(R.string.creator_format, currentTvShow.creator)
+            tvStatusDetail.text =
+                resources.getString(R.string.status_format, currentTvShow.creator)
+            tvReleasedAtDetail.text =
+                resources.getString(R.string.released_at_format, currentTvShow.releasedAt)
 
             tvSynopsisDetail.text = currentTvShow.synopsis
 

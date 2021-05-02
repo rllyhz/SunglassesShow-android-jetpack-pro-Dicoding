@@ -19,6 +19,7 @@ import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
 import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
+import id.rllyhz.sunglassesshow.utils.getDateInString
 
 class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
     private var _binding: FragmentContentBinding? = null
@@ -83,8 +84,10 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                     resources.getString(R.string.detail_similar_movies_label)
                 tvRateDetail.text =
                     resources.getString(R.string.rate_format, movie.rate.toString())
-                tvDirectorDetail.text =
+                tvStatusDetail.text =
                     resources.getString(R.string.status_format, movie.status ?: "")
+                tvReleasedAtDetail.text =
+                    resources.getString(R.string.released_at_format, movie.getDateInString())
                 tvSynopsisDetail.text = movie.synopsis
 
                 Glide.with(root)
