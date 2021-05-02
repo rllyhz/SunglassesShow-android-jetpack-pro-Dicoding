@@ -35,8 +35,8 @@ class SimilarContentListAdapter :
             with(binding) {
                 Glide.with(itemView)
                     .load(IMAGE_URL + movie.posterPath)
-                    .placeholder(R.drawable.bg_poster_placeholder)
                     .error(R.drawable.bg_poster_error)
+                    .placeholder(R.drawable.bg_poster_placeholder)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivItemSimilar)
 

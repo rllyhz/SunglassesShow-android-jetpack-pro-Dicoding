@@ -93,13 +93,15 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                 Glide.with(root)
                     .load(IMAGE_URL + movie.backdropPath)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .error(R.drawable.bg_poster_placeholder)
+                    .error(R.drawable.bg_poster_error)
+                    .placeholder(R.drawable.bg_poster_placeholder)
                     .into(ivPosterBgDetail)
 
                 Glide.with(root)
                     .load(IMAGE_URL + movie.posterPath)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .error(R.drawable.bg_poster_placeholder)
+                    .error(R.drawable.bg_poster_error)
+                    .placeholder(R.drawable.bg_poster_placeholder)
                     .into(ivPosterDetail)
             }
 
