@@ -1,8 +1,8 @@
 package id.rllyhz.sunglassesshow.ui.features.tvshow.list
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.FragmentTvshowListBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
+import id.rllyhz.sunglassesshow.ui.main.MainActivity
 import id.rllyhz.sunglassesshow.ui.main.MainViewModel
 import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
@@ -23,6 +24,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var tvShowListAdapter: TVShowListAdapter
+    private var _activity: MainActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,13 +52,14 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
             viewModel.getTVShowsTest().observe(viewLifecycleOwner) { resource ->
                 when (resource) {
                     is Resource.Success -> {
+                        _activity?.onLoading(false)
                         tvShowListAdapter.submitList(resource.data)
                     }
                     is Resource.Error -> {
-                        Log.d("Test", "Error nih")
+                        _activity?.onLoading(false)
                     }
                     is Resource.Loading -> {
-                        Log.d("Test", "Loading")
+                        _activity?.onLoading(true)
                     }
                     else -> Unit
                 }
@@ -65,9 +68,9 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
     }
 
     private fun setupUI() {
-        binding.apply {
-            progressbar.visibility = View.GONE
+        _activity?.onLoading(true)
 
+        binding.apply {
             with(rvTvshowList) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
@@ -83,6 +86,16 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
 
             requireActivity().startActivity(this)
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        _activity = context as MainActivity
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        _activity = null
     }
 
     override fun onDestroyView() {

@@ -1,6 +1,7 @@
 package id.rllyhz.sunglassesshow.ui.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
@@ -35,6 +36,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             tabLayoutMain.setupWithViewPager(viewPagerMain)
+        }
+    }
+
+    fun onLoading(state: Boolean) {
+        showProgressbar(state)
+    }
+
+    private fun showProgressbar(state: Boolean) {
+        with(binding) {
+            if (state)
+                progressbar.visibility = View.VISIBLE
+            else
+                progressbar.visibility = View.GONE
         }
     }
 }
