@@ -10,6 +10,7 @@ buildscript {
         appCompatVersion = '1.2.0'
         coreVersion = '1.3.2'
         constraintLayoutVersion = '2.0.4'
+        coroutinesTestKotlinx = '1.4.3'
         junitVersion = '4.13.2'
         junitExtversion = '1.1.2'
         androidXTestVersion = '1.2.0'

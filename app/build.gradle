@@ -66,6 +66,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     //testing
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestKotlinx"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
