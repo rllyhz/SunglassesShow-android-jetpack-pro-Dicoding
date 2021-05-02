@@ -140,13 +140,13 @@ class MainActivityTest {
         val expectedRate = getStringResources(
             context,
             R.string.rate_format,
-            itemTesting.rate
+            itemTesting.rate.toString()
         )
 
         val expectedDirector = getStringResources(
             context,
-            R.string.director_format,
-            itemTesting.director
+            R.string.status_format,
+            itemTesting.status
         )
 
         val expectedGenres = itemTesting.genres
