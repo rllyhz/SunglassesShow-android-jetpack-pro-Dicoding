@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.data.source.SunGlassesShowRepository
-import id.rllyhz.sunglassesshow.utils.DataGenerator
 
 class DetailViewModel(
     private val repository: SunGlassesShowRepository
@@ -13,11 +12,12 @@ class DetailViewModel(
     suspend fun getDetailMovie(movie: Movie) =
         repository.getDetailMovieOf(movie.id)
 
-    suspend fun getDetailTvShow(tvShow: TVShow) {}
+    suspend fun getDetailTvShow(tvShow: TVShow) =
+        repository.getDetailTVShowOf(tvShow.id)
 
     suspend fun getSimilarMovieOf(movie: Movie) =
         repository.getSimilarMoviesOf(movie.id)
 
-    fun getSimilarTVShowOf(tvShow: TVShow): Array<TVShow> =
-        DataGenerator.getSimilarTVShowsDummyData(tvShow)
+    suspend fun getSimilarTVShowsOf(tvShow: TVShow) =
+        repository.getSimilarTVShowsOf(tvShow.id)
 }

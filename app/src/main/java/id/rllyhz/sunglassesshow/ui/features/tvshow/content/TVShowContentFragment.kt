@@ -7,20 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import id.rllyhz.sunglassesshow.R
+import id.rllyhz.sunglassesshow.api.ApiEndpoint
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.FragmentContentBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
+import id.rllyhz.sunglassesshow.utils.Resource
+import id.rllyhz.sunglassesshow.utils.ViewModelFactory
+import id.rllyhz.sunglassesshow.utils.getDateInString
 
 class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: DetailViewModel by viewModels()
+    private lateinit var viewModel: DetailViewModel
     private lateinit var similarContentListAdapter: SimilarContentListAdapter
     private lateinit var currentTvShow: TVShow
 
@@ -36,73 +42,102 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelFactory.getInstance()
+        )[DetailViewModel::class.java]
+
         currentTvShow = arguments?.getParcelable(PARAMS_MOVIE)!!
 
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
-        setupUI()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.getDetailTvShow(currentTvShow).observe(viewLifecycleOwner) { resource ->
+                when (resource) {
+                    is Resource.Success -> setupUI(resource.data)
+                    is Resource.Loading -> showProgressbar(true)
+                    is Resource.Error -> showProgressbar(false)
+                    else -> Unit
+                }
+            }
+        }
     }
 
-    private fun setupUI() {
-        similarContentListAdapter.submitList(
-            viewModel.getSimilarTVShowOf(currentTvShow).toMutableList()
-        )
+    private fun setupUI(tvShow: TVShow?) {
+        showProgressbar(false)
 
         with(binding) {
-            progressbar.visibility = View.GONE
 
-            rbDetail.rating = currentTvShow.rating
-            tvTitleDetail.text =
-                resources.getString(
-                    R.string.title_format,
-                    currentTvShow.title,
-                    currentTvShow.year.toString()
-                )
+            if (tvShow != null) {
+                rbDetail.rating = tvShow.rating
 
-            tvDurationDetail.text = currentTvShow.duration
-            tvGenresDetail.text = currentTvShow.genres
-            tvSimilarContentLabelDetail.text =
-                resources.getString(R.string.detail_similar_tv_show_label)
-
-            tvRateDetail.text =
-                resources.getString(R.string.rate_format, currentTvShow.rate.toString())
-
-            tvStatusDetail.text =
-                resources.getString(R.string.status_format, currentTvShow.creator)
-            tvReleasedAtDetail.text =
-                resources.getString(R.string.released_at_format, currentTvShow.releasedAt)
-
-            tvSynopsisDetail.text = currentTvShow.synopsis
-
-            Glide.with(root)
-                .load(
-                    root.context.resources.getIdentifier(
-                        currentTvShow.posterPath, "drawable",
-                        root.context.packageName
+                tvTitleDetail.text =
+                    resources.getString(
+                        R.string.title_format,
+                        tvShow.title,
+                        tvShow.year.toString()
                     )
-                )
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(ivPosterBgDetail)
 
-            Glide.with(root)
-                .load(
-                    root.context.resources.getIdentifier(
-                        currentTvShow.posterPath, "drawable",
-                        root.context.packageName
-                    )
-                )
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(ivPosterDetail)
+                tvDurationDetail.text = tvShow.duration
+                tvGenresDetail.text = tvShow.genres
+                tvSimilarContentLabelDetail.text =
+                    resources.getString(R.string.detail_similar_movies_label)
+                tvRateDetail.text =
+                    resources.getString(R.string.rate_format, tvShow.rate.toString())
+                tvStatusDetail.text =
+                    resources.getString(R.string.status_format, tvShow.status ?: "")
+                tvReleasedAtDetail.text =
+                    resources.getString(R.string.released_at_format, tvShow.getDateInString())
+                tvSynopsisDetail.text = tvShow.synopsis
 
+                Glide.with(root)
+                    .load(ApiEndpoint.IMAGE_URL + tvShow.backdropPath)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.bg_poster_placeholder)
+                    .into(ivPosterBgDetail)
+
+                Glide.with(root)
+                    .load(ApiEndpoint.IMAGE_URL + tvShow.posterPath)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.bg_poster_placeholder)
+                    .into(ivPosterDetail)
+            }
+
+            setupSimilarContentUI()
+
+            ivViewTrailerDetail.setOnClickListener { }
+            btnWatchDetail.setOnClickListener { }
+        }
+    }
+
+    private fun setupSimilarContentUI() {
+        with(binding) {
             with(rvSimilarContentDetail) {
                 layoutManager =
                     LinearLayoutManager(root.context, LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
                 adapter = similarContentListAdapter
             }
+        }
 
-            ivViewTrailerDetail.setOnClickListener { }
-            btnWatchDetail.setOnClickListener { }
+        lifecycleScope.launchWhenStarted {
+            viewModel.getSimilarTVShowsOf(currentTvShow).observe(viewLifecycleOwner) { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        if (resource.data?.isEmpty() == true) {
+                            binding.tvNoSimilarText.visibility = View.VISIBLE
+                            binding.rvSimilarContentDetail.visibility = View.GONE
+                        } else {
+                            binding.tvNoSimilarText.visibility = View.GONE
+                            binding.rvSimilarContentDetail.visibility = View.VISIBLE
+                            similarContentListAdapter.submitList(resource.data)
+                        }
+                    }
+                    is Resource.Error -> binding.tvNoSimilarText.visibility = View.VISIBLE
+                    else -> Unit
+                }
+            }
         }
     }
 
@@ -112,6 +147,15 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             putExtra(DetailActivity.GOTO_TV_SHOW_DETAIL, true)
 
             requireActivity().startActivity(this)
+        }
+    }
+
+    private fun showProgressbar(state: Boolean) {
+        with(binding) {
+            if (state)
+                progressbar.visibility = View.VISIBLE
+            else
+                progressbar.visibility = View.GONE
         }
     }
 
