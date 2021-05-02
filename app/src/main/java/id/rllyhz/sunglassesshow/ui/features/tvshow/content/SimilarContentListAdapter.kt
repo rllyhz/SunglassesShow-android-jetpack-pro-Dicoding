@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ItemSimilarContentBinding
@@ -34,6 +35,8 @@ class SimilarContentListAdapter :
             with(binding) {
                 Glide.with(itemView)
                     .load(IMAGE_URL + movie.posterPath)
+                    .placeholder(R.drawable.bg_poster_placeholder)
+                    .error(R.drawable.bg_poster_placeholder)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivItemSimilar)
 

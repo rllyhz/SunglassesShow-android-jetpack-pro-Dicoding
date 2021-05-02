@@ -36,6 +36,8 @@ class TVShowListAdapter :
                 with(ivItemTvshowList) {
                     Glide.with(this)
                         .load(IMAGE_URL + tvShow.posterPath)
+                        .placeholder(R.drawable.bg_poster_placeholder)
+                        .error(R.drawable.bg_poster_placeholder)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
                 }
