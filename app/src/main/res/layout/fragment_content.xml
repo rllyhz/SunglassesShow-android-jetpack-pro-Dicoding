@@ -161,7 +161,7 @@
             style="@style/TextLight.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Released at: 19-23-2010"
+            android:text="@string/detail_released_at_dummy"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@id/tv_rate_detail"
             app:layout_constraintTop_toBottomOf="@id/tv_status_detail" />

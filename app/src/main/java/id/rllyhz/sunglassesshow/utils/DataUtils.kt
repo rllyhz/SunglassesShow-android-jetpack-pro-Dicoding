@@ -13,8 +13,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-object DataUtils
-
 fun List<MovieResponse>.asModels(): List<Movie> {
     val allMovies = mutableListOf<Movie>()
 
@@ -125,10 +123,10 @@ private fun getGenresStringFormat(genres: List<GenreResonse>): String = run {
 
     if (genres.isNotEmpty()) {
         for (genre in genres) {
-            if (genres.last() != genre)
-                result += "${genre.name}, "
+            result += if (genres.last() != genre)
+                "${genre.name}, "
             else
-                result += genre.name
+                genre.name
         }
     }
 

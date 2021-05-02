@@ -21,4 +21,5 @@
     <string name="detail_status_dummy">Status: Released</string>
     <string name="detail_no_similar_contents">No Similar Contents</string>
     <string name="detail_overview_label">Overview</string>
+    <string name="detail_released_at_dummy">Released at: 19–23–2010</string>
 </resources>
