@@ -86,10 +86,6 @@ class RemoteDataSource private constructor(
         return results
     }
 
-    suspend fun getMovieCreditsOf(id: Int) {}
-
-    suspend fun getTVShowCreditsOf(id: Int) {}
-
     suspend fun getSimilarMoviesOf(id: Int): LiveData<Resource<List<Movie>>> {
         val results = MutableLiveData<Resource<List<Movie>>>(Resource.Empty())
 
