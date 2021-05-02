@@ -13,10 +13,12 @@
 
     <string name="title_format">%s (%s)</string>
     <string name="rate_format">Rate: %s</string>
-    <string name="director_format">Director: %s</string>
+    <string name="status_format">Status: %s</string>
     <string name="creator_format">Creator: %s</string>
     <string name="detail_duration_dummy_data">1h 23m</string>
     <string name="detail_genres_dummy">Drama, Action, Sci-Fi</string>
     <string name="detail_rate_dummy">Rate: PG-14</string>
-    <string name="detail_director_dummy">Director: Khismi Narude</string>
+    <string name="detail_status_dummy">Status: Released</string>
+    <string name="detail_no_similar_contents">No Similar Contents</string>
+    <string name="detail_overview_label">Overview</string>
 </resources>

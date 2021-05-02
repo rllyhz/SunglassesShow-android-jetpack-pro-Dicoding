@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_list_card_height">280dp</dimen>
+    <dimen name="item_list_card_height">290dp</dimen>
+    <dimen name="poster_width">136dp</dimen>
+    <dimen name="poster_height">196dp</dimen>
 </resources>
