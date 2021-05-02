@@ -86,6 +86,27 @@ class RemoteDataSource private constructor(
         return results
     }
 
+    suspend fun getDetailTVShowOf(id: Int): LiveData<Resource<TVShow>> {
+        val results = MutableLiveData<Resource<TVShow>>()
+
+        results.value = Resource.Loading()
+
+        try {
+            val response = api.getTvShowDetailOf(id)
+            val bodyResponse = response.body()
+
+            if (response.isSuccessful && bodyResponse != null) {
+                results.value = Resource.Success(bodyResponse.asModels())
+            } else {
+                results.value = Resource.Error(response.message())
+            }
+        } catch (e: Exception) {
+            results.value = Resource.Error("Something went wrong")
+        }
+
+        return results
+    }
+
     suspend fun getSimilarMoviesOf(id: Int): LiveData<Resource<List<Movie>>> {
         val results = MutableLiveData<Resource<List<Movie>>>(Resource.Empty())
 
