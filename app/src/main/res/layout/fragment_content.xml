@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        android:descendantFocusability="beforeDescendants">
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_poster_bg_detail"
@@ -65,8 +65,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_poster_detail"
-            android:layout_width="136dp"
-            android:layout_height="180dp"
+            android:layout_width="@dimen/poster_width"
+            android:layout_height="@dimen/poster_height"
             android:layout_marginStart="12sp"
             android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -151,10 +151,20 @@
             style="@style/TextLight.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/detail_director_dummy"
+            android:text="@string/detail_status_dummy"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@id/tv_rate_detail"
             app:layout_constraintTop_toBottomOf="@id/tv_rate_detail" />
+
+        <TextView
+            android:id="@+id/tv_overview_label_detail"
+            style="@style/TextBold.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/detail_overview_label"
+            app:layout_constraintLeft_toLeftOf="@id/iv_poster_detail"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster_detail" />
 
         <TextView
             android:id="@+id/tv_synopsis_detail"
@@ -167,7 +177,7 @@
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_poster_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_overview_label_detail"
             tools:text="@string/item_dummy_synopsis" />
 
         <Button
@@ -204,6 +214,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_similar_content_label_detail"
             tools:listitem="@layout/item_similar_content" />
+
+        <TextView
+            android:id="@+id/tv_no_similar_text"
+            style="@style/TextRegular.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/detail_no_similar_contents"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@id/tv_similar_content_label_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_similar_content_label_detail" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal"
