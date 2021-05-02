@@ -20,7 +20,7 @@ data class TVShow(
     val language: String,
     val tagline: String?,
     val synopsis: String,
-    val creator: String?
+    val status: String?
 ) : Parcelable {
 
     val year: Int
