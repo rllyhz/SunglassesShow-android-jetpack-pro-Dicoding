@@ -27,4 +27,7 @@ class SunGlassesShowRepository private constructor(
 
     suspend fun getSimilarMoviesOf(id: Int) =
         remoteDataSource.getSimilarMoviesOf(id)
+
+    suspend fun getSimilarTVShowsOf(id: Int) =
+        remoteDataSource.getSimilarTVShowsOf(id)
 }
