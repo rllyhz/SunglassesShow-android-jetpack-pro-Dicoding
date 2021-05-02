@@ -16,21 +16,21 @@ class SunGlassesShowRepository private constructor(
             }
     }
 
-    suspend fun getMovies() =
+    override suspend fun getMovies() =
         remoteDataSource.getMovies()
 
-    suspend fun getTVShows() =
+    override suspend fun getTVShows() =
         remoteDataSource.getTVShows()
 
-    suspend fun getDetailMovieOf(id: Int) =
+    override suspend fun getDetailMovieOf(id: Int) =
         remoteDataSource.getDetailMovieOf(id)
 
-    suspend fun getDetailTVShowOf(id: Int) =
+    override suspend fun getDetailTVShowOf(id: Int) =
         remoteDataSource.getDetailTVShowOf(id)
 
-    suspend fun getSimilarMoviesOf(id: Int) =
+    override suspend fun getSimilarMoviesOf(id: Int) =
         remoteDataSource.getSimilarMoviesOf(id)
 
-    suspend fun getSimilarTVShowsOf(id: Int) =
+    override suspend fun getSimilarTVShowsOf(id: Int) =
         remoteDataSource.getSimilarTVShowsOf(id)
 }
