@@ -5,10 +5,7 @@ import android.icu.text.SimpleDateFormat
 import android.os.Build
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
-import id.rllyhz.sunglassesshow.data.source.remote.response.GenreResonse
-import id.rllyhz.sunglassesshow.data.source.remote.response.MovieDetailResponse
-import id.rllyhz.sunglassesshow.data.source.remote.response.MovieResponse
-import id.rllyhz.sunglassesshow.data.source.remote.response.TVShowResponse
+import id.rllyhz.sunglassesshow.data.source.remote.response.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -84,8 +81,25 @@ fun MovieDetailResponse.asModels(): Movie =
         status
     )
 
+fun TVShowDetailResponse.asModels(): TVShow =
+    TVShow(
+        this.id,
+        this.posterPath ?: "",
+        this.backdropPath ?: "",
+        this.title,
+        getGenresStringFormat(genres),
+        duration[0],
+        rate,
+        releasedDate,
+        language,
+        tagline,
+        synopsis,
+        status
+    )
+
 
 fun Movie.getDateInString() = getDateInString(releasedAt)
+fun TVShow.getDateInString() = getDateInString(releasedAt)
 
 @SuppressLint("SimpleDateFormat")
 private fun getDateInString(date: String): String {
