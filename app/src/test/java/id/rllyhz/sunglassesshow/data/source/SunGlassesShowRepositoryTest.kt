@@ -110,7 +110,7 @@ class SunGlassesShowRepositoryTest {
     @Test
     fun `fetch getDetailMovieOf given movie Id, it must be not null and has expected properties`() =
         runBlocking {
-            val movieDummyData = DataGenerator.getDetailMovie(movieIdForTesting)
+            val movieDummyData = DataGenerator.getDetailMovie()
             val movieDummyResource = Resource.Success(movieDummyData)
             val movie = MutableLiveData<Resource<Movie>>()
             movie.value = movieDummyResource
@@ -137,7 +137,7 @@ class SunGlassesShowRepositoryTest {
     @Test
     fun `fetch getDetailTVShowOf given tvShow Id, it must be not null and has expected properties`() =
         runBlocking {
-            val tvShowDummyData = DataGenerator.getDetailTvShow(tvShowIdForTesting)
+            val tvShowDummyData = DataGenerator.getDetailTvShow()
             val tvShowDummyResource = Resource.Success(tvShowDummyData)
             val tvShow = MutableLiveData<Resource<TVShow>>()
             tvShow.value = tvShowDummyResource
@@ -165,7 +165,7 @@ class SunGlassesShowRepositoryTest {
     @Test
     fun `fetch getSimilarMoviesOf given movie id, they must be not null and has expected sizes`() =
         runBlocking {
-            val similarMoviesDummyData = DataGenerator.getSimilarMovies(movieIdForTesting)
+            val similarMoviesDummyData = DataGenerator.getSimilarMovies()
             val similarMoviesDummyResource = Resource.Success(similarMoviesDummyData)
             val similarMovies = MutableLiveData<Resource<List<Movie>>>()
             similarMovies.value = similarMoviesDummyResource
@@ -187,7 +187,7 @@ class SunGlassesShowRepositoryTest {
     @Test
     fun `fetch getSimilarTVShowsOf given tvShow id, they must be not null and has expected sizes`() =
         runBlocking {
-            val similarTVShowsDummyData = DataGenerator.getSimilarTVShows(tvShowIdForTesting)
+            val similarTVShowsDummyData = DataGenerator.getSimilarTVShows()
             val similarTVShowsDummyResource = Resource.Success(similarTVShowsDummyData)
             val similarTVShows = MutableLiveData<Resource<List<TVShow>>>()
             similarTVShows.value = similarTVShowsDummyResource
