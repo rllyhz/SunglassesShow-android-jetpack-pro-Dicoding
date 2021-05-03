@@ -6,19 +6,13 @@ import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.verify
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.utils.CoroutineTestRule
 import id.rllyhz.sunglassesshow.utils.DataGenerator
 import id.rllyhz.sunglassesshow.utils.Resource
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestCoroutineScope
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
-import org.junit.After
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,9 +23,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class SunGlassesShowRepositoryTest {
-    private val testDispatcher = TestCoroutineDispatcher()
-    private val testScope = TestCoroutineScope(testDispatcher)
-
     @Mock
     private lateinit var repository: SunGlassesShowRepository
 
@@ -50,66 +41,60 @@ class SunGlassesShowRepositoryTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @get:Rule
+    var coroutineTestRule = CoroutineTestRule()
+
     private val itemSizeForTesting = 20
     private val movieIdForTesting = 460465
     private val tvShowIdForTesting = 1416
 
-    @Before
-    fun setUp() {
-        Dispatchers.setMain(testDispatcher)
-    }
+    @Test
+    fun `fetch movies list, they must be not null and has expected sizes`() =
+        coroutineTestRule.testDispatcher.runBlockingTest {
+            val moviesDummyData = DataGenerator.getAllMovies()
+            val moviesDummyResource = Resource.Success(moviesDummyData)
+            val movies = MutableLiveData<Resource<List<Movie>>>()
+            movies.value = moviesDummyResource
 
-    @After
-    fun tearDown() {
-        Dispatchers.resetMain()
-        testScope.cleanupTestCoroutines()
-    }
+            assertNotNull(moviesDummyData)
+            assertEquals(itemSizeForTesting, moviesDummyData.size)
+
+            `when`(repository.getMovies()).thenReturn(movies)
+            val actualMovies = repository.getMovies().value?.data
+
+            verify(repository).getMovies()
+            assertNotNull(actualMovies)
+            assertEquals(moviesDummyData.size, actualMovies?.size)
+
+            repository.getMovies().observeForever(moviesObserver)
+            verify(moviesObserver).onChanged(moviesDummyResource)
+        }
 
     @Test
-    fun `fetch movies list, they must be not null and has expected sizes`() = runBlocking {
-        val moviesDummyData = DataGenerator.getAllMovies()
-        val moviesDummyResource = Resource.Success(moviesDummyData)
-        val movies = MutableLiveData<Resource<List<Movie>>>()
-        movies.value = moviesDummyResource
+    fun `fetch tvShow list, they must be not null and has expected sizes`() =
+        coroutineTestRule.testDispatcher.runBlockingTest {
+            val tvShowsDummyData = DataGenerator.getAllTVShows()
+            val tvShowsDummyResource = Resource.Success(tvShowsDummyData)
+            val tvShows = MutableLiveData<Resource<List<TVShow>>>()
+            tvShows.value = tvShowsDummyResource
 
-        assertNotNull(moviesDummyData)
-        assertEquals(itemSizeForTesting, moviesDummyData.size)
+            assertNotNull(tvShowsDummyData)
+            assertEquals(itemSizeForTesting, tvShowsDummyData.size)
 
-        `when`(repository.getMovies()).thenReturn(movies)
-        val actualMovies = repository.getMovies().value?.data
+            `when`(repository.getTVShows()).thenReturn(tvShows)
+            val actualTVShows = repository.getTVShows().value?.data
 
-        verify(repository).getMovies()
-        assertNotNull(actualMovies)
-        assertEquals(moviesDummyData.size, actualMovies?.size)
+            verify(repository).getTVShows()
+            assertNotNull(actualTVShows)
+            assertEquals(tvShowsDummyData.size, actualTVShows?.size)
 
-        repository.getMovies().observeForever(moviesObserver)
-        verify(moviesObserver).onChanged(moviesDummyResource)
-    }
-
-    @Test
-    fun `fetch tvShow list, they must be not null and has expected sizes`() = runBlocking {
-        val tvShowsDummyData = DataGenerator.getAllTVShows()
-        val tvShowsDummyResource = Resource.Success(tvShowsDummyData)
-        val tvShows = MutableLiveData<Resource<List<TVShow>>>()
-        tvShows.value = tvShowsDummyResource
-
-        assertNotNull(tvShowsDummyData)
-        assertEquals(itemSizeForTesting, tvShowsDummyData.size)
-
-        `when`(repository.getTVShows()).thenReturn(tvShows)
-        val actualTVShows = repository.getTVShows().value?.data
-
-        verify(repository).getTVShows()
-        assertNotNull(actualTVShows)
-        assertEquals(tvShowsDummyData.size, actualTVShows?.size)
-
-        repository.getTVShows().observeForever(tvShowsObserver)
-        verify(tvShowsObserver).onChanged(tvShowsDummyResource)
-    }
+            repository.getTVShows().observeForever(tvShowsObserver)
+            verify(tvShowsObserver).onChanged(tvShowsDummyResource)
+        }
 
     @Test
     fun `fetch getDetailMovieOf given movie Id, it must be not null and has expected properties`() =
-        runBlocking {
+        coroutineTestRule.testDispatcher.runBlockingTest {
             val movieDummyData = DataGenerator.getDetailMovie()
             val movieDummyResource = Resource.Success(movieDummyData)
             val movie = MutableLiveData<Resource<Movie>>()
@@ -136,7 +121,7 @@ class SunGlassesShowRepositoryTest {
 
     @Test
     fun `fetch getDetailTVShowOf given tvShow Id, it must be not null and has expected properties`() =
-        runBlocking {
+        coroutineTestRule.testDispatcher.runBlockingTest {
             val tvShowDummyData = DataGenerator.getDetailTvShow()
             val tvShowDummyResource = Resource.Success(tvShowDummyData)
             val tvShow = MutableLiveData<Resource<TVShow>>()
@@ -164,7 +149,7 @@ class SunGlassesShowRepositoryTest {
 
     @Test
     fun `fetch getSimilarMoviesOf given movie id, they must be not null and has expected sizes`() =
-        runBlocking {
+        coroutineTestRule.testDispatcher.runBlockingTest {
             val similarMoviesDummyData = DataGenerator.getSimilarMovies()
             val similarMoviesDummyResource = Resource.Success(similarMoviesDummyData)
             val similarMovies = MutableLiveData<Resource<List<Movie>>>()
@@ -186,7 +171,7 @@ class SunGlassesShowRepositoryTest {
 
     @Test
     fun `fetch getSimilarTVShowsOf given tvShow id, they must be not null and has expected sizes`() =
-        runBlocking {
+        coroutineTestRule.testDispatcher.runBlockingTest {
             val similarTVShowsDummyData = DataGenerator.getSimilarTVShows()
             val similarTVShowsDummyResource = Resource.Success(similarTVShowsDummyData)
             val similarTVShows = MutableLiveData<Resource<List<TVShow>>>()
