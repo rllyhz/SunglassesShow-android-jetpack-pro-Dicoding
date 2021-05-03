@@ -1,0 +1,398 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "backdrop_path": "/rvbWRwVOD5NK767kclJnWl3yzMX.jpg",
+      "first_air_date": "2012-01-15",
+      "genre_ids": [
+        18,
+        10751
+      ],
+      "id": 39793,
+      "name": "Call the Midwife",
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_name": "Call the Midwife",
+      "overview": "Drama following the lives of a group of midwives working in the poverty-stricken East End of London during the 1950s, based on the best-selling memoirs of Jennifer Worth.",
+      "poster_path": "/b1p0nL00x563ACkcmGNIRP4ZnkA.jpg",
+      "vote_average": 7.1,
+      "vote_count": 120,
+      "popularity": 24.829
+    },
+    {
+      "backdrop_path": "/lOluFMXTGaXbdwuLd003odAwfqf.jpg",
+      "id": 62266,
+      "genre_ids": [
+        35,
+        18,
+        9648
+      ],
+      "original_language": "ko",
+      "poster_path": "/dNH6NO0akHMIqbq5EC4qnCeeuC6.jpg",
+      "first_air_date": "2015-01-07",
+      "original_name": "킬미, 힐미",
+      "origin_country": [
+        "KR"
+      ],
+      "overview": "Cha Do Hyun is a rich heir to a family company with one major problem. Due to suppressed childhood trauma, he suffers from dissociative identity disorder manifested in 7 unique personalities who are out of his control. In order to overcome this disorder in secret, he hires a first year medical resident to help him heal by killing off each personality one by one.",
+      "vote_count": 31,
+      "vote_average": 8.5,
+      "name": "Kill Me, Heal Me",
+      "popularity": 22.619
+    },
+    {
+      "backdrop_path": "/AekZz93QCISOYFELhxyRCSzcAit.jpg",
+      "first_air_date": "2015-09-30",
+      "genre_ids": [
+        18
+      ],
+      "id": 63418,
+      "name": "Code Black",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Code Black",
+      "overview": "Inspired by the award-winning documentary, this medical drama is set in the busiest and most notorious ER in the nation where the extraordinary staff confront a challenged system in order to protect their ideals and the patients who need them the most.",
+      "poster_path": "/seVDT97dMUrmVGH6Ebvj9pv8rp5.jpg",
+      "vote_average": 7.6,
+      "vote_count": 162,
+      "popularity": 23.896
+    },
+    {
+      "id": 62650,
+      "original_name": "Chicago Med",
+      "origin_country": [
+        "US"
+      ],
+      "genre_ids": [
+        18
+      ],
+      "original_language": "en",
+      "poster_path": "/8mFhW6fJlapqq3cmQjxcG5h4KFa.jpg",
+      "name": "Chicago Med",
+      "first_air_date": "2015-11-17",
+      "vote_count": 635,
+      "overview": "An emotional thrill ride through the day-to-day chaos of the city's most explosive hospital and the courageous team of doctors who hold it together. They will tackle unique new cases inspired by topical events, forging fiery relationships in the pulse-pounding pandemonium of the emergency room.",
+      "vote_average": 8.3,
+      "backdrop_path": "/sHjNS2lYyEjwjjQXTZmdyMJ29bI.jpg",
+      "popularity": 114.377
+    },
+    {
+      "overview": "Set in downtown New York in 1900, 'The Knick' is centered on the Knickerbocker Hospital and the groundbreaking surgeons, nurses and staff who work there, pushing the bounds of medicine in a time of astonishingly high mortality rates and zero antibiotics.\n\nJohn Thackery is a brilliant surgeon pioneering new methods in the field, despite his secret addiction to cocaine. He leads a team of doctors including his protégé Dr. Everett Gallinger; the young Dr. Bertie Chickering Jr. and Dr. Algernon Edwards, a promising surgeon who's been recently thrust upon him. The lively cast of characters at the hospital also includes Cornelia Robertson, the daughter of its benefactor, Captain August Robertson; surly ambulance driver Tom Cleary; Lucy Elkins; a fresh-faced nurse from the country; the crooked hospital administrator Herman Barrow; and Sister Harriet, a nun who isn't afraid to speak her mind.",
+      "first_air_date": "2014-08-08",
+      "backdrop_path": "/r5kShTnzatvkZipN424UFzD7jqf.jpg",
+      "vote_count": 249,
+      "genre_ids": [
+        18
+      ],
+      "name": "The Knick",
+      "original_language": "en",
+      "poster_path": "/oeEqDSIVOi6q0GcZj8L9Q6G7fGC.jpg",
+      "id": 61014,
+      "original_name": "The Knick",
+      "origin_country": [
+        "US"
+      ],
+      "vote_average": 8.0,
+      "popularity": 15.121
+    },
+    {
+      "original_name": "Chicago Hope",
+      "id": 6467,
+      "name": "Chicago Hope",
+      "vote_count": 45,
+      "vote_average": 7.7,
+      "first_air_date": "1994-09-18",
+      "poster_path": "/x8ic33t4NurJul1oXmvKwKtWH28.jpg",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "original_language": "en",
+      "backdrop_path": "/i75aWzwR06cCUwOTzS8zSWg8th8.jpg",
+      "overview": "Chicago Hope is an American medical drama television series, created by David E. Kelley. It ran on CBS from September 18, 1994, to May 4, 2000. The series is set in a fictional private charity hospital in Chicago, Illinois. The show is set to return in the fall of 2013 on TVGN in reruns.",
+      "origin_country": [
+        "US"
+      ],
+      "popularity": 51.117
+    },
+    {
+      "original_name": "Doctors",
+      "id": 5080,
+      "name": "Doctors",
+      "vote_count": 29,
+      "vote_average": 4.7,
+      "first_air_date": "2000-03-27",
+      "poster_path": "/thZKqMWevSJVTeAiedy40umvz11.jpg",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "original_language": "en",
+      "backdrop_path": null,
+      "overview": "Set in the fictional Midlands town of Letherbridge, defined as being close to the city of Birmingham, this soap opera follows the staff and families of a doctor's surgery.",
+      "origin_country": [
+        "GB"
+      ],
+      "popularity": 26.216
+    },
+    {
+      "vote_average": 8.5,
+      "id": 57647,
+      "overview": "As a child, Park Shi On was sent to a specialized care center, where he discovered genius capacities for his autism. Coupled with an exceptional memory and keen spatial skills, the young savant eventually entered pediatric residency, where he developed into a promising surgeon. However, his mental and emotional development seems to have stopped at 10-years-old, which makes for incredible conflicts in and out of the O.R., especially with the hotheaded surgeon Kim Do Han. Despite warm hearted and fair colleagues like Cha Yoon Seo and Han Jin Wook , it’s a fierce and competitive adult world. One cannot simply tell Shi On to “grow up.”",
+      "backdrop_path": "/uH24pUgaB9NWJYQxFrCqTCblHGe.jpg",
+      "original_name": "굿 닥터",
+      "origin_country": [
+        "KR"
+      ],
+      "vote_count": 16,
+      "original_language": "ko",
+      "genre_ids": [
+        18
+      ],
+      "poster_path": "/4pR9FCgtCj8mYFLh7tb2avCwdOy.jpg",
+      "name": "Good Doctor",
+      "first_air_date": "2013-08-05",
+      "popularity": 38.555
+    },
+    {
+      "backdrop_path": "/2fzV1ptJCbZ4xvJZrOofmjeeS5X.jpg",
+      "first_air_date": "2012-06-07",
+      "genre_ids": [
+        10765,
+        18
+      ],
+      "id": 43097,
+      "name": "Saving Hope",
+      "origin_country": [
+        "CA"
+      ],
+      "original_language": "en",
+      "original_name": "Saving Hope",
+      "overview": "When Charlie Harris ends up in a coma, he leaves the Hope-Zion Hospital in chaos - and his fiancée and fellow surgeon, Alex Reid, in a state of shock. As the staff of Hope-Zion races to save lives, comatose Dr. Harris wanders the halls of Hope-Zee in \"spirit\" form, not sure if he's a ghost or a figment of his own imagination.",
+      "poster_path": "/1OGQisCT1T5ChkzZVdFqhX4O1G.jpg",
+      "vote_average": 6.8,
+      "vote_count": 59,
+      "popularity": 20.609
+    },
+    {
+      "backdrop_path": "/2tlRNzwRf65pWj1o2tSinhCLU6W.jpg",
+      "first_air_date": "2014-05-27",
+      "genre_ids": [
+        18
+      ],
+      "id": 60804,
+      "original_language": "en",
+      "poster_path": "/qSfjudewdGEHAva8LvlbyH0ydof.jpg",
+      "original_name": "The Night Shift",
+      "origin_country": [
+        "US"
+      ],
+      "overview": "The stories of the men and women who work the overnight shift at San Antonio Memorial Hospital. They are an irreverent and special breed, particularly adrenaline junkie T.C. Callahan.",
+      "vote_count": 129,
+      "vote_average": 7.5,
+      "name": "The Night Shift",
+      "popularity": 19.682
+    },
+    {
+      "original_language": "en",
+      "poster_path": "/u1z05trCA7AuSuDhi365grwdos1.jpg",
+      "first_air_date": "2001-10-02",
+      "vote_count": 963,
+      "id": 4556,
+      "vote_average": 7.9,
+      "name": "Scrubs",
+      "origin_country": [
+        "US"
+      ],
+      "overview": "In the unreal world of Sacred Heart Hospital, John \"J.D.\" Dorian learns the ways of medicine, friendship and life.",
+      "backdrop_path": "/cqkGeSKrX7hKGYdsr3qiq8THyDo.jpg",
+      "original_name": "Scrubs",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "popularity": 98.821
+    },
+    {
+      "backdrop_path": "/4cLQlQxPoRR0xdkNCgIHPYVgPvr.jpg",
+      "first_air_date": "1994-09-19",
+      "genre_ids": [
+        18
+      ],
+      "id": 4588,
+      "name": "ER",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "ER",
+      "overview": "ER explores the inner workings of an urban teaching hospital and the critical issues faced by the dedicated physicians and staff of its overburdened emergency room.",
+      "poster_path": "/dPj3iAXq0A5L5kwpHh32j0iccY6.jpg",
+      "vote_average": 7.7,
+      "vote_count": 433,
+      "popularity": 55.845
+    },
+    {
+      "backdrop_path": "/rAw00EgDQSA89667sgpe4uawCMN.jpg",
+      "first_air_date": "1986-09-06",
+      "genre_ids": [
+        18
+      ],
+      "id": 1021,
+      "name": "Casualty",
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_name": "Casualty",
+      "overview": "Drama series about the staff and patients at Holby City Hospital's emergency department, charting the ups and downs in their personal and professional lives.",
+      "poster_path": "/qb3vyGwdVg37CX3nwHmgXXLjDpb.jpg",
+      "vote_average": 5.1,
+      "vote_count": 51,
+      "popularity": 47.937
+    },
+    {
+      "original_name": "Holby City",
+      "id": 1028,
+      "name": "Holby City",
+      "vote_count": 27,
+      "vote_average": 6.2,
+      "first_air_date": "1999-01-12",
+      "poster_path": "/cyQZGDCfRFdmwiH4519c34UKnG.jpg",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "original_language": "en",
+      "backdrop_path": null,
+      "overview": "Drama series about life on the wards of Holby City Hospital, following the highs and lows of the staff and patients.",
+      "origin_country": [
+        "GB"
+      ],
+      "popularity": 30.528
+    },
+    {
+      "original_name": "태양의 후예",
+      "first_air_date": "2016-02-24",
+      "id": 65143,
+      "overview": "A drama about the love of people who get closer as they learn to be considerate of each other in desperate times and sacrifices made by people who throw themselves into natural disasters.",
+      "vote_count": 350,
+      "vote_average": 8.5,
+      "poster_path": "/5JECa3CZfgVQFabmiZKm1L3XSXj.jpg",
+      "backdrop_path": "/y5Kx5ItQc1D1R4mZ5TUQ1QuSTou.jpg",
+      "name": "Descendants of the Sun",
+      "genre_ids": [
+        10759,
+        18
+      ],
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "popularity": 29.111
+    },
+    {
+      "first_air_date": "2004-11-16",
+      "genre_ids": [
+        18,
+        35,
+        9648
+      ],
+      "original_language": "en",
+      "poster_path": "/lkvhReTBZ2Ksl0Dl5Oplsf6UYkF.jpg",
+      "original_name": "House",
+      "origin_country": [
+        "US"
+      ],
+      "id": 1408,
+      "overview": "Dr. Gregory House, a drug-addicted, unconventional, misanthropic medical genius, leads a team of diagnosticians at the fictional Princeton–Plainsboro Teaching Hospital in New Jersey.",
+      "name": "House",
+      "vote_count": 3480,
+      "vote_average": 8.6,
+      "backdrop_path": "/h3vViR087OJlk4PedNt5JLIKOOi.jpg",
+      "popularity": 242.48
+    },
+    {
+      "poster_path": "/wKTAz8fkoXJoHqPpi4ArAUGDtco.jpg",
+      "vote_average": 8.4,
+      "overview": "Dr. Max Goodwin, the hospital's newest medical director, sets out to tear up the bureaucracy and provide exceptional care.",
+      "first_air_date": "2018-09-25",
+      "id": 80350,
+      "vote_count": 346,
+      "original_name": "New Amsterdam",
+      "origin_country": [
+        "US"
+      ],
+      "genre_ids": [
+        18
+      ],
+      "name": "New Amsterdam",
+      "original_language": "en",
+      "backdrop_path": "/kXdfhKazlnRhnyc687DDdZJPaoJ.jpg",
+      "popularity": 169.19
+    },
+    {
+      "backdrop_path": "/9oVp0xfKW2igxDEo5wr3JTMQBub.jpg",
+      "genre_ids": [
+        18
+      ],
+      "original_language": "en",
+      "poster_path": "/kG3AlyUz63O8LFS2jJQdmOo7qQI.jpg",
+      "vote_count": 795,
+      "overview": "A tough, brilliant senior resident guides an idealistic young doctor through his first day, pulling back the curtain on what really happens, both good and bad, in modern-day medicine.",
+      "vote_average": 8.5,
+      "id": 74016,
+      "first_air_date": "2018-01-21",
+      "original_name": "The Resident",
+      "origin_country": [
+        "US"
+      ],
+      "name": "The Resident",
+      "popularity": 94.836
+    },
+    {
+      "overview": "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
+      "original_name": "The Good Doctor",
+      "origin_country": [
+        "US"
+      ],
+      "backdrop_path": "/mZjZgY6ObiKtVuKVDrnS9VnuNlE.jpg",
+      "genre_ids": [
+        18
+      ],
+      "vote_count": 8217,
+      "first_air_date": "2017-09-25",
+      "id": 71712,
+      "poster_path": "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",
+      "vote_average": 8.6,
+      "original_language": "en",
+      "name": "The Good Doctor",
+      "popularity": 1393.791
+    },
+    {
+      "original_name": "Critical",
+      "id": 62107,
+      "name": "Critical",
+      "vote_count": 9,
+      "vote_average": 8.0,
+      "first_air_date": "2015-02-24",
+      "poster_path": "/hPbLrXWENLIXO1LAdh4ZMpZXczr.jpg",
+      "genre_ids": [
+        18
+      ],
+      "original_language": "en",
+      "backdrop_path": null,
+      "overview": "The Major Trauma Centre is a state-of-the-art unit which treats only the most gravely ill or seriously injured. Whether that patient lives or dies is determined by knife-edge decisions and procedures, but can the diverse team of medical professionals knit together and rise to the challenge? Our team hold a life in their hands but in every case they face the agonisingly real fear that it could slip through their fingers.",
+      "origin_country": [
+        "GB"
+      ],
+      "popularity": 1.847
+    }
+  ],
+  "total_pages": 9,
+  "total_results": 171
+}
