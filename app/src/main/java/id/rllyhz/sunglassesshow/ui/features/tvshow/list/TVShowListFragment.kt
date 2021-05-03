@@ -49,7 +49,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
         setupUI()
 
         lifecycleScope.launchWhenStarted {
-            viewModel.getTVShowsTest().observe(viewLifecycleOwner) { resource ->
+            viewModel.getTVShows().observe(viewLifecycleOwner) { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         _activity?.onLoading(false)

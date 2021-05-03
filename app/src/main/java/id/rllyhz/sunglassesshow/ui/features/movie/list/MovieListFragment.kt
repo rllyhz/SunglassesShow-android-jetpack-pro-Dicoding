@@ -49,7 +49,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
         setupUI()
 
         lifecycleScope.launchWhenStarted {
-            viewModel.getMoviesTest().observe(viewLifecycleOwner) { resource ->
+            viewModel.getMovies().observe(viewLifecycleOwner) { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         _activity?.onLoading(false)
