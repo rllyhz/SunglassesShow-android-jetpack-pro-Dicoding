@@ -43,21 +43,21 @@ object DataGenerator {
             DiscoverTVShowsResponse::class.java
         ).tvShows.asModels()
 
-    fun getDetailMovie(id: Int): Movie =
+    fun getDetailMovie(): Movie =
         gson.fromJson(loadAndParseJsonFile("detailMovie.json"), MovieDetailResponse::class.java)
             .asModels()
 
-    fun getDetailTvShow(id: Int): TVShow =
+    fun getDetailTvShow(): TVShow =
         gson.fromJson(loadAndParseJsonFile("detailTVShow.json"), TVShowDetailResponse::class.java)
             .asModels()
 
-    fun getSimilarMovies(id: Int): List<Movie> =
+    fun getSimilarMovies(): List<Movie> =
         gson.fromJson(
             loadAndParseJsonFile("similarMoviesOfMovieId.json"),
             DiscoverMoviesResponse::class.java
         ).movies.asModels()
 
-    fun getSimilarTVShows(id: Int): List<TVShow> =
+    fun getSimilarTVShows(): List<TVShow> =
         gson.fromJson(
             loadAndParseJsonFile("similarTVShowsOfTVShowId.json"),
             DiscoverTVShowsResponse::class.java
