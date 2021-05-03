@@ -107,6 +107,7 @@ class SunGlassesShowRepositoryTest {
 
             verify(repository).getDetailMovieOf(movieIdForTesting)
             assertNotNull(actualMovie)
+            assertEquals(movieDummyData.id, actualMovie?.id)
             assertEquals(movieDummyData.title, actualMovie?.title)
             assertEquals(movieDummyData.releasedAt, actualMovie?.releasedAt)
             assertEquals(movieDummyData.status, actualMovie?.status)
@@ -134,6 +135,7 @@ class SunGlassesShowRepositoryTest {
 
             verify(repository).getDetailTVShowOf(tvShowIdForTesting)
             assertNotNull(actualTVShow)
+            assertEquals(tvShowDummyData.id, actualTVShow?.id)
             assertEquals(tvShowDummyData.title, actualTVShow?.title)
             assertEquals(tvShowDummyData.releasedAt, actualTVShow?.releasedAt)
             assertEquals(tvShowDummyData.status, actualTVShow?.status)
