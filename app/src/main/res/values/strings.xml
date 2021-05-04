@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SunGlasses Show</string>
-    <string name="movie_list_dummy_title">Spider-Man: Into the Spider-Verse (2019)</string>
-    <string name="movie_list_dummy_genre">Action, Adventure, Animation, Science Fiction, Comedy</string>
+    <string name="movie_list_dummy_title">--- (-)</string>
+    <string name="movie_list_dummy_genre">-, -, -, -</string>
     <string name="movie">Movie</string>
     <string name="tv_show">Tv Show</string>
     <string name="tvshow_list_dummy_title">Naruto Shippuden</string>
@@ -16,10 +16,10 @@
     <string name="status_format">Status: %s</string>
     <string name="released_at_format">Released at: %s</string>
     <string name="detail_duration_dummy_data">1h 23m</string>
-    <string name="detail_genres_dummy">Drama, Action, Sci-Fi</string>
-    <string name="detail_rate_dummy">Rate: PG-14</string>
-    <string name="detail_status_dummy">Status: Released</string>
+    <string name="detail_genres_dummy">-, -, -</string>
+    <string name="detail_rate_dummy">Rate: -</string>
+    <string name="detail_status_dummy">Status: -</string>
     <string name="detail_no_similar_contents">No Similar Contents</string>
     <string name="detail_overview_label">Overview</string>
-    <string name="detail_released_at_dummy">Released at: 19–23–2010</string>
+    <string name="detail_released_at_dummy">Released at: -</string>
 </resources>
