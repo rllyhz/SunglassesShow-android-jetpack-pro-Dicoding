@@ -6,6 +6,7 @@ import id.rllyhz.sunglassesshow.api.ApiEndpoint
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.di.ModuleInjection
+import id.rllyhz.sunglassesshow.utils.EspressoIdlingResource
 import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.asModels
 
@@ -24,6 +25,7 @@ class RemoteDataSource private constructor(
     }
 
     suspend fun getMovies(): LiveData<Resource<List<Movie>>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<List<Movie>>>(Resource.Empty())
 
         results.value = Resource.Loading()
@@ -37,14 +39,17 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (exception: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
     }
 
     suspend fun getTVShows(): LiveData<Resource<List<TVShow>>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<List<TVShow>>>(Resource.Empty())
 
         results.value = Resource.Loading()
@@ -58,14 +63,17 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (e: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
     }
 
     suspend fun getDetailMovieOf(id: Int): LiveData<Resource<Movie>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<Movie>>()
 
         results.value = Resource.Loading()
@@ -79,14 +87,17 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (e: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
     }
 
     suspend fun getDetailTVShowOf(id: Int): LiveData<Resource<TVShow>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<TVShow>>()
 
         results.value = Resource.Loading()
@@ -100,14 +111,17 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (e: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
     }
 
     suspend fun getSimilarMoviesOf(id: Int): LiveData<Resource<List<Movie>>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<List<Movie>>>(Resource.Empty())
 
         results.value = Resource.Loading()
@@ -121,14 +135,17 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (exception: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
     }
 
     suspend fun getSimilarTVShowsOf(id: Int): LiveData<Resource<List<TVShow>>> {
+        EspressoIdlingResource.increment()
         val results = MutableLiveData<Resource<List<TVShow>>>(Resource.Empty())
 
         results.value = Resource.Loading()
@@ -142,8 +159,10 @@ class RemoteDataSource private constructor(
             } else {
                 results.value = Resource.Error(response.message())
             }
+            EspressoIdlingResource.decrement()
         } catch (exception: Exception) {
             results.value = Resource.Error("Something went wrong")
+            EspressoIdlingResource.decrement()
         }
 
         return results
