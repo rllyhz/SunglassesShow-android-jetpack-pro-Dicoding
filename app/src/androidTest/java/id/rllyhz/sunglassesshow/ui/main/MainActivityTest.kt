@@ -108,11 +108,15 @@ class MainActivityTest {
 
         onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.iv_view_trailer_detail)).perform(click())
+
         onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed())).perform(swipeUp())
 
         onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.btn_watch_detail)).perform(click())
+
         onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_similar_content_label_detail)).check(matches(isDisplayed())).perform(swipeUp())
 
         onView(withId(R.id.rv_similar_content_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_similar_content_detail)).perform(
@@ -200,6 +204,11 @@ class MainActivityTest {
                 click()
             )
         )
+
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_similar_content_label_detail)).check(matches(isDisplayed())).perform(swipeUp())
 
         onView(withId(R.id.rv_similar_content_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_similar_content_detail)).perform(
