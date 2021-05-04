@@ -3,18 +3,23 @@
 **Unit Testing**
 
 - **MainViewModelTest**
-    - Memuat semua data json Movies dan TV Shows yang ada pada DataGenerator object.
+    - Memanipulasi data ketika pemanggilan data movies di kelas SunGlassesShowRepository.
+    - Memastikan metode di kelas SunGlassesShowRepository terpanggil.
     - Memastikan masing-masing data Movies dan TV Shows tidak null.
     - Memastikan jumlah data masing-masing Movies dan TV Shows telah sesuai seperti yang diharapkan.
+    
 - **DetailViewModelTest**
-    - Memuat data Movies dan TV Shows masing-masing satu item dan memastikan tidak bernilai null.
-    - Memuat dummy data yang kemungkinan serupa (similar) dengan data currentMovie.
-    - Memuat dummy data yang kemungkinan serupa (similar) dengan data currentTvShow.
-    - Memastikan jumlah data masing-masing data dummy yang _similar_ sesuai ekspektasi.
+    - Memanipulasi data ketika pemanggilan data tvShows di kelas SunGlassesShowRepository.
+    - Memastikan metode di kelas SunGlassesShowRepository terpanggil.
+    - Memuat data list movies yang kemungkinan serupa (similar) dengan data Movie yang sedang aktif.
+    - Memuat data list tvShows yang kemungkinan serupa (similar) dengan data TVShow yang sedang aktif.
+    - Memastikan jumlah data masing-masing data list movies dan tvShows yang _similar_ sesuai ekspektasi.
 
 **Instrumental Testing**
-    - memuat dan menampilkan data movies pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
-    - mendemonstrasikan swiping action pada tab layout dan memastikan recyclerview dari data tv shows muncul.
-    - memuat dan menampilkan data tv shows pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
-    - mendemonstrasikan detail activity dan memastikan semua komponen yang ada tampil dan berfungsi dengan baik.
-    - mendemonstrasikan detail activity dan memastikan semua komponen textview yang ada menampilkan text yang diharapkan.
+    - Memuat dan menampilkan data movies pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
+    - Mendemonstrasikan swiping action pada tab layout dan memastikan recyclerview dari data tv shows muncul.
+    - Memuat dan menampilkan data tv shows pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
+    - Mendemonstrasikan detail activity dan memastikan semua komponen yang ada tampil dan berfungsi dengan baik.
+    - Mendemonstrasikan detail activity dan memastikan semua komponen textview yang ada menampilkan text yang diharapkan.
+    - Mendemonstrasikan detail activity dan memastikan data Similar Movies pada recyclerview tampil.
+    - Memastikan setiap item didalam recyclerview berfungsi ketika di-klik dan memiliki jumlah item yang sesuai dengan dummy data.
