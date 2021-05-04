@@ -3,7 +3,7 @@ package id.rllyhz.sunglassesshow.data
 import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
