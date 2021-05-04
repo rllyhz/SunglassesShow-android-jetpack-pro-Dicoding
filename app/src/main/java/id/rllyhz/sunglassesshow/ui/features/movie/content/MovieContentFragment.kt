@@ -122,19 +122,28 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         }
 
         viewModel.similarMovies.observe(viewLifecycleOwner) { resource ->
-            when (resource) {
-                is Resource.Success -> {
-                    if (resource.data?.isEmpty() == true) {
-                        binding.tvNoSimilarText.visibility = View.VISIBLE
-                        binding.rvSimilarContentDetail.visibility = View.GONE
-                    } else {
-                        binding.tvNoSimilarText.visibility = View.GONE
-                        binding.rvSimilarContentDetail.visibility = View.VISIBLE
-                        similarContentListAdapter.submitList(resource.data)
+            with(binding) {
+
+                when (resource) {
+                    is Resource.Success -> {
+                        if (resource.data?.isEmpty() == true) {
+                            tvNoSimilarText.visibility = View.VISIBLE
+                            rvSimilarContentDetail.visibility = View.GONE
+                        } else {
+                            tvNoSimilarText.visibility = View.GONE
+                            rvSimilarContentDetail.visibility = View.VISIBLE
+                            similarContentListAdapter.submitList(resource.data)
+                        }
+
+                        showProgressbarSimilarContents(false)
                     }
+                    is Resource.Error -> {
+                        tvNoSimilarText.visibility = View.VISIBLE
+                        showProgressbarSimilarContents(false)
+                    }
+                    is Resource.Loading -> showProgressbarSimilarContents(true)
+                    else -> Unit
                 }
-                is Resource.Error -> binding.tvNoSimilarText.visibility = View.VISIBLE
-                else -> Unit
             }
         }
 
@@ -147,6 +156,15 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                 progressbar.visibility = View.VISIBLE
             else
                 progressbar.visibility = View.GONE
+        }
+    }
+
+    private fun showProgressbarSimilarContents(state: Boolean) {
+        with(binding) {
+            if (state)
+                progressbarSimilarContents.visibility = View.VISIBLE
+            else
+                progressbarSimilarContents.visibility = View.GONE
         }
     }
 
