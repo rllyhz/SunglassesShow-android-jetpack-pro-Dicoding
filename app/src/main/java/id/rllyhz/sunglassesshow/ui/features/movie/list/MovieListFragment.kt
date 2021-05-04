@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.FragmentMovieListBinding
@@ -48,23 +47,23 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
 
         setupUI()
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.getMovies().observe(viewLifecycleOwner) { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        _activity?.onLoading(false)
-                        movieListAdapter.submitList(resource.data)
-                    }
-                    is Resource.Error -> {
-                        _activity?.onLoading(false)
-                    }
-                    is Resource.Loading -> {
-                        _activity?.onLoading(true)
-                    }
-                    else -> Unit
+        viewModel.movies.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    _activity?.onLoading(false)
+                    movieListAdapter.submitList(resource.data)
                 }
+                is Resource.Error -> {
+                    _activity?.onLoading(false)
+                }
+                is Resource.Loading -> {
+                    _activity?.onLoading(true)
+                }
+                else -> Unit
             }
         }
+
+        viewModel.initAllMovies()
     }
 
     private fun setupUI() {

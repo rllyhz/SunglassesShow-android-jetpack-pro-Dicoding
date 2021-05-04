@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -51,16 +50,16 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.getDetailMovie(currentMovie).observe(viewLifecycleOwner) { resource ->
-                when (resource) {
-                    is Resource.Success -> setupUI(resource.data)
-                    is Resource.Loading -> showProgressbar(true)
-                    is Resource.Error -> showProgressbar(false)
-                    else -> Unit
-                }
+        viewModel.detailMovie.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Success -> setupUI(resource.data)
+                is Resource.Loading -> showProgressbar(true)
+                is Resource.Error -> showProgressbar(false)
+                else -> Unit
             }
         }
+
+        viewModel.initDetailMovie(currentMovie)
     }
 
     private fun setupUI(movie: Movie?) {
@@ -122,24 +121,24 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.getSimilarMovieOf(currentMovie).observe(viewLifecycleOwner) { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        if (resource.data?.isEmpty() == true) {
-                            binding.tvNoSimilarText.visibility = View.VISIBLE
-                            binding.rvSimilarContentDetail.visibility = View.GONE
-                        } else {
-                            binding.tvNoSimilarText.visibility = View.GONE
-                            binding.rvSimilarContentDetail.visibility = View.VISIBLE
-                            similarContentListAdapter.submitList(resource.data)
-                        }
+        viewModel.similarMovies.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    if (resource.data?.isEmpty() == true) {
+                        binding.tvNoSimilarText.visibility = View.VISIBLE
+                        binding.rvSimilarContentDetail.visibility = View.GONE
+                    } else {
+                        binding.tvNoSimilarText.visibility = View.GONE
+                        binding.rvSimilarContentDetail.visibility = View.VISIBLE
+                        similarContentListAdapter.submitList(resource.data)
                     }
-                    is Resource.Error -> binding.tvNoSimilarText.visibility = View.VISIBLE
-                    else -> Unit
                 }
+                is Resource.Error -> binding.tvNoSimilarText.visibility = View.VISIBLE
+                else -> Unit
             }
         }
+
+        viewModel.initSimilarMovies(currentMovie)
     }
 
     private fun showProgressbar(state: Boolean) {

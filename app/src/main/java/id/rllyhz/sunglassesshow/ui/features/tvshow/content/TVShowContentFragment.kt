@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -51,16 +50,16 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.getDetailTvShow(currentTvShow).observe(viewLifecycleOwner) { resource ->
-                when (resource) {
-                    is Resource.Success -> setupUI(resource.data)
-                    is Resource.Loading -> showProgressbar(true)
-                    is Resource.Error -> showProgressbar(false)
-                    else -> Unit
-                }
+        viewModel.detailTVShow.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Success -> setupUI(resource.data)
+                is Resource.Loading -> showProgressbar(true)
+                is Resource.Error -> showProgressbar(false)
+                else -> Unit
             }
         }
+
+        viewModel.initDetailTVShow(currentTvShow)
     }
 
     private fun setupUI(tvShow: TVShow?) {
@@ -120,27 +119,27 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.getSimilarTVShowsOf(currentTvShow).observe(viewLifecycleOwner) { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        if (resource.data?.isEmpty() == true) {
-                            binding.tvNoSimilarText.visibility = View.VISIBLE
-                            binding.rvSimilarContentDetail.visibility = View.GONE
-                        } else {
-                            binding.tvNoSimilarText.visibility = View.GONE
-                            binding.rvSimilarContentDetail.visibility = View.VISIBLE
-                            similarContentListAdapter.submitList(resource.data)
-                        }
-                    }
-                    is Resource.Error -> {
+        viewModel.similarTVShows.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    if (resource.data?.isEmpty() == true) {
                         binding.tvNoSimilarText.visibility = View.VISIBLE
                         binding.rvSimilarContentDetail.visibility = View.GONE
+                    } else {
+                        binding.tvNoSimilarText.visibility = View.GONE
+                        binding.rvSimilarContentDetail.visibility = View.VISIBLE
+                        similarContentListAdapter.submitList(resource.data)
                     }
-                    else -> Unit
                 }
+                is Resource.Error -> {
+                    binding.tvNoSimilarText.visibility = View.VISIBLE
+                    binding.rvSimilarContentDetail.visibility = View.GONE
+                }
+                else -> Unit
             }
         }
+
+        viewModel.initSimilarTVShows(currentTvShow)
     }
 
     override fun onClick(tvShow: TVShow) {
