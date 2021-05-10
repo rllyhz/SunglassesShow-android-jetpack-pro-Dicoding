@@ -18,8 +18,28 @@
       "overview": "Drama following the lives of a group of midwives working in the poverty-stricken East End of London during the 1950s, based on the best-selling memoirs of Jennifer Worth.",
       "poster_path": "/b1p0nL00x563ACkcmGNIRP4ZnkA.jpg",
       "vote_average": 7.1,
-      "vote_count": 120,
-      "popularity": 24.829
+      "vote_count": 121,
+      "popularity": 22.998
+    },
+    {
+      "original_name": "Doctors",
+      "id": 5080,
+      "name": "Doctors",
+      "vote_count": 29,
+      "vote_average": 4.7,
+      "first_air_date": "2000-03-27",
+      "poster_path": "/thZKqMWevSJVTeAiedy40umvz11.jpg",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "original_language": "en",
+      "backdrop_path": null,
+      "overview": "Set in the fictional Midlands town of Letherbridge, defined as being close to the city of Birmingham, this soap opera follows the staff and families of a doctor's surgery.",
+      "origin_country": [
+        "GB"
+      ],
+      "popularity": 25.987
     },
     {
       "backdrop_path": "/lOluFMXTGaXbdwuLd003odAwfqf.jpg",
@@ -40,7 +60,7 @@
       "vote_count": 31,
       "vote_average": 8.5,
       "name": "Kill Me, Heal Me",
-      "popularity": 22.619
+      "popularity": 23.079
     },
     {
       "backdrop_path": "/AekZz93QCISOYFELhxyRCSzcAit.jpg",
@@ -59,7 +79,7 @@
       "poster_path": "/seVDT97dMUrmVGH6Ebvj9pv8rp5.jpg",
       "vote_average": 7.6,
       "vote_count": 162,
-      "popularity": 23.896
+      "popularity": 21.171
     },
     {
       "id": 62650,
@@ -78,7 +98,7 @@
       "overview": "An emotional thrill ride through the day-to-day chaos of the city's most explosive hospital and the courageous team of doctors who hold it together. They will tackle unique new cases inspired by topical events, forging fiery relationships in the pulse-pounding pandemonium of the emergency room.",
       "vote_average": 8.3,
       "backdrop_path": "/sHjNS2lYyEjwjjQXTZmdyMJ29bI.jpg",
-      "popularity": 114.377
+      "popularity": 141.258
     },
     {
       "overview": "Set in downtown New York in 1900, 'The Knick' is centered on the Knickerbocker Hospital and the groundbreaking surgeons, nurses and staff who work there, pushing the bounds of medicine in a time of astonishingly high mortality rates and zero antibiotics.\n\nJohn Thackery is a brilliant surgeon pioneering new methods in the field, despite his secret addiction to cocaine. He leads a team of doctors including his protégé Dr. Everett Gallinger; the young Dr. Bertie Chickering Jr. and Dr. Algernon Edwards, a promising surgeon who's been recently thrust upon him. The lively cast of characters at the hospital also includes Cornelia Robertson, the daughter of its benefactor, Captain August Robertson; surly ambulance driver Tom Cleary; Lucy Elkins; a fresh-faced nurse from the country; the crooked hospital administrator Herman Barrow; and Sister Harriet, a nun who isn't afraid to speak her mind.",
@@ -97,7 +117,7 @@
         "US"
       ],
       "vote_average": 8.0,
-      "popularity": 15.121
+      "popularity": 13.3
     },
     {
       "original_name": "Chicago Hope",
@@ -117,46 +137,26 @@
       "origin_country": [
         "US"
       ],
-      "popularity": 51.117
+      "popularity": 51.282
     },
     {
-      "original_name": "Doctors",
-      "id": 5080,
-      "name": "Doctors",
-      "vote_count": 29,
-      "vote_average": 4.7,
-      "first_air_date": "2000-03-27",
-      "poster_path": "/thZKqMWevSJVTeAiedy40umvz11.jpg",
-      "genre_ids": [
-        18,
-        10766
-      ],
-      "original_language": "en",
-      "backdrop_path": null,
-      "overview": "Set in the fictional Midlands town of Letherbridge, defined as being close to the city of Birmingham, this soap opera follows the staff and families of a doctor's surgery.",
-      "origin_country": [
-        "GB"
-      ],
-      "popularity": 26.216
-    },
-    {
-      "vote_average": 8.5,
-      "id": 57647,
-      "overview": "As a child, Park Shi On was sent to a specialized care center, where he discovered genius capacities for his autism. Coupled with an exceptional memory and keen spatial skills, the young savant eventually entered pediatric residency, where he developed into a promising surgeon. However, his mental and emotional development seems to have stopped at 10-years-old, which makes for incredible conflicts in and out of the O.R., especially with the hotheaded surgeon Kim Do Han. Despite warm hearted and fair colleagues like Cha Yoon Seo and Han Jin Wook , it’s a fierce and competitive adult world. One cannot simply tell Shi On to “grow up.”",
       "backdrop_path": "/uH24pUgaB9NWJYQxFrCqTCblHGe.jpg",
-      "original_name": "굿 닥터",
-      "origin_country": [
-        "KR"
-      ],
-      "vote_count": 16,
-      "original_language": "ko",
+      "first_air_date": "2013-08-05",
       "genre_ids": [
         18
       ],
-      "poster_path": "/4pR9FCgtCj8mYFLh7tb2avCwdOy.jpg",
+      "id": 57647,
       "name": "Good Doctor",
-      "first_air_date": "2013-08-05",
-      "popularity": 38.555
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "original_name": "굿 닥터",
+      "overview": "As a child, Park Shi On was sent to a specialized care center, where he discovered genius capacities for his autism. Coupled with an exceptional memory and keen spatial skills, the young savant eventually entered pediatric residency, where he developed into a promising surgeon. However, his mental and emotional development seems to have stopped at 10-years-old, which makes for incredible conflicts in and out of the O.R., especially with the hotheaded surgeon Kim Do Han. Despite warm hearted and fair colleagues like Cha Yoon Seo and Han Jin Wook , it’s a fierce and competitive adult world. One cannot simply tell Shi On to “grow up.”",
+      "poster_path": "/4pR9FCgtCj8mYFLh7tb2avCwdOy.jpg",
+      "vote_average": 8.5,
+      "vote_count": 16,
+      "popularity": 28.893
     },
     {
       "backdrop_path": "/2fzV1ptJCbZ4xvJZrOofmjeeS5X.jpg",
@@ -176,7 +176,7 @@
       "poster_path": "/1OGQisCT1T5ChkzZVdFqhX4O1G.jpg",
       "vote_average": 6.8,
       "vote_count": 59,
-      "popularity": 20.609
+      "popularity": 14.851
     },
     {
       "backdrop_path": "/2tlRNzwRf65pWj1o2tSinhCLU6W.jpg",
@@ -195,27 +195,7 @@
       "vote_count": 129,
       "vote_average": 7.5,
       "name": "The Night Shift",
-      "popularity": 19.682
-    },
-    {
-      "original_language": "en",
-      "poster_path": "/u1z05trCA7AuSuDhi365grwdos1.jpg",
-      "first_air_date": "2001-10-02",
-      "vote_count": 963,
-      "id": 4556,
-      "vote_average": 7.9,
-      "name": "Scrubs",
-      "origin_country": [
-        "US"
-      ],
-      "overview": "In the unreal world of Sacred Heart Hospital, John \"J.D.\" Dorian learns the ways of medicine, friendship and life.",
-      "backdrop_path": "/cqkGeSKrX7hKGYdsr3qiq8THyDo.jpg",
-      "original_name": "Scrubs",
-      "genre_ids": [
-        35,
-        18
-      ],
-      "popularity": 98.821
+      "popularity": 24.658
     },
     {
       "backdrop_path": "/4cLQlQxPoRR0xdkNCgIHPYVgPvr.jpg",
@@ -233,8 +213,8 @@
       "overview": "ER explores the inner workings of an urban teaching hospital and the critical issues faced by the dedicated physicians and staff of its overburdened emergency room.",
       "poster_path": "/dPj3iAXq0A5L5kwpHh32j0iccY6.jpg",
       "vote_average": 7.7,
-      "vote_count": 433,
-      "popularity": 55.845
+      "vote_count": 434,
+      "popularity": 54.908
     },
     {
       "backdrop_path": "/rAw00EgDQSA89667sgpe4uawCMN.jpg",
@@ -253,7 +233,7 @@
       "poster_path": "/qb3vyGwdVg37CX3nwHmgXXLjDpb.jpg",
       "vote_average": 5.1,
       "vote_count": 51,
-      "popularity": 47.937
+      "popularity": 41.633
     },
     {
       "original_name": "Holby City",
@@ -273,14 +253,14 @@
       "origin_country": [
         "GB"
       ],
-      "popularity": 30.528
+      "popularity": 23.575
     },
     {
       "original_name": "태양의 후예",
       "first_air_date": "2016-02-24",
       "id": 65143,
       "overview": "A drama about the love of people who get closer as they learn to be considerate of each other in desperate times and sacrifices made by people who throw themselves into natural disasters.",
-      "vote_count": 350,
+      "vote_count": 351,
       "vote_average": 8.5,
       "poster_path": "/5JECa3CZfgVQFabmiZKm1L3XSXj.jpg",
       "backdrop_path": "/y5Kx5ItQc1D1R4mZ5TUQ1QuSTou.jpg",
@@ -293,7 +273,7 @@
         "KR"
       ],
       "original_language": "ko",
-      "popularity": 29.111
+      "popularity": 16.856
     },
     {
       "first_air_date": "2004-11-16",
@@ -311,10 +291,30 @@
       "id": 1408,
       "overview": "Dr. Gregory House, a drug-addicted, unconventional, misanthropic medical genius, leads a team of diagnosticians at the fictional Princeton–Plainsboro Teaching Hospital in New Jersey.",
       "name": "House",
-      "vote_count": 3480,
+      "vote_count": 3494,
       "vote_average": 8.6,
       "backdrop_path": "/h3vViR087OJlk4PedNt5JLIKOOi.jpg",
-      "popularity": 242.48
+      "popularity": 254.081
+    },
+    {
+      "overview": "The story of Hugh Knight, a rising heart surgeon who is gifted, charming and infallible. He is a hedonist who, due to his sheer talent, believes he can live outside the rules. His \"work hard, play harder\" philosophy is about to come back and bite him.",
+      "id": 67728,
+      "backdrop_path": "/1RPmoc8eADJMoVQG22KQdouZIrR.jpg",
+      "vote_count": 16,
+      "genre_ids": [
+        18,
+        35
+      ],
+      "first_air_date": "2016-09-14",
+      "original_language": "en",
+      "original_name": "Doctor Doctor",
+      "name": "Doctor Doctor",
+      "poster_path": "/jzNetX2hhqrbVUjKnc2EYAlOniq.jpg",
+      "origin_country": [
+        "AU"
+      ],
+      "vote_average": 7.8,
+      "popularity": 17.219
     },
     {
       "poster_path": "/wKTAz8fkoXJoHqPpi4ArAUGDtco.jpg",
@@ -322,7 +322,7 @@
       "overview": "Dr. Max Goodwin, the hospital's newest medical director, sets out to tear up the bureaucracy and provide exceptional care.",
       "first_air_date": "2018-09-25",
       "id": 80350,
-      "vote_count": 346,
+      "vote_count": 355,
       "original_name": "New Amsterdam",
       "origin_country": [
         "US"
@@ -333,7 +333,7 @@
       "name": "New Amsterdam",
       "original_language": "en",
       "backdrop_path": "/kXdfhKazlnRhnyc687DDdZJPaoJ.jpg",
-      "popularity": 169.19
+      "popularity": 174.42
     },
     {
       "backdrop_path": "/9oVp0xfKW2igxDEo5wr3JTMQBub.jpg",
@@ -342,7 +342,7 @@
       ],
       "original_language": "en",
       "poster_path": "/kG3AlyUz63O8LFS2jJQdmOo7qQI.jpg",
-      "vote_count": 795,
+      "vote_count": 799,
       "overview": "A tough, brilliant senior resident guides an idealistic young doctor through his first day, pulling back the curtain on what really happens, both good and bad, in modern-day medicine.",
       "vote_average": 8.5,
       "id": 74016,
@@ -352,26 +352,26 @@
         "US"
       ],
       "name": "The Resident",
-      "popularity": 94.836
+      "popularity": 112.461
     },
     {
-      "overview": "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
-      "original_name": "The Good Doctor",
-      "origin_country": [
-        "US"
-      ],
+      "first_air_date": "2017-09-25",
+      "vote_average": 8.6,
+      "id": 71712,
+      "vote_count": 8256,
+      "poster_path": "/53P8oHo9cfOsgb1cLxBi4pFY0ja.jpg",
       "backdrop_path": "/mZjZgY6ObiKtVuKVDrnS9VnuNlE.jpg",
+      "overview": "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
       "genre_ids": [
         18
       ],
-      "vote_count": 8217,
-      "first_air_date": "2017-09-25",
-      "id": 71712,
-      "poster_path": "/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg",
-      "vote_average": 8.6,
-      "original_language": "en",
       "name": "The Good Doctor",
-      "popularity": 1393.791
+      "original_language": "en",
+      "origin_country": [
+        "US"
+      ],
+      "original_name": "The Good Doctor",
+      "popularity": 1303.627
     },
     {
       "original_name": "Critical",
@@ -390,9 +390,9 @@
       "origin_country": [
         "GB"
       ],
-      "popularity": 1.847
+      "popularity": 2.352
     }
   ],
   "total_pages": 9,
-  "total_results": 171
+  "total_results": 178
 }
