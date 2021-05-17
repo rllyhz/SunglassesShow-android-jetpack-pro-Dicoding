@@ -49,7 +49,7 @@ class DetailViewModelTest {
     var coroutinesTestRule = CoroutineTestRule()
 
     private val itemSizeForTesting = 20
-    private val movieIdForTesting = 399566
+    private val movieIdForTesting = 460465
     private val tvShowIdForTesting = 1416
 
     @Before

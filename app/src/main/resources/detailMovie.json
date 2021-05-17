@@ -1,36 +1,49 @@
 {
   "adult": false,
-  "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
-  "belongs_to_collection": {
-    "id": 535313,
-    "name": "Godzilla Collection",
-    "poster_path": "/inNN466SKHNjbGmpfhfsaPQNleS.jpg",
-    "backdrop_path": "/oboBn4VYB79uDxnyIri0Nt3U3N2.jpg"
-  },
-  "budget": 200000000,
+  "backdrop_path": "/6ELCZlTA5lGUops70hKdB83WJxH.jpg",
+  "belongs_to_collection": null,
+  "budget": 20000000,
   "genres": [
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
     {
       "id": 28,
       "name": "Action"
     },
     {
-      "id": 18,
-      "name": "Drama"
+      "id": 14,
+      "name": "Fantasy"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
     }
   ],
-  "homepage": "https://www.godzillavskong.net/",
-  "id": 399566,
-  "imdb_id": "tt5034838",
+  "homepage": "https://www.mortalkombatmovie.net",
+  "id": 460465,
+  "imdb_id": "tt0293429",
   "original_language": "en",
-  "original_title": "Godzilla vs. Kong",
-  "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
-  "popularity": 2676.239,
-  "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
+  "original_title": "Mortal Kombat",
+  "overview": "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
+  "popularity": 3477.711,
+  "poster_path": "/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg",
   "production_companies": [
+    {
+      "id": 76907,
+      "logo_path": "/wChlWsVgwSd4ZWxTIm8PTEcaESz.png",
+      "name": "Atomic Monster",
+      "origin_country": "US"
+    },
+    {
+      "id": 8000,
+      "logo_path": "/f8NwLg72BByt3eav7lX1lcJfe60.png",
+      "name": "Broken Road Productions",
+      "origin_country": "US"
+    },
+    {
+      "id": 12,
+      "logo_path": "/iaYpEp3LQmb8AfAtmTvpqd4149c.png",
+      "name": "New Line Cinema",
+      "origin_country": "US"
+    },
     {
       "id": 174,
       "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
@@ -38,32 +51,52 @@
       "origin_country": "US"
     },
     {
-      "id": 923,
-      "logo_path": "/5UQsZrfbfG2dYJbx8DxfoTr2Bvu.png",
-      "name": "Legendary Pictures",
+      "id": 2806,
+      "logo_path": "/vxOhCbpsRBh10m6LZ3HyImTYpPY.png",
+      "name": "South Australian Film Corporation",
+      "origin_country": "AU"
+    },
+    {
+      "id": 13033,
+      "logo_path": null,
+      "name": "NetherRealm Studios",
       "origin_country": "US"
     }
   ],
   "production_countries": [
     {
+      "iso_3166_1": "AU",
+      "name": "Australia"
+    },
+    {
       "iso_3166_1": "US",
       "name": "United States of America"
     }
   ],
-  "release_date": "2021-03-24",
-  "revenue": 415590000,
-  "runtime": 113,
+  "release_date": "2021-04-07",
+  "revenue": 50115000,
+  "runtime": 110,
   "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    },
     {
       "english_name": "English",
       "iso_639_1": "en",
       "name": "English"
+    },
+    {
+      "english_name": "Mandarin",
+      "iso_639_1": "zh",
+      "name": "普通话"
     }
   ],
   "status": "Released",
-  "tagline": "One Will Fall",
-  "title": "Godzilla vs. Kong",
+  "tagline": "Get over here.",
+  "title": "Mortal Kombat",
   "video": false,
-  "vote_average": 8.1,
-  "vote_count": 5335
+  "vote_average": 7.6,
+  "vote_count": 2462
 }
