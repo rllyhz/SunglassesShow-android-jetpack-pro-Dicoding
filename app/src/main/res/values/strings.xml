@@ -15,11 +15,12 @@
     <string name="rate_format">Rate: %s</string>
     <string name="status_format">Status: %s</string>
     <string name="released_at_format">Released at: %s</string>
-    <string name="detail_duration_dummy_data">1h 23m</string>
+    <string name="detail_duration_dummy_data">--h --m</string>
     <string name="detail_genres_dummy">-, -, -</string>
     <string name="detail_rate_dummy">Rate: -</string>
     <string name="detail_status_dummy">Status: -</string>
     <string name="detail_no_similar_contents">No Similar Contents</string>
     <string name="detail_overview_label">Overview</string>
     <string name="detail_released_at_dummy">Released at: -</string>
+    <string name="menu_item_favorites">Favorites</string>
 </resources>

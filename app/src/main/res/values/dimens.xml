@@ -3,4 +3,6 @@
     <dimen name="item_list_card_height">290dp</dimen>
     <dimen name="poster_width">136dp</dimen>
     <dimen name="poster_height">196dp</dimen>
+
+    <dimen name="toggle_btn_fav_icon_size">32dp</dimen>
 </resources>
