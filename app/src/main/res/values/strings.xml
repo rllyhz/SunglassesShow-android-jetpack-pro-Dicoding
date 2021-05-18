@@ -22,5 +22,10 @@
     <string name="detail_no_similar_contents">No Similar Contents</string>
     <string name="detail_overview_label">Overview</string>
     <string name="detail_released_at_dummy">Released at: -</string>
+
+    <string name="favorites_title">Favorites</string>
+    <string name="favorites_movie">Fav Movies</string>
+    <string name="favorites_tv_show">Fav Tv Shows</string>
+
     <string name="menu_item_favorites">Favorites</string>
 </resources>
