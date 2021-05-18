@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
@@ -12,6 +13,7 @@ import id.rllyhz.sunglassesshow.databinding.ActivityDetailBinding
 import id.rllyhz.sunglassesshow.ui.features.movie.content.MovieContentFragment
 import id.rllyhz.sunglassesshow.ui.features.tvshow.content.TVShowContentFragment
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private var currentMovie: Movie? = null
