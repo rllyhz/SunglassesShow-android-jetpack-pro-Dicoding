@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import id.rllyhz.sunglassesshow.R
+import id.rllyhz.sunglassesshow.ui.favorites.movie.FavMovieListFragment
+import id.rllyhz.sunglassesshow.ui.favorites.tvshow.FavTVShowListFragment
 
 class FavoritesPagerAdapter(
     private val context: Context,
@@ -14,8 +16,8 @@ class FavoritesPagerAdapter(
 
     override fun getItem(position: Int): Fragment =
         when (position) {
-            0 -> Fragment()
-            1 -> Fragment()
+            0 -> FavMovieListFragment.newInstance()
+            1 -> FavTVShowListFragment.newInstance()
             else -> Fragment()
         }
 

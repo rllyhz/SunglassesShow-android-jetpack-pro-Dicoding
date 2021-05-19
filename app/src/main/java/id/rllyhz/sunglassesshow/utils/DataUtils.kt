@@ -5,6 +5,8 @@ import android.icu.text.SimpleDateFormat
 import android.os.Build
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.data.source.remote.response.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -97,6 +99,12 @@ fun TVShowDetailResponse.asModels(): TVShow =
         status
     )
 
+
+fun Movie.asFavModel() =
+    FavMovie(this.id, posterPath, backdropPath, title, year, rating)
+
+fun TVShow.asFavModel() =
+    FavTVShow(this.id, posterPath, backdropPath, title, year, rating)
 
 fun Movie.getDateInString() = getDateInString(releasedAt)
 fun TVShow.getDateInString() = getDateInString(releasedAt)

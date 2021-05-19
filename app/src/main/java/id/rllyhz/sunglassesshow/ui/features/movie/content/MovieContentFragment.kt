@@ -1,10 +1,12 @@
 package id.rllyhz.sunglassesshow.ui.features.movie.content
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,10 @@ import id.rllyhz.sunglassesshow.ui.detail.DetailViewModel
 import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 import id.rllyhz.sunglassesshow.utils.getDateInString
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
     private var _binding: FragmentContentBinding? = null
@@ -42,13 +48,14 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
 
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelFactory.getInstance()
+            ViewModelFactory.getInstance(requireContext().applicationContext as Application)
         )[DetailViewModel::class.java]
 
         currentMovie = arguments?.getParcelable(PARAMS_MOVIE)!!
 
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
+        binding.rvSimilarContentDetail.adapter = similarContentListAdapter
 
         viewModel.detailMovie.observe(viewLifecycleOwner) { resource ->
             when (resource) {
@@ -60,6 +67,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         }
 
         viewModel.initDetailMovie(currentMovie)
+        viewModel.isMovieFavorited(currentMovie)
     }
 
     private fun setupUI(movie: Movie?) {
@@ -104,10 +112,31 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                     .into(ivPosterDetail)
             }
 
+            viewModel.isMovieFavorited.observe(viewLifecycleOwner) { isFavorited ->
+                toggleBtnFav.isChecked = isFavorited
+            }
+
             setupSimilarContentUI()
 
             ivViewTrailerDetail.setOnClickListener { }
             btnWatchDetail.setOnClickListener { }
+
+            toggleBtnFav.setOnClickListener {
+                GlobalScope.launch(Dispatchers.IO) {
+                    movie?.apply {
+                        when (toggleBtnFav.isChecked) {
+                            false -> {
+                                viewModel.deleteFavMovie(this)
+                                showToast(requireContext().getString(R.string.favorites_deleted_movie_message))
+                            }
+                            true -> {
+                                viewModel.addFavMovie(this)
+                                showToast(requireContext().getString(R.string.favorites_added_movie_message))
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -165,6 +194,12 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                 progressbarSimilarContents.visibility = View.VISIBLE
             else
                 progressbarSimilarContents.visibility = View.GONE
+        }
+    }
+
+    private suspend fun showToast(message: String) {
+        withContext(Dispatchers.Main) {
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
     }
 

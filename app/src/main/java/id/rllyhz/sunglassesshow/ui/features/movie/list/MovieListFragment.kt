@@ -1,5 +1,6 @@
 package id.rllyhz.sunglassesshow.ui.features.movie.list
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -39,7 +40,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
 
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelFactory.getInstance()
+            ViewModelFactory.getInstance(requireContext().applicationContext as Application)
         )[MainViewModel::class.java]
 
         movieListAdapter = MovieListAdapter()

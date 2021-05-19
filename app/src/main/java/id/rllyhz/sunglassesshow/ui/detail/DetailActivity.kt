@@ -1,5 +1,6 @@
 package id.rllyhz.sunglassesshow.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ActivityDetailBinding
+import id.rllyhz.sunglassesshow.ui.favorites.FavoritesActivity
 import id.rllyhz.sunglassesshow.ui.features.movie.content.MovieContentFragment
 import id.rllyhz.sunglassesshow.ui.features.tvshow.content.TVShowContentFragment
 
@@ -98,6 +100,9 @@ class DetailActivity : AppCompatActivity() {
                 true
             }
             R.id.menu_item_favorites -> {
+                startActivity(
+                    Intent(this@DetailActivity, FavoritesActivity::class.java)
+                )
                 true
             }
             else -> onOptionsItemSelected(item)

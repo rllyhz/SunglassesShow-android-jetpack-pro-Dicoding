@@ -49,12 +49,12 @@ class TVShowListAdapter :
                     tvShow.year.toString()
                 )
 
-                root.setOnClickListener { movieItemCallback?.onClick(tvShow) }
+                root.setOnClickListener { tvShowItemCallback?.onClick(tvShow) }
             }
         }
     }
 
-    // movie comparator
+    // tvshow comparator
     class TVShowComparator : DiffUtil.ItemCallback<TVShow>() {
         override fun areItemsTheSame(oldItem: TVShow, newItem: TVShow): Boolean =
             oldItem.id == newItem.id
@@ -69,9 +69,9 @@ class TVShowListAdapter :
         fun onClick(tvShow: TVShow)
     }
 
-    private var movieItemCallback: TVShowItemCallback? = null
+    private var tvShowItemCallback: TVShowItemCallback? = null
 
     fun setItemCallback(callback: TVShowItemCallback) {
-        movieItemCallback = callback
+        tvShowItemCallback = callback
     }
 }
