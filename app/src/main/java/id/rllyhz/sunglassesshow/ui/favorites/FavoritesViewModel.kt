@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 class FavoritesViewModel(
     private val repository: SunGlassesShowRepository
 ) : ViewModel() {
-
     private var _favMovies: LiveData<PagedList<FavMovie>> = MutableLiveData()
     fun favMovies(): LiveData<PagedList<FavMovie>> = _favMovies
 
@@ -34,14 +33,14 @@ class FavoritesViewModel(
         initAllFavTVShows()
     }
 
-    private fun initAllFavMovies() {
+    fun initAllFavMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repository.getFavMovies()
             _favMovies = result
         }
     }
 
-    private fun initAllFavTVShows() {
+    fun initAllFavTVShows() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repository.getFavTVShows()
             _favTVShows = result

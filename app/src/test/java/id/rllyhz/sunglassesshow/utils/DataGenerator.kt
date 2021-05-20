@@ -4,6 +4,8 @@ import android.util.Log
 import com.google.gson.Gson
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverMoviesResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverTVShowsResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.MovieDetailResponse
@@ -62,4 +64,30 @@ object DataGenerator {
             loadAndParseJsonFile("similarTVShowsOfTVShowId.json"),
             DiscoverTVShowsResponse::class.java
         ).tvShows.asModels()
+
+    fun getAllFavMovies(): List<FavMovie> {
+        val movies = getAllMovies()
+        val favMovies = ArrayList<FavMovie>()
+
+        for (i in 0..5) {
+            favMovies.add(
+                movies[i].asFavModel()
+            )
+        }
+
+        return favMovies
+    }
+
+    fun getAllFavTVShows(): List<FavTVShow> {
+        val tvShows = getAllTVShows()
+        val favTVShows = ArrayList<FavTVShow>()
+
+        for (i in 0..5) {
+            favTVShows.add(
+                tvShows[i].asFavModel()
+            )
+        }
+
+        return favTVShows
+    }
 }
