@@ -33,10 +33,10 @@ class SunGlassesShowRepository(
     override suspend fun getSimilarTVShowsOf(id: Int): LiveData<Resource<List<TVShow>>> =
         remoteDataSource.getSimilarTVShowsOf(id)
 
-    override fun getFavMovies(): LiveData<PagedList<FavMovie>> =
+    override suspend fun getFavMovies(): LiveData<PagedList<FavMovie>> =
         LivePagedListBuilder(localDataSource.getFavMovies(), pagingConfig).build()
 
-    override fun getFavTVShows(): LiveData<PagedList<FavTVShow>> =
+    override suspend fun getFavTVShows(): LiveData<PagedList<FavTVShow>> =
         LivePagedListBuilder(localDataSource.getFavTVShows(), pagingConfig).build()
 
     override suspend fun getFavMovieById(id: Int): FavMovie? =

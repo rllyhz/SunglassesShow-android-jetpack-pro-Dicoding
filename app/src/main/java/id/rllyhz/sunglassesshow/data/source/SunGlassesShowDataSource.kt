@@ -21,9 +21,9 @@ interface SunGlassesShowDataSource {
 
     suspend fun getSimilarTVShowsOf(id: Int): LiveData<Resource<List<TVShow>>>
 
-    fun getFavMovies(): LiveData<PagedList<FavMovie>>
+    suspend fun getFavMovies(): LiveData<PagedList<FavMovie>>
 
-    fun getFavTVShows(): LiveData<PagedList<FavTVShow>>
+    suspend fun getFavTVShows(): LiveData<PagedList<FavTVShow>>
 
     suspend fun getFavMovieById(id: Int): FavMovie?
 
