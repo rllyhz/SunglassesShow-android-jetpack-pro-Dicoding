@@ -101,7 +101,7 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
     override fun onClick(favTVShow: FavTVShow) {
         with(Intent(requireActivity(), DetailActivity::class.java)) {
             putExtra(DetailActivity.EXTRA_CONTENT_TV_SHOW, favTVShow.asModel())
-            putExtra(DetailActivity.GOTO_MOVIE_DETAIL, false)
+            putExtra(DetailActivity.GOTO_TV_SHOW_DETAIL, true)
 
             requireActivity().startActivity(this)
         }
