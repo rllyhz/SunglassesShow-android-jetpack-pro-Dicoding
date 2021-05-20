@@ -226,4 +226,61 @@ class MainActivityTest {
             )
         )
     }
+
+    @Test
+    fun detailActivitySimulation_addMovieToFav() {
+        onView(withId(R.id.rv_movie_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_movie_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                positionItemForTesting,
+                click()
+            )
+        )
+
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_similar_content_label_detail)).check(matches(isDisplayed()))
+            .perform(swipeUp())
+
+        onView(withId(R.id.toggle_btn_fav)).check(matches(isDisplayed())).perform(click())
+
+        onView(withId(R.id.menu_item_favorites)).check(matches(isDisplayed())).perform(click())
+        Thread.sleep(2000)
+        onView(withId(R.id.view_pager_favorites)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun detailActivitySimulation_addTVShowToFav() {
+        onView(withId(R.id.view_pager_main)).check(matches(isDisplayed()))
+        onView(withId(R.id.view_pager_main)).perform(swipeLeft())
+        onView(withId(R.id.rv_tvshow_list)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.rv_tvshow_list)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                tvShowsDummyData.size
+            )
+        )
+
+        onView(withId(R.id.rv_tvshow_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                positionItemForTesting,
+                click()
+            )
+        )
+
+        onView(withId(R.id.iv_view_trailer_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_synopsis_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.btn_watch_detail)).check(matches(isDisplayed())).perform(swipeUp())
+        onView(withId(R.id.tv_similar_content_label_detail)).check(matches(isDisplayed()))
+            .perform(swipeUp())
+
+        onView(withId(R.id.toggle_btn_fav)).check(matches(isDisplayed())).perform(click())
+
+        onView(withId(R.id.menu_item_favorites)).check(matches(isDisplayed())).perform(click())
+        Thread.sleep(2000)
+        onView(withId(R.id.view_pager_favorites)).check(matches(isDisplayed()))
+        onView(withId(R.id.view_pager_favorites)).perform(swipeLeft())
+        onView(withId(R.id.rv_fav_tvshow_list)).check(matches(isDisplayed()))
+    }
 }
