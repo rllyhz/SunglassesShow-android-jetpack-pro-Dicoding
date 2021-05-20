@@ -1,6 +1,19 @@
 **Testing Scenario**
 
 **Unit Testing**
+- **SunGlassesShowRepositoryTest**
+    - Melakukan fetching movies list, memastikan data tersebut tidak null dan memiliki jumlah item sesuai yang diharapkan.
+    - Melakukan fetching tv shows list, memastikan data tersebut tidak null dan memiliki jumlah item sesuai yang diharapkan.
+    - Melakukan fetching detail dari movie berdasarkan id yang diberikan, memastikan data tersebut tidak null dan memiliki nilai properti sesuai yang diharapkan.
+    - Melakukan fetching detail dari tv show berdasarkan id yang diberikan, memastikan data tersebut tidak null dan memiliki nilai properti sesuai yang diharapkan.
+    - Melakukan fetching similar content dari movie berdasarkan id yang diberikan, memastikan data tersebut tidak null dan memiliki jumlah item sesuai yang diharapkan.
+    - Melakukan fetching similar content dari tv show berdasarkan id yang diberikan, memastikan data tersebut tidak null dan memiliki jumlah item sesuai yang diharapkan.
+    - Memuat semua data favorite movies dan memastikan data tersebut tidak null.
+    - Memuat semua data favorite tv shows dan memastikan data tersebut tidak null.
+    - Melakukan pengujian pada fungsi addFavMovie dan deleteFavMovie dan memastikan fungsi tersebut mengembalikan nilai sesuai yang diharapkan.
+    - Melakukan pengujian pada fungsi addFavTVShow dan deleteFavTVShow dan memastikan fungsi tersebut mengembalikan nilai sesuai yang diharapkan.
+    - Memuat data favorite movie berdasarkan id yang diberikan dan memastikan data tersebut tidak null.
+    - Memuat data favorite tv show berdasarkan id yang diberikan dan memastikan data tersebut tidak null.
 
 - **MainViewModelTest**
     - Memanipulasi data ketika pemanggilan data movies di kelas SunGlassesShowRepository.

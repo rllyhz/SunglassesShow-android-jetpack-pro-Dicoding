@@ -3,12 +3,16 @@ package id.rllyhz.sunglassesshow.data.source
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import com.nhaarman.mockitokotlin2.verify
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
+import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.utils.CoroutineTestRule
 import id.rllyhz.sunglassesshow.utils.DataGenerator
 import id.rllyhz.sunglassesshow.utils.Resource
+import id.rllyhz.sunglassesshow.utils.asFavModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
@@ -37,6 +41,18 @@ class SunGlassesShowRepositoryTest {
 
     @Mock
     private lateinit var detailTVShowObserver: Observer<Resource<TVShow>>
+
+    @Mock
+    private lateinit var favMoviesObserver: Observer<PagedList<FavMovie>>
+
+    @Mock
+    private lateinit var favTVShowsObserver: Observer<PagedList<FavTVShow>>
+
+    @Mock
+    private lateinit var favMoviesPagedList: PagedList<FavMovie>
+
+    @Mock
+    private lateinit var favTVShowsPagedList: PagedList<FavTVShow>
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -193,4 +209,90 @@ class SunGlassesShowRepositoryTest {
             repository.getSimilarTVShowsOf(tvShowIdForTesting).observeForever(tvShowsObserver)
             verify(tvShowsObserver).onChanged(similarTVShowsDummyResource)
         }
+
+    @Test
+    fun `get all favorite movies and they must not be null`() {
+        `when`(favMoviesPagedList.size).thenReturn(6)
+        val favMoviesDummyData = MutableLiveData(favMoviesPagedList)
+
+        `when`(repository.getFavMovies()).thenReturn(favMoviesDummyData)
+        val actualData = repository.getFavMovies().value
+        verify(repository).getFavMovies()
+        assertNotNull(actualData)
+        assertEquals(6, actualData?.size)
+
+        repository.getFavMovies().observeForever(favMoviesObserver)
+        favMoviesObserver.onChanged(favMoviesPagedList)
+    }
+
+    @Test
+    fun `get all favorite tv shows and they must not be null`() {
+        `when`(favTVShowsPagedList.size).thenReturn(6)
+        val favTVShowsDummyData = MutableLiveData(favTVShowsPagedList)
+
+        `when`(repository.getFavTVShows()).thenReturn(favTVShowsDummyData)
+        val actualData = repository.getFavTVShows().value
+        verify(repository).getFavTVShows()
+        assertNotNull(actualData)
+        assertEquals(6, actualData?.size)
+
+        repository.getFavTVShows().observeForever(favTVShowsObserver)
+        favTVShowsObserver.onChanged(favTVShowsPagedList)
+    }
+
+    @Test
+    fun `add and then remove favorite movie`() = runBlockingTest {
+        val favMovieDataDummy = DataGenerator.getDetailMovie().asFavModel()
+
+        // adding scenario
+        `when`(repository.addFavMovie(favMovieDataDummy)).thenReturn(favMovieDataDummy.id.toLong())
+        val addedFavMovie = repository.addFavMovie(favMovieDataDummy)
+        assertNotNull(addedFavMovie)
+
+        // removing scenario
+        `when`(repository.deleteFavMovie(favMovieDataDummy)).thenReturn(favMovieDataDummy.id)
+        val removedFavMovie = repository.deleteFavMovie(favMovieDataDummy)
+        assertNotNull(removedFavMovie)
+    }
+
+    @Test
+    fun `add and then remove favorite tv show`() = runBlockingTest {
+        val favTVShowsDataDummy = DataGenerator.getDetailTvShow().asFavModel()
+
+        // adding scenario
+        `when`(repository.addFavTVShow(favTVShowsDataDummy)).thenReturn(favTVShowsDataDummy.id.toLong())
+        val addedFavMovie = repository.addFavTVShow(favTVShowsDataDummy)
+        assertNotNull(addedFavMovie)
+
+        // removing scenario
+        `when`(repository.deleteFavTVShow(favTVShowsDataDummy)).thenReturn(favTVShowsDataDummy.id)
+        val removedFavMovie = repository.deleteFavTVShow(favTVShowsDataDummy)
+        assertNotNull(removedFavMovie)
+    }
+
+    @Test
+    fun `get favorite movie by given id`() = runBlockingTest {
+        val favMovieDataDummy = DataGenerator.getDetailMovie().asFavModel()
+        `when`(repository.getFavMovieById(favMovieDataDummy.id)).thenReturn(favMovieDataDummy)
+
+        val actualData = repository.getFavMovieById(favMovieDataDummy.id)
+        assertNotNull(actualData)
+        assertEquals(
+            repository.getFavMovieById(favMovieDataDummy.id)?.title,
+            actualData?.title
+        )
+    }
+
+    @Test
+    fun `get favorite tv show by given id`() = runBlockingTest {
+        val favTVShowDataDummy = DataGenerator.getDetailTvShow().asFavModel()
+        `when`(repository.getFavTVShowById(favTVShowDataDummy.id)).thenReturn(favTVShowDataDummy)
+
+        val actualData = repository.getFavTVShowById(favTVShowDataDummy.id)
+        assertNotNull(actualData)
+        assertEquals(
+            repository.getFavTVShowById(favTVShowDataDummy.id)?.title,
+            actualData?.title
+        )
+    }
 }
