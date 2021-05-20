@@ -40,6 +40,9 @@ class DetailViewModelTest {
     @Mock
     private lateinit var detailTVShowObserver: Observer<Resource<TVShow>>
 
+    @Mock
+    private lateinit var isFavoritedObserver: Observer<Boolean>
+
     private lateinit var viewModel: DetailViewModel
 
     @get:Rule
@@ -151,4 +154,34 @@ class DetailViewModelTest {
             viewModel.getSimilarTVShowsOf(activeTvShowDummyData).observeForever(tvShowsObserver)
             verify(tvShowsObserver).onChanged(similarTVShowsDummyResource)
         }
+
+    @Test
+    fun `add and remove favorite movie`() = coroutinesTestRule.testDispatcher.runBlockingTest {
+        val movieDataDummy = DataGenerator.getDetailMovie()
+
+        // adding scenario
+        `when`(viewModel.addFavMovie(movieDataDummy)).thenReturn(movieDataDummy.id.toLong())
+        val addedFavMovie = viewModel.addFavMovie(movieDataDummy)
+        assertNotNull(addedFavMovie)
+
+        // removing scenario
+        `when`(viewModel.deleteFavMovie(movieDataDummy)).thenReturn(movieDataDummy.id)
+        val removedFavMovie = viewModel.deleteFavMovie(movieDataDummy)
+        assertNotNull(removedFavMovie)
+    }
+
+    @Test
+    fun `add and remove favorite tv show`() = coroutinesTestRule.testDispatcher.runBlockingTest {
+        val tvShowDummyData = DataGenerator.getDetailTvShow()
+
+        // adding scenario
+        `when`(viewModel.addFavTVShow(tvShowDummyData)).thenReturn(tvShowDummyData.id.toLong())
+        val addedFavMovie = viewModel.addFavTVShow(tvShowDummyData)
+        assertNotNull(addedFavMovie)
+
+        // removing scenario
+        `when`(viewModel.deleteFavTVShow(tvShowDummyData)).thenReturn(tvShowDummyData.id)
+        val removedFavMovie = viewModel.deleteFavTVShow(tvShowDummyData)
+        assertNotNull(removedFavMovie)
+    }
 }
