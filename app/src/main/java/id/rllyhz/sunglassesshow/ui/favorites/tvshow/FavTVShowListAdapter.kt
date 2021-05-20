@@ -25,6 +25,9 @@ class FavTVShowListAdapter :
         }
     }
 
+    fun get(position: Int): FavTVShow =
+        getItem(position) ?: FavTVShow(0, "", "", "", 0, 0f)
+
     inner class FavTVShowListViewHolder(
         private val binding: ItemTvshowListBinding
     ) : RecyclerView.ViewHolder(binding.root) {

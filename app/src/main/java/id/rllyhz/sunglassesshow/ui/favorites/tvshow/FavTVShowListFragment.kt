@@ -7,14 +7,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.databinding.FragmentFavTvshowListBinding
 import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesViewModel
+import id.rllyhz.sunglassesshow.ui.favorites.SwipeItemCallback
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 import id.rllyhz.sunglassesshow.utils.asModel
 
@@ -46,11 +51,36 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
         favTVShowListAdapter = FavTVShowListAdapter()
         favTVShowListAdapter.setItemCallback(this)
 
+        val swipedItemCallback = object : SwipeItemCallback() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val favTVShow = favTVShowListAdapter.get(viewHolder.adapterPosition)
+                viewModel.deleteFavTVShow(favTVShow)
+                favTVShowListAdapter.currentList?.dataSource?.invalidate()
+
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.favorites_deleted_tv_show_message),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        ItemTouchHelper(swipedItemCallback).attachToRecyclerView(binding.rvFavTvshowList)
+
         setupUI()
 
         viewModel.favTVShows().observe(viewLifecycleOwner) {
-            favTVShowListAdapter.submitList(it)
             _activity?.onLoading(false)
+            favTVShowListAdapter.submitList(it)
+
+            with(binding) {
+                if (it.size != 0) {
+                    tvFeedback.visibility = View.GONE
+                    rvFavTvshowList.visibility = View.VISIBLE
+                } else {
+                    tvFeedback.visibility = View.VISIBLE
+                    rvFavTvshowList.visibility = View.GONE
+                }
+            }
         }
     }
 
@@ -58,6 +88,8 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
         _activity?.onLoading(true)
 
         binding.apply {
+            tvFeedback.visibility = View.GONE
+
             with(rvFavTvshowList) {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 setHasFixedSize(true)

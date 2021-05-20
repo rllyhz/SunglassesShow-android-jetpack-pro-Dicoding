@@ -26,6 +26,8 @@
     <string name="favorites_title">Favorites</string>
     <string name="favorites_movie">Fav Movies</string>
     <string name="favorites_tv_show">Fav Tv Shows</string>
+    <string name="favorites_movie_list_feedback">No favorite movies yet!</string>
+    <string name="favorites_tv_show_list_feedback">No favorite tv shows yet!</string>
     <string name="favorites_added_movie_message">Movie added to Fav</string>
     <string name="favorites_deleted_movie_message">Movie removed from Fav</string>
     <string name="favorites_added_tv_show_message">TV Show added to Fav</string>

@@ -18,4 +18,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_movie_list" />
 
+    <TextView
+        android:id="@+id/tv_feedback"
+        style="@style/TextBold.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/favorites_movie_list_feedback"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/rv_fav_movie_list"
+        app:layout_constraintRight_toRightOf="@id/rv_fav_movie_list"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

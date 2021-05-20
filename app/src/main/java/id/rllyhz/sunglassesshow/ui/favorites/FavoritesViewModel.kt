@@ -1,6 +1,7 @@
 package id.rllyhz.sunglassesshow.ui.favorites
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagedList
@@ -14,11 +15,19 @@ class FavoritesViewModel(
     private val repository: SunGlassesShowRepository
 ) : ViewModel() {
 
-    private lateinit var _favMovies: LiveData<PagedList<FavMovie>>
+    private var _favMovies: LiveData<PagedList<FavMovie>> = MutableLiveData()
     fun favMovies(): LiveData<PagedList<FavMovie>> = _favMovies
 
-    private lateinit var _favTVShows: LiveData<PagedList<FavTVShow>>
+    private var _favTVShows: LiveData<PagedList<FavTVShow>> = MutableLiveData()
     fun favTVShows(): LiveData<PagedList<FavTVShow>> = _favTVShows
+
+    fun deleteFavMovie(favMovie: FavMovie) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteFavMovie(favMovie)
+    }
+
+    fun deleteFavTVShow(favTVShow: FavTVShow) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteFavTVShow(favTVShow)
+    }
 
     init {
         initAllFavMovies()

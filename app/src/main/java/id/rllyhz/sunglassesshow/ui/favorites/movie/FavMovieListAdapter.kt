@@ -26,6 +26,9 @@ class FavMovieListAdapter :
         }
     }
 
+    fun get(position: Int): FavMovie =
+        getItem(position) ?: FavMovie(0, "", "", "", 0, 0f)
+
     inner class FavMovieListViewHolder(
         private val binding: ItemMovieListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
