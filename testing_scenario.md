@@ -14,6 +14,8 @@
     - Memuat data list movies yang kemungkinan serupa (similar) dengan data Movie yang sedang aktif.
     - Memuat data list tvShows yang kemungkinan serupa (similar) dengan data TVShow yang sedang aktif.
     - Memastikan jumlah data masing-masing data list movies dan tvShows yang _similar_ sesuai ekspektasi.
+    - Melakukan tambah dan hapus data favorites pada movie dan kembalian data tidak berupa null.
+    - Melakukan tambah dan hapus data favorites pada tv show dan kembalian data tidak berupa null.
 
 **Instrumental Testing**
     - Memuat dan menampilkan data movies pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
