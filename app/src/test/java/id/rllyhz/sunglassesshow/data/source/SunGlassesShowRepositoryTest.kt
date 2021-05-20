@@ -211,37 +211,39 @@ class SunGlassesShowRepositoryTest {
         }
 
     @Test
-    fun `get all favorite movies and they must not be null`() {
-        `when`(favMoviesPagedList.size).thenReturn(6)
-        val favMoviesDummyData = MutableLiveData(favMoviesPagedList)
+    fun `get all favorite movies and they must not be null`() =
+        coroutineTestRule.testDispatcher.runBlockingTest {
+            `when`(favMoviesPagedList.size).thenReturn(6)
+            val favMoviesDummyData = MutableLiveData(favMoviesPagedList)
 
-        `when`(repository.getFavMovies()).thenReturn(favMoviesDummyData)
-        val actualData = repository.getFavMovies().value
-        verify(repository).getFavMovies()
-        assertNotNull(actualData)
-        assertEquals(6, actualData?.size)
+            `when`(repository.getFavMovies()).thenReturn(favMoviesDummyData)
+            val actualData = repository.getFavMovies().value
+            verify(repository).getFavMovies()
+            assertNotNull(actualData)
+            assertEquals(6, actualData?.size)
 
-        repository.getFavMovies().observeForever(favMoviesObserver)
-        favMoviesObserver.onChanged(favMoviesPagedList)
-    }
-
-    @Test
-    fun `get all favorite tv shows and they must not be null`() {
-        `when`(favTVShowsPagedList.size).thenReturn(6)
-        val favTVShowsDummyData = MutableLiveData(favTVShowsPagedList)
-
-        `when`(repository.getFavTVShows()).thenReturn(favTVShowsDummyData)
-        val actualData = repository.getFavTVShows().value
-        verify(repository).getFavTVShows()
-        assertNotNull(actualData)
-        assertEquals(6, actualData?.size)
-
-        repository.getFavTVShows().observeForever(favTVShowsObserver)
-        favTVShowsObserver.onChanged(favTVShowsPagedList)
-    }
+            repository.getFavMovies().observeForever(favMoviesObserver)
+            favMoviesObserver.onChanged(favMoviesPagedList)
+        }
 
     @Test
-    fun `add and then remove favorite movie`() = runBlockingTest {
+    fun `get all favorite tv shows and they must not be null`() =
+        coroutineTestRule.testDispatcher.runBlockingTest {
+            `when`(favTVShowsPagedList.size).thenReturn(6)
+            val favTVShowsDummyData = MutableLiveData(favTVShowsPagedList)
+
+            `when`(repository.getFavTVShows()).thenReturn(favTVShowsDummyData)
+            val actualData = repository.getFavTVShows().value
+            verify(repository).getFavTVShows()
+            assertNotNull(actualData)
+            assertEquals(6, actualData?.size)
+
+            repository.getFavTVShows().observeForever(favTVShowsObserver)
+            favTVShowsObserver.onChanged(favTVShowsPagedList)
+        }
+
+    @Test
+    fun `add and then remove favorite movie`() = coroutineTestRule.testDispatcher.runBlockingTest {
         val favMovieDataDummy = DataGenerator.getDetailMovie().asFavModel()
 
         // adding scenario
@@ -256,7 +258,7 @@ class SunGlassesShowRepositoryTest {
     }
 
     @Test
-    fun `add and then remove favorite tv show`() = runBlockingTest {
+    fun `add and then remove favorite tv show`() = coroutineTestRule.testDispatcher.runBlockingTest  {
         val favTVShowsDataDummy = DataGenerator.getDetailTvShow().asFavModel()
 
         // adding scenario
@@ -271,7 +273,7 @@ class SunGlassesShowRepositoryTest {
     }
 
     @Test
-    fun `get favorite movie by given id`() = runBlockingTest {
+    fun `get favorite movie by given id`() = coroutineTestRule.testDispatcher.runBlockingTest  {
         val favMovieDataDummy = DataGenerator.getDetailMovie().asFavModel()
         `when`(repository.getFavMovieById(favMovieDataDummy.id)).thenReturn(favMovieDataDummy)
 
@@ -284,7 +286,7 @@ class SunGlassesShowRepositoryTest {
     }
 
     @Test
-    fun `get favorite tv show by given id`() = runBlockingTest {
+    fun `get favorite tv show by given id`() = coroutineTestRule.testDispatcher.runBlockingTest  {
         val favTVShowDataDummy = DataGenerator.getDetailTvShow().asFavModel()
         `when`(repository.getFavTVShowById(favTVShowDataDummy.id)).thenReturn(favTVShowDataDummy)
 

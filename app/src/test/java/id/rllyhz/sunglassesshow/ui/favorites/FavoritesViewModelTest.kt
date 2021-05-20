@@ -8,6 +8,8 @@ import com.nhaarman.mockitokotlin2.verify
 import id.rllyhz.sunglassesshow.data.source.SunGlassesShowRepository
 import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
 import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -18,7 +20,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
-
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class FavoritesViewModelTest {
     private lateinit var viewModel: FavoritesViewModel
@@ -47,7 +49,7 @@ class FavoritesViewModelTest {
     }
 
     @Test
-    fun `get all favorite movies and they must not be null`() {
+    fun `get all favorite movies and they must not be null`() = runBlockingTest {
         `when`(favMoviesPagedList.size).thenReturn(6)
         val favMoviesDummyData = MutableLiveData(favMoviesPagedList)
 
@@ -57,7 +59,6 @@ class FavoritesViewModelTest {
         assertNotNull(viewModel)
 
         viewModel.initAllFavMovies()
-        Thread.sleep(2000)
         val actualFavMovie = viewModel.favMovies().value
         assertNotNull(actualFavMovie)
         assertEquals(6, actualFavMovie?.size)
@@ -67,7 +68,7 @@ class FavoritesViewModelTest {
     }
 
     @Test
-    fun `get all favorite tv shows and they must not be null`() {
+    fun `get all favorite tv shows and they must not be null`() = runBlockingTest {
         `when`(favTVShowsPagedList.size).thenReturn(6)
         val favTVShowsDummyData = MutableLiveData(favTVShowsPagedList)
 
@@ -77,7 +78,6 @@ class FavoritesViewModelTest {
         assertNotNull(viewModel)
 
         viewModel.initAllFavTVShows()
-        Thread.sleep(2000)
         val actualFavTVShow = viewModel.favTVShows().value
         assertNotNull(actualFavTVShow)
         assertEquals(6, actualFavTVShow?.size)
