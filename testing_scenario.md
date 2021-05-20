@@ -16,6 +16,10 @@
     - Memastikan jumlah data masing-masing data list movies dan tvShows yang _similar_ sesuai ekspektasi.
     - Melakukan tambah dan hapus data favorites pada movie dan kembalian data tidak berupa null.
     - Melakukan tambah dan hapus data favorites pada tv show dan kembalian data tidak berupa null.
+   
+- **FavoritesViewModel**
+    - Memuat data list favorite movies dan memastikan data tidak null
+    - Memuat data list favorite tv shows dan memastikan data tidak null
 
 **Instrumental Testing**
     - Memuat dan menampilkan data movies pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
