@@ -29,21 +29,20 @@ class FavoritesViewModel(
     }
 
     init {
-        initAllFavMovies()
-        initAllFavTVShows()
-    }
-
-    fun initAllFavMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = repository.getFavMovies()
-            _favMovies = result
+            initAllFavMovies()
+            initAllFavTVShows()
         }
     }
 
-    fun initAllFavTVShows() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = repository.getFavTVShows()
-            _favTVShows = result
-        }
+    suspend fun initAllFavMovies() {
+        val result = repository.getFavMovies()
+        _favMovies = result
+
+    }
+
+    suspend fun initAllFavTVShows() {
+        val result = repository.getFavTVShows()
+        _favTVShows = result
     }
 }
