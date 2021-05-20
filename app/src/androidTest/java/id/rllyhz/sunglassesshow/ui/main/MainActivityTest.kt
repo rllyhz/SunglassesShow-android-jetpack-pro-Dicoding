@@ -246,7 +246,6 @@ class MainActivityTest {
         onView(withId(R.id.toggle_btn_fav)).check(matches(isDisplayed())).perform(click())
 
         onView(withId(R.id.menu_item_favorites)).check(matches(isDisplayed())).perform(click())
-        Thread.sleep(2000)
         onView(withId(R.id.view_pager_favorites)).check(matches(isDisplayed()))
     }
 
@@ -278,7 +277,6 @@ class MainActivityTest {
         onView(withId(R.id.toggle_btn_fav)).check(matches(isDisplayed())).perform(click())
 
         onView(withId(R.id.menu_item_favorites)).check(matches(isDisplayed())).perform(click())
-        Thread.sleep(2000)
         onView(withId(R.id.view_pager_favorites)).check(matches(isDisplayed()))
         onView(withId(R.id.view_pager_favorites)).perform(swipeLeft())
         onView(withId(R.id.rv_fav_tvshow_list)).check(matches(isDisplayed()))
