@@ -16,6 +16,7 @@ import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesViewModel
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
+import id.rllyhz.sunglassesshow.utils.asModel
 
 class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallback {
     private var _binding: FragmentFavMovieListBinding? = null
@@ -67,7 +68,7 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
 
     override fun onClick(favMovie: FavMovie) {
         with(Intent(requireActivity(), DetailActivity::class.java)) {
-            putExtra(DetailActivity.EXTRA_CONTENT_MOVIE, favMovie)
+            putExtra(DetailActivity.EXTRA_CONTENT_MOVIE, favMovie.asModel())
             putExtra(DetailActivity.GOTO_MOVIE_DETAIL, true)
 
             requireActivity().startActivity(this)

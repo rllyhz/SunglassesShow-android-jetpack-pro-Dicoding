@@ -16,6 +16,7 @@ import id.rllyhz.sunglassesshow.ui.detail.DetailActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesActivity
 import id.rllyhz.sunglassesshow.ui.favorites.FavoritesViewModel
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
+import id.rllyhz.sunglassesshow.utils.asModel
 
 class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCallback {
     private var _binding: FragmentFavTvshowListBinding? = null
@@ -67,8 +68,8 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
 
     override fun onClick(favTVShow: FavTVShow) {
         with(Intent(requireActivity(), DetailActivity::class.java)) {
-            putExtra(DetailActivity.EXTRA_CONTENT_MOVIE, favTVShow)
-            putExtra(DetailActivity.GOTO_MOVIE_DETAIL, true)
+            putExtra(DetailActivity.EXTRA_CONTENT_TV_SHOW, favTVShow.asModel())
+            putExtra(DetailActivity.GOTO_MOVIE_DETAIL, false)
 
             requireActivity().startActivity(this)
         }

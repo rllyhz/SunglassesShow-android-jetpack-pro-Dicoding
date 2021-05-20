@@ -100,11 +100,43 @@ fun TVShowDetailResponse.asModels(): TVShow =
     )
 
 
-fun Movie.asFavModel() =
+fun Movie.asFavModel(): FavMovie =
     FavMovie(this.id, posterPath, backdropPath, title, year, rating)
 
-fun TVShow.asFavModel() =
+fun TVShow.asFavModel(): FavTVShow =
     FavTVShow(this.id, posterPath, backdropPath, title, year, rating)
+
+fun FavMovie.asModel(): Movie =
+    Movie(
+        this.id,
+        this.posterPath,
+        this.backdropPath,
+        this.title,
+        null,
+        null,
+        0f,
+        "",
+        "",
+        null,
+        "",
+        null
+    )
+
+fun FavTVShow.asModel(): TVShow =
+    TVShow(
+        this.id,
+        this.posterPath,
+        this.backdropPath,
+        this.title,
+        null,
+        null,
+        0f,
+        "",
+        "",
+        null,
+        "",
+        null
+    )
 
 fun Movie.getDateInString() = getDateInString(releasedAt)
 fun TVShow.getDateInString() = getDateInString(releasedAt)
