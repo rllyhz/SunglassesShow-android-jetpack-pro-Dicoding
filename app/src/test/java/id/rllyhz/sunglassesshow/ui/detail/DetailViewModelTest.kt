@@ -40,9 +40,6 @@ class DetailViewModelTest {
     @Mock
     private lateinit var detailTVShowObserver: Observer<Resource<TVShow>>
 
-    @Mock
-    private lateinit var isFavoritedObserver: Observer<Boolean>
-
     private lateinit var viewModel: DetailViewModel
 
     @get:Rule
