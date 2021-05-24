@@ -4,8 +4,6 @@ import android.util.Log
 import com.google.gson.Gson
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
-import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
-import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverMoviesResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.DiscoverTVShowsResponse
 import id.rllyhz.sunglassesshow.data.source.remote.response.MovieDetailResponse
