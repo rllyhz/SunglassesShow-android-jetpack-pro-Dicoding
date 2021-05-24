@@ -35,12 +35,14 @@
     - Memuat data list favorite tv shows dan memastikan data tidak null
 
 **Instrumental Testing**
+- **MainActivityTest**
     - Memuat dan menampilkan data movies pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
     - Mendemonstrasikan swiping action pada tab layout dan memastikan recyclerview dari data tv shows muncul.
     - Memuat dan menampilkan data tv shows pada recyclerview dan memastikan setiap item berfungsi ketika di-click.
+    
+- **DetailActivityTest**
     - Mendemonstrasikan detail activity dan memastikan semua komponen yang ada tampil dan berfungsi dengan baik.
     - Mendemonstrasikan detail activity dan memastikan semua komponen textview yang ada menampilkan text yang diharapkan.
     - Mendemonstrasikan detail activity dan memastikan data Similar Movies pada recyclerview tampil.
     - Memastikan setiap item didalam recyclerview berfungsi ketika di-klik dan memiliki jumlah item yang sesuai dengan dummy data.
-    - Melakukan klik pada tombol toggle_btn_fav untuk menambahkan movie item kedalam favorite dan cek jika recyclerview pada FavoriteActivity muncul.
-    - Melakukan klik pada tombol toggle_btn_fav untuk menambahkan tv show item kedalam favorite dan cek jika recyclerview pada FavoriteActivity muncul.
+    - Melakukan simulasi klik pada tombol toggle_btn_fav untuk menambahkan dan menghapus movie item dari favorite dan cek jika recyclerview pada FavoriteActivity muncul.
