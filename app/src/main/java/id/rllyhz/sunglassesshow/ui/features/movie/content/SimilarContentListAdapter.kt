@@ -40,6 +40,8 @@ class SimilarContentListAdapter :
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivItemSimilar)
 
+                ivItemSimilar.contentDescription = movie.title
+
                 itemView.setOnClickListener { itemCallback?.onClick(movie) }
             }
         }

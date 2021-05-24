@@ -85,6 +85,8 @@ class MovieListAdapter(
                         .error(R.drawable.bg_poster_error)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
+
+                    contentDescription = movie.title
                 }
 
                 rbMovieList.rating = movie.rating

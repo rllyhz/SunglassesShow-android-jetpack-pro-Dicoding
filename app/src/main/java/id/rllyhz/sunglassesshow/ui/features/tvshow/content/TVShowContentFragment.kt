@@ -107,6 +107,9 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.drawable.bg_poster_placeholder)
                     .into(ivPosterDetail)
+
+                ivPosterBgDetail.contentDescription = tvShow.title
+                ivPosterDetail.contentDescription = tvShow.title
             }
 
             setupSimilarContentUI()

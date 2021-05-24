@@ -31,16 +31,18 @@ class SimilarContentListAdapter :
         private val binding: ItemSimilarContentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: TVShow) {
+        fun bind(tvShows: TVShow) {
             with(binding) {
                 Glide.with(itemView)
-                    .load(IMAGE_URL + movie.posterPath)
+                    .load(IMAGE_URL + tvShows.posterPath)
                     .error(R.drawable.bg_poster_error)
                     .placeholder(R.drawable.bg_poster_placeholder)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivItemSimilar)
 
-                itemView.setOnClickListener { itemCallback?.onClick(movie) }
+                ivItemSimilar.contentDescription = tvShows.title
+
+                itemView.setOnClickListener { itemCallback?.onClick(tvShows) }
             }
         }
     }

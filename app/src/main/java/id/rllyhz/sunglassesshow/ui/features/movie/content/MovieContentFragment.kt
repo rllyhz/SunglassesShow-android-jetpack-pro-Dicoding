@@ -109,6 +109,9 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
                     .error(R.drawable.bg_poster_error)
                     .placeholder(R.drawable.bg_poster_placeholder)
                     .into(ivPosterDetail)
+
+                ivPosterBgDetail.contentDescription = movie.title
+                ivPosterDetail.contentDescription = movie.title
             }
 
             viewModel.isMovieFavorited.observe(viewLifecycleOwner) { isFavorited ->

@@ -4,7 +4,6 @@ import androidx.paging.DataSource
 import androidx.room.*
 import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
 import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SunGlassesShowDao {

@@ -40,6 +40,8 @@ class FavTVShowListAdapter :
                         .placeholder(R.drawable.bg_poster_placeholder)
                         .error(R.drawable.bg_poster_error)
                         .into(this)
+
+                    contentDescription = favTVShow.title
                 }
 
                 rbTvshowList.rating = favTVShow.rating

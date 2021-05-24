@@ -65,29 +65,4 @@ object DataGenerator {
             DiscoverTVShowsResponse::class.java
         ).tvShows.asModels()
 
-    fun getAllFavMovies(): List<FavMovie> {
-        val movies = getAllMovies()
-        val favMovies = ArrayList<FavMovie>()
-
-        for (i in 0..5) {
-            favMovies.add(
-                movies[i].asFavModel()
-            )
-        }
-
-        return favMovies
-    }
-
-    fun getAllFavTVShows(): List<FavTVShow> {
-        val tvShows = getAllTVShows()
-        val favTVShows = ArrayList<FavTVShow>()
-
-        for (i in 0..5) {
-            favTVShows.add(
-                tvShows[i].asFavModel()
-            )
-        }
-
-        return favTVShows
-    }
 }

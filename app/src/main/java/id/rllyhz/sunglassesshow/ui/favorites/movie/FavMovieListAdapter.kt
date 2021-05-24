@@ -42,6 +42,8 @@ class FavMovieListAdapter :
                         .error(R.drawable.bg_poster_error)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
+
+                    contentDescription = favMovie.title
                 }
 
                 rbMovieList.rating = favMovie.rating

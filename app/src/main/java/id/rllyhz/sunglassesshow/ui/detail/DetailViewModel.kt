@@ -7,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.data.source.SunGlassesShowRepository
-import id.rllyhz.sunglassesshow.data.source.local.entity.FavMovie
-import id.rllyhz.sunglassesshow.data.source.local.entity.FavTVShow
 import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.asFavModel
 import kotlinx.coroutines.Dispatchers

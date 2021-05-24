@@ -85,6 +85,8 @@ class TVShowListAdapter(
                         .error(R.drawable.bg_poster_error)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(this)
+
+                    contentDescription = tvShow.title
                 }
 
                 rbTvshowList.rating = tvShow.rating

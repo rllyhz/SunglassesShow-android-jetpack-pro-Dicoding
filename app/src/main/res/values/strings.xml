@@ -33,5 +33,6 @@
 
     <string name="menu_item_favorites">Favorites</string>
     <string name="results_not_found">Results not found!</string>
-    <string name="search_hint">Search here...</string>
+    <string name="search_hint">Search here &#8230;</string>
+    <string name="poster_image_content_description">Poster Image</string>
 </resources>
