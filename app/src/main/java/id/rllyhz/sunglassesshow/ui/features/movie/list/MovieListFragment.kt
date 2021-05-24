@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -42,7 +43,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
             ViewModelFactory.getInstance(requireContext().applicationContext as Application)
         )[MainViewModel::class.java]
 
-        movieListAdapter = MovieListAdapter()
+        movieListAdapter = MovieListAdapter(this)
         movieListAdapter.setItemCallback(this)
 
         setupUI()
@@ -51,7 +52,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
             when (resource) {
                 is Resource.Success -> {
                     _activity?.onLoading(false)
-                    movieListAdapter.submitList(resource.data)
+                    movieListAdapter.initData(resource.data)
                 }
                 is Resource.Error -> {
                     _activity?.onLoading(false)
@@ -75,6 +76,32 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
                 adapter = movieListAdapter
+            }
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean = false
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null)
+                        movieListAdapter.search(newText)
+
+                    return true
+                }
+            })
+        }
+    }
+
+    fun setNoResultsUI(state: Boolean) {
+        with(_binding) {
+            when (state) {
+                true -> {
+                    rvMovieList.visibility = View.GONE
+                    tvFeedback.visibility = View.VISIBLE
+                }
+                false -> {
+                    rvMovieList.visibility = View.VISIBLE
+                    tvFeedback.visibility = View.GONE
+                }
             }
         }
     }

@@ -11,9 +11,14 @@ import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.Movie
 import id.rllyhz.sunglassesshow.databinding.ItemMovieListBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
-class MovieListAdapter :
+class MovieListAdapter(
+    private val fragment: MovieListFragment
+) :
     ListAdapter<Movie, MovieListAdapter.MovieListViewHolder>(MovieComparator()) {
+    private var originalList: List<Movie>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val binding =
@@ -25,6 +30,46 @@ class MovieListAdapter :
         getItem(position).apply {
             holder.bind(this)
         }
+    }
+
+    fun initData(list: List<Movie>?) {
+        originalList = list
+        submitList(originalList)
+
+        if (list == null || list.isEmpty())
+            setNoResultsUI(true)
+        else
+            setNoResultsUI(false)
+    }
+
+    fun search(query: String) {
+        if (query.isNotEmpty()) {
+            originalList?.let {
+                val filteredList = ArrayList<Movie>()
+
+                for (item in it) {
+                    if (item.title.toLowerCase(Locale.ROOT)
+                            .contains(query.toLowerCase(Locale.ROOT))
+                    ) {
+                        filteredList.add(item)
+                    }
+                }
+
+                if (filteredList.isNotEmpty()) {
+                    submitList(filteredList)
+                    setNoResultsUI(false)
+                } else {
+                    setNoResultsUI(true)
+                }
+            }
+        } else {
+            submitList(originalList)
+            setNoResultsUI(false)
+        }
+    }
+
+    private fun setNoResultsUI(state: Boolean) {
+        fragment.setNoResultsUI(state)
     }
 
     inner class MovieListViewHolder(

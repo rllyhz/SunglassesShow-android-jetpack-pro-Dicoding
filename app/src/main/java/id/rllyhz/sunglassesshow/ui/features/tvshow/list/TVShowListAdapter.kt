@@ -11,9 +11,14 @@ import id.rllyhz.sunglassesshow.R
 import id.rllyhz.sunglassesshow.api.ApiEndpoint.Companion.IMAGE_URL
 import id.rllyhz.sunglassesshow.data.TVShow
 import id.rllyhz.sunglassesshow.databinding.ItemTvshowListBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
-class TVShowListAdapter :
+class TVShowListAdapter(
+    private val fragment: TVShowListFragment
+) :
     ListAdapter<TVShow, TVShowListAdapter.TVShowListViewHolder>(TVShowComparator()) {
+    private var originalList: List<TVShow>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TVShowListViewHolder {
         val binding =
@@ -25,6 +30,46 @@ class TVShowListAdapter :
         getItem(position).apply {
             holder.bind(this)
         }
+    }
+
+    fun initData(list: List<TVShow>?) {
+        originalList = list
+        submitList(originalList)
+
+        if (list == null || list.isEmpty())
+            setNoResultsUI(true)
+        else
+            setNoResultsUI(false)
+    }
+
+    fun search(query: String) {
+        if (query.isNotEmpty()) {
+            originalList?.let {
+                val filteredList = ArrayList<TVShow>()
+
+                for (item in it) {
+                    if (item.title.toLowerCase(Locale.ROOT)
+                            .contains(query.toLowerCase(Locale.ROOT))
+                    ) {
+                        filteredList.add(item)
+                    }
+                }
+
+                if (filteredList.isNotEmpty()) {
+                    submitList(filteredList)
+                    setNoResultsUI(false)
+                } else {
+                    setNoResultsUI(true)
+                }
+            }
+        } else {
+            submitList(originalList)
+            setNoResultsUI(false)
+        }
+    }
+
+    private fun setNoResultsUI(state: Boolean) {
+        fragment.setNoResultsUI(state)
     }
 
     inner class TVShowListViewHolder(

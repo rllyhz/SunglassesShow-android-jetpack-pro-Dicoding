@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,8 +20,7 @@ import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 
 class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
-    private var _binding: FragmentTvshowListBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentTvshowListBinding
 
     private lateinit var viewModel: MainViewModel
     private lateinit var tvShowListAdapter: TVShowListAdapter
@@ -32,7 +32,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTvshowListBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
             ViewModelFactory.getInstance(requireContext().applicationContext as Application)
         )[MainViewModel::class.java]
 
-        tvShowListAdapter = TVShowListAdapter()
+        tvShowListAdapter = TVShowListAdapter(this)
         tvShowListAdapter.setItemCallback(this)
 
         setupUI()
@@ -52,7 +52,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
             when (resource) {
                 is Resource.Success -> {
                     _activity?.onLoading(false)
-                    tvShowListAdapter.submitList(resource.data)
+                    tvShowListAdapter.initData(resource.data)
                 }
                 is Resource.Error -> {
                     _activity?.onLoading(false)
@@ -70,11 +70,37 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
     private fun setupUI() {
         _activity?.onLoading(true)
 
-        binding.apply {
+        _binding.apply {
             with(rvTvshowList) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
                 adapter = tvShowListAdapter
+            }
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean = false
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null)
+                        tvShowListAdapter.search(newText)
+
+                    return true
+                }
+            })
+        }
+    }
+
+    fun setNoResultsUI(state: Boolean) {
+        with(_binding) {
+            when (state) {
+                true -> {
+                    rvTvshowList.visibility = View.GONE
+                    tvFeedback.visibility = View.VISIBLE
+                }
+                false -> {
+                    rvTvshowList.visibility = View.VISIBLE
+                    tvFeedback.visibility = View.GONE
+                }
             }
         }
     }
@@ -96,11 +122,6 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
     override fun onDetach() {
         super.onDetach()
         _activity = null
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {
