@@ -25,21 +25,11 @@ class FavoritesActivityTest {
     @Before
     fun setup() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoIdlingResource)
-        addItemsToFav()
-    }
-
-    private fun addItemsToFav() {
-        //
     }
 
     @After
     fun tearDown() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoIdlingResource)
-        removeItemsFromFav()
-    }
-
-    private fun removeItemsFromFav() {
-        //
     }
 
     @Test

@@ -21,7 +21,7 @@ class FavoritesPagerAdapter(
             else -> Fragment()
         }
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = FAV_TAB_TITLES.size
 
     override fun getPageTitle(position: Int): CharSequence =
         context.resources.getString(FAV_TAB_TITLES[position])

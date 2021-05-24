@@ -24,8 +24,7 @@ import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 import id.rllyhz.sunglassesshow.utils.asModel
 
 class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCallback {
-    private var _binding: FragmentFavTvshowListBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentFavTvshowListBinding
 
     private lateinit var viewModel: FavoritesViewModel
     private lateinit var favTVShowListAdapter: FavTVShowListAdapter
@@ -37,7 +36,7 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavTvshowListBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +63,7 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
                 ).show()
             }
         }
-        ItemTouchHelper(swipedItemCallback).attachToRecyclerView(binding.rvFavTvshowList)
+        ItemTouchHelper(swipedItemCallback).attachToRecyclerView(_binding.rvFavTvshowList)
 
         setupUI()
 
@@ -72,7 +71,7 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
             _activity?.onLoading(false)
             favTVShowListAdapter.submitList(it)
 
-            with(binding) {
+            with(_binding) {
                 if (it.size != 0) {
                     tvFeedback.visibility = View.GONE
                     rvFavTvshowList.visibility = View.VISIBLE
@@ -87,7 +86,7 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
     private fun setupUI() {
         _activity?.onLoading(true)
 
-        binding.apply {
+        _binding.apply {
             tvFeedback.visibility = View.GONE
 
             with(rvFavTvshowList) {
@@ -110,11 +109,6 @@ class FavTVShowListFragment : Fragment(), FavTVShowListAdapter.FavTVShowItemCall
     override fun onAttach(context: Context) {
         super.onAttach(context)
         _activity = context as FavoritesActivity
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onDetach() {

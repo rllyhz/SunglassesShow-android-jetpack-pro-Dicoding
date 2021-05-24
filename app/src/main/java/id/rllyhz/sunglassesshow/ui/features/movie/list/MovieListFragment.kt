@@ -19,8 +19,7 @@ import id.rllyhz.sunglassesshow.utils.Resource
 import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 
 class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
-    private var _binding: FragmentMovieListBinding? = null
-    private val binding get() = _binding!! // using the official documentation approach
+    private lateinit var _binding: FragmentMovieListBinding
 
     private lateinit var viewModel: MainViewModel
     private lateinit var movieListAdapter: MovieListAdapter
@@ -32,7 +31,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieListBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,7 +69,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
     private fun setupUI() {
         _activity?.onLoading(true)
 
-        binding.apply {
+        _binding.apply {
 
             with(rvMovieList) {
                 layoutManager = GridLayoutManager(context, 2)
@@ -92,11 +91,6 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         _activity = context as MainActivity
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onDetach() {

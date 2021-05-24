@@ -21,7 +21,7 @@ class MainPagerAdapter(
             else -> Fragment()
         }
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = MAIN_TAB_TITLES.size
 
     override fun getPageTitle(position: Int): CharSequence =
         context.resources.getString(MAIN_TAB_TITLES[position])

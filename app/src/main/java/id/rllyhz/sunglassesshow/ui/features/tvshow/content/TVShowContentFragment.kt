@@ -27,8 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
-    private var _binding: FragmentContentBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentContentBinding
 
     private lateinit var viewModel: DetailViewModel
     private lateinit var similarContentListAdapter: SimilarContentListAdapter
@@ -40,7 +39,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentContentBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +54,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
 
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
-        binding.rvSimilarContentDetail.adapter = similarContentListAdapter
+        _binding.rvSimilarContentDetail.adapter = similarContentListAdapter
 
         viewModel.detailTVShow.observe(viewLifecycleOwner) { resource ->
             when (resource) {
@@ -73,7 +72,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
     private fun setupUI(tvShow: TVShow?) {
         showProgressbar(false)
 
-        with(binding) {
+        with(_binding) {
 
             if (tvShow != null) {
                 rbDetail.rating = tvShow.rating
@@ -139,7 +138,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
     }
 
     private fun setupSimilarContentUI() {
-        with(binding) {
+        with(_binding) {
             with(rvSimilarContentDetail) {
                 layoutManager =
                     LinearLayoutManager(root.context, LinearLayoutManager.HORIZONTAL, false)
@@ -149,7 +148,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
         }
 
         viewModel.similarTVShows.observe(viewLifecycleOwner) { resource ->
-            with(binding) {
+            with(_binding) {
 
                 when (resource) {
                     is Resource.Success -> {
@@ -187,7 +186,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
     }
 
     private fun showProgressbar(state: Boolean) {
-        with(binding) {
+        with(_binding) {
             if (state)
                 progressbar.visibility = View.VISIBLE
             else
@@ -196,7 +195,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
     }
 
     private fun showProgressbarSimilarContents(state: Boolean) {
-        with(binding) {
+        with(_binding) {
             if (state)
                 progressbarSimilarContents.visibility = View.VISIBLE
             else
@@ -208,11 +207,6 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
         withContext(Dispatchers.Main) {
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

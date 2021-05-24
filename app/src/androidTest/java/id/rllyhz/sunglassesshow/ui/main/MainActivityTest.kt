@@ -22,7 +22,7 @@ import org.junit.Test
 class MainActivityTest {
     private val moviesDummyData = DataGenerator.getAllMovies()
     private val tvShowsDummyData = DataGenerator.getAllTVShows()
-    private val positionItemForTesting = 2
+    private val positionItemForTesting = 3
     private val movieItemTesting = DataGenerator.getDetailMovie()
     private val similarContents = DataGenerator.getSimilarMovies()
 

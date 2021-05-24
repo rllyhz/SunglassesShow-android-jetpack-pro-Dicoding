@@ -24,8 +24,7 @@ import id.rllyhz.sunglassesshow.utils.ViewModelFactory
 import id.rllyhz.sunglassesshow.utils.asModel
 
 class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallback {
-    private var _binding: FragmentFavMovieListBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentFavMovieListBinding
 
     private lateinit var viewModel: FavoritesViewModel
     private lateinit var favMovieListAdapter: FavMovieListAdapter
@@ -37,7 +36,7 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavMovieListBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +64,7 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
                 ).show()
             }
         }
-        ItemTouchHelper(swipedItemCallback).attachToRecyclerView(binding.rvFavMovieList)
+        ItemTouchHelper(swipedItemCallback).attachToRecyclerView(_binding.rvFavMovieList)
 
         setupUI()
 
@@ -73,7 +72,7 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
             _activity?.onLoading(false)
             favMovieListAdapter.submitList(it)
 
-            with(binding) {
+            with(_binding) {
                 if (it.size != 0) {
                     tvFeedback.visibility = View.GONE
                     rvFavMovieList.visibility = View.VISIBLE
@@ -88,7 +87,7 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
     private fun setupUI() {
         _activity?.onLoading(true)
 
-        binding.apply {
+        _binding.apply {
             tvFeedback.visibility = View.GONE
 
             with(rvFavMovieList) {
@@ -111,11 +110,6 @@ class FavMovieListFragment : Fragment(), FavMovieListAdapter.FavMovieItemCallbac
     override fun onAttach(context: Context) {
         super.onAttach(context)
         _activity = context as FavoritesActivity
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onDetach() {

@@ -27,8 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarContentItemCallback {
-    private var _binding: FragmentContentBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentContentBinding
 
     private lateinit var viewModel: DetailViewModel
     private lateinit var similarContentListAdapter: SimilarContentListAdapter
@@ -40,7 +39,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentContentBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +54,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
 
         similarContentListAdapter = SimilarContentListAdapter()
         similarContentListAdapter.setItemCallback(this)
-        binding.rvSimilarContentDetail.adapter = similarContentListAdapter
+        _binding.rvSimilarContentDetail.adapter = similarContentListAdapter
 
         viewModel.detailMovie.observe(viewLifecycleOwner) { resource ->
             when (resource) {
@@ -73,7 +72,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
     private fun setupUI(movie: Movie?) {
         showProgressbar(false)
 
-        with(binding) {
+        with(_binding) {
 
             if (movie != null) {
                 rbDetail.rating = movie.rating
@@ -141,7 +140,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
     }
 
     private fun setupSimilarContentUI() {
-        with(binding) {
+        with(_binding) {
             with(rvSimilarContentDetail) {
                 layoutManager =
                     LinearLayoutManager(root.context, LinearLayoutManager.HORIZONTAL, false)
@@ -151,7 +150,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
         }
 
         viewModel.similarMovies.observe(viewLifecycleOwner) { resource ->
-            with(binding) {
+            with(_binding) {
 
                 when (resource) {
                     is Resource.Success -> {
@@ -180,7 +179,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
     }
 
     private fun showProgressbar(state: Boolean) {
-        with(binding) {
+        with(_binding) {
             if (state)
                 progressbar.visibility = View.VISIBLE
             else
@@ -189,7 +188,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
     }
 
     private fun showProgressbarSimilarContents(state: Boolean) {
-        with(binding) {
+        with(_binding) {
             if (state)
                 progressbarSimilarContents.visibility = View.VISIBLE
             else
@@ -210,11 +209,6 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
 
             requireActivity().startActivity(this)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {
