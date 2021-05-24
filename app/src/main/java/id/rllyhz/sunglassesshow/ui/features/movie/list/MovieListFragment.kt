@@ -78,7 +78,7 @@ class MovieListFragment : Fragment(), MovieListAdapter.MovieItemCallback {
                 adapter = movieListAdapter
             }
 
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            searchViewMoviesList.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean = false
 
                 override fun onQueryTextChange(newText: String?): Boolean {

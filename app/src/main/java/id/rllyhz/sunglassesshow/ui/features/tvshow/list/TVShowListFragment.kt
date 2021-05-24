@@ -77,7 +77,7 @@ class TVShowListFragment : Fragment(), TVShowListAdapter.TVShowItemCallback {
                 adapter = tvShowListAdapter
             }
 
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            searchViewTvShowsList.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean = false
 
                 override fun onQueryTextChange(newText: String?): Boolean {
