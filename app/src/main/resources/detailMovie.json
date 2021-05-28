@@ -10,16 +10,12 @@
   "budget": 200000000,
   "genres": [
     {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
       "id": 28,
       "name": "Action"
     },
     {
-      "id": 18,
-      "name": "Drama"
+      "id": 878,
+      "name": "Science Fiction"
     }
   ],
   "homepage": "https://www.godzillavskong.net/",
@@ -28,7 +24,7 @@
   "original_language": "en",
   "original_title": "Godzilla vs. Kong",
   "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
-  "popularity": 2011.606,
+  "popularity": 1433.085,
   "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
   "production_companies": [
     {
@@ -58,6 +54,11 @@
       "english_name": "English",
       "iso_639_1": "en",
       "name": "English"
+    },
+    {
+      "english_name": "Turkish",
+      "iso_639_1": "tr",
+      "name": "Türkçe"
     }
   ],
   "status": "Released",
@@ -65,5 +66,5 @@
   "title": "Godzilla vs. Kong",
   "video": false,
   "vote_average": 8.1,
-  "vote_count": 5487
+  "vote_count": 5678
 }

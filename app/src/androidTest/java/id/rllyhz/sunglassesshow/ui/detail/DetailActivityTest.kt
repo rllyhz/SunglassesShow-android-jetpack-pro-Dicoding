@@ -23,7 +23,7 @@ import org.junit.Rule
 import org.junit.Test
 
 class DetailActivityTest {
-    private val positionItemForTesting = 3
+    private val positionItemForTesting = 6
     private val movieItemTesting = DataGenerator.getDetailMovie()
     private val similarContents = DataGenerator.getSimilarMovies()
 
