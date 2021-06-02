@@ -126,7 +126,7 @@ class MovieContentFragment : Fragment(), SimilarContentListAdapter.SimilarConten
             toggleBtnFav.setOnClickListener {
                 GlobalScope.launch(Dispatchers.IO) {
                     movie?.apply {
-                        when (toggleBtnFav.isChecked) {
+                        when (!toggleBtnFav.isChecked) {
                             false -> {
                                 viewModel.deleteFavMovie(this)
                                 showToast(requireContext().getString(R.string.favorites_deleted_movie_message))

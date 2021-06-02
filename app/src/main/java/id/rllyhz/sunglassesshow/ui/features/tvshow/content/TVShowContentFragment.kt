@@ -124,7 +124,7 @@ class TVShowContentFragment : Fragment(), SimilarContentListAdapter.SimilarConte
             toggleBtnFav.setOnClickListener {
                 GlobalScope.launch(Dispatchers.IO) {
                     tvShow?.apply {
-                        when (toggleBtnFav.isChecked) {
+                        when (!toggleBtnFav.isChecked) {
                             false -> {
                                 viewModel.deleteFavTVShow(this)
                                 showToast(requireContext().getString(R.string.favorites_deleted_tv_show_message))
