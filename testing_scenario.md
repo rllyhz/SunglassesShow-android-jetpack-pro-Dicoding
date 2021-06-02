@@ -42,7 +42,6 @@
     
 - **DetailActivityTest**
     - Mendemonstrasikan detail activity dan memastikan semua komponen yang ada tampil dan berfungsi dengan baik.
-    - Mendemonstrasikan detail activity dan memastikan semua komponen textview yang ada menampilkan text yang diharapkan.
     - Mendemonstrasikan detail activity dan memastikan data Similar Movies pada recyclerview tampil.
     - Memastikan setiap item didalam recyclerview berfungsi ketika di-klik dan memiliki jumlah item yang sesuai dengan dummy data.
     - Melakukan simulasi klik pada tombol toggle_btn_fav untuk menambahkan dan menghapus movie item dari favorite dan cek jika recyclerview pada FavoriteActivity muncul.
